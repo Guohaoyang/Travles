@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringbootApplicationStart {
 
 	public static void main(String[] args) {
-		System.out.println("来了老弟！");
 		SpringApplication.run(SpringbootApplicationStart.class, args);
 	}
 }
