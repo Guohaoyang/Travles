@@ -11,6 +11,12 @@ public class ht {
 	@RequestMapping("aa")
 	public String a() {
 		System.out.println("a");
-		return "jingdian";
+		return "zhu";
+	}
+	
+	@RequestMapping("cc")
+	public String c() {
+		System.out.println("c");
+		return "gonglue";
 	}
 }
