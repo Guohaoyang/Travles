@@ -34,6 +34,14 @@ public class myselfService {
 	public List<tusers> queryusers(Integer uid){
 		return md.queryusers(uid);
 	}
+	
+	public Integer addAttention(Integer uid,Integer usid){
+		return md.addAttention(uid, usid);
+	}
+	
+	public Integer delAttention(Integer uid,Integer usid){
+		return md.delAttention(uid, usid);
+	}
 }
 
 

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.iqingyi.com/user/548687998787519947 -->
+<html lang="zh-CN" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="renderer" content="webkit">
+    <meta name="apple-itunes-app" content="app-id=1070845754">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="bookmark" type="image/x-icon" href="http://www.iqingyi.com/static/common/favicon.ico">
+    <link rel="shortcut icon" href="http://www.iqingyi.com/static/common/favicon.ico" type="image/x-icon">
+	<title>游世纪</title>
+
+    <link rel="stylesheet" id="layuicss-laydate" href="../static/myself_files/pc.css" charset="UTF-8">
+    
+	
+
+<style type="text/css">.fancybox-margin{margin-right:10px;}
+	.main{margin-left: 180px;}
+</style></head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top g-header">
+		<div class="navbar-inner">
+			<div class="container">
+                <a href="http://www.iqingyi.com/" class="logo" title="游世纪旅游"><img src="../static/myself_files/logo.png" width="60" height="40" alt="青驿旅游"></a>
+				<div class="nav-logined clearfix">
+					<ul class="nav navbar-nav header-nav"> 
+						<li style="margin-left: 60px;" id="navOfIndex"><a href="http://www.iqingyi.com/" title="目的地">目的地</a></li>
+						<li style="margin-left: 40px;" id="headerNav"><a href="http://www.iqingyi.com/explore" title="景点">景点</a></li>
+						<li style="margin-left: 40px;" id="qaIndex"><a href="http://www.iqingyi.com/qa_square" title="游记">游记</a></li>
+						<li style="margin-left: 40px;" id="companyIndex"><a href="http://www.iqingyi.com/company" title="结伴">结伴</a></li>
+						<li style="margin-left: 40px;"><a href="http://www.iqingyi.com/scenics" title="攻略">攻略</a></li>
+					</ul>
+					<ul class="nav navbar-nav pull-right  header-nav" id="userInfo">
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-type="all"><span class="user-name" th:text="${users.uname}"></span><span class="caret"></span>	</a>
+							<ul class="dropdown-menu g-dropdown-menu" role="menu">
+								<li><span class="arrow-top"></span></li>
+								<li class="clearfix"><a class="clearfix" th:title="${users.uname}" target="_blank" href="http://www.iqingyi.com/user/548687998787519947">
+									<img class="photo-sm" src="../static/myself_files/100"></a>
+								</li>
+					            <li><a href="http://www.iqingyi.com/setting?type=account" title="个人设置">个人设置</a></li>
+					            <li><a href="http://www.iqingyi.com/logout" title="退出" id="loginOut">退出</a></li>
+					        </ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="container clearfix" id="center">
+        <div class="main">
+            <div class="personal-home">
+                 <div class="m-pop-info clearfix" id="personDetail">
+                    <div class="clearfix">
+                        <div class="status-avatar pull-left">
+                            <span class="avatar-pic">
+                                <img th:alt="${users.uname}" th:src="@{'../static/myselfimg/'+${users.upic}}">
+                            </span>
+                        </div>
+                        <div class="status-content pull-left">
+                            <div class="clearfix mb15">
+                                <div class="user-name pull-left clearfix">
+                                    <h1 style="font-size: 24px;width: 300px; height:35px;" class="pull-left" th:text="${users.uname}"></h1><br/>
+                                    <div style="width: 300px; height:10px; left: 50px; font-size: 12px; color: blue;">
+	                       				<h6 th:text="${users.details}"></h6>
+	                       			</div>
+                       			</div>
+                                <div class="ml20 pull-left"><span></span></div>
+                                   <a href="javascript:;" data-userid="548687998787519947" data-fan="" data-follow="" th:data-username="${users.uname}" class="user-follow pull-right link-follow btn btn-primary   hide" rel="nofollow">
+                                   <span class="text"><i class="add-follow-icon"></i>关注</span>
+                                   </a>
+	                                <a href="javascript:;" data-userid="548687998787519947" th:data-username="${users.uname}" class="link-letter  pull-right hide" style="padding-right: 10px;" rel="nofollow">
+	                                    <span class="text-inbox"></span>
+	                                </a>
+                            	</div>
+	                            <div class="clearfix" style="min-height:40px"></div>
+	                        </div>
+                        <div class="ops mt10">
+                            <span>攻略（<a href="javascript:;" class="num-link" data-link-type="roadmap" rel="nofollow" >0</a>）</span>
+                            <span>游记（<a href="javascript:;" class="num-link" data-link-type="travelnote" rel="nofollow">0</a>）</span>
+                            <span>粉丝（<a href="javascript:;" class="num-link" data-link-type="fans" rel="nofollow" th:text="${fansnum}"></a>）</span>
+                            <span>关注（<a href="javascript:;" class="num-link" data-link-type="follow" rel="nofollow" th:text="${dananum}"></a>）</span>
+                        </div>
+                    </div>
+                  </div>
+                	<div class="main-content mt40" style="overflow-x:visible">
+                       <ul class="nav nav-tabs m-tabs" id="mainPost" data-url="/user/548687998787519947/" style="width: 900px">
+                       <li class="tab-hd">
+                            <a onclick="shows(1)" data-type="follow" data-count="5" class="change-list" rel="nofollow">关注(<span class="qty" th:text="${dananum}"></span>)</a>
+                       </li>
+                       <li class="tab-hd">
+                            <a onclick="shows(2)" data-type="fans" data-count="0" class="change-list" rel="nofollow">粉丝(<span class="qty" th:text="${fansnum}"></span>)</a>
+                        </li>
+                       <li class="tab-hd">
+                            <a onclick="shows(3)" data-type="gonglue" data-count="0" class="change-list" rel="nofollow">攻略(<span class="qty" >0</span>)</a>
+                        </li>
+                        <li class="tab-hd">
+                            <a onclick="shows(4)" data-type="youji" data-count="0" class="change-list" rel="nofollow">游记(<span class="qty">0</span>)</a>
+                        </li>
+                        <li class="tab-hd">
+                            <a onclick="shows(5)" data-type="company" data-count="0" class="change-list" rel="nofollow">结伴(<span>0</span>)</a>
+                        </li>
+                    </ul>
+                    <!--攻略 ，游记-->
+                    <ul id="fans" style="display: none;" class="main-list m-status-list user-post-list qy-post-list">
+                    	<li class="no-content">
+                    	<div  th:each="f:${fans}" th:onclick="'showFans('+${f.uid}+')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+							<div>
+	                            <span class="avatar-pic">
+	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="@{'../static/myselfimg/'+${f.upic}}">
+	                            </span>
+	                        </div>
+                        	<div>
+                                 <h1 style="font-size: 18px;width: 300px; margin-top: -45px; margin-left: -55px;"  th:text="${f.uname}"></h1><br/>
+                      		</div>
+                      		<div style="width: 300px; height:30px; text-align:left; margin-left:80px; font-size: 12px; color: blue;">
+                  				<h6 th:text="${f.details}"></h6>
+                   			 </div> 
+                   			 <div th:each="dc : ${dana}">
+           						<a th:onclick="'del(\''+${f.uid}+'\',\''+${users.uid}+'\')'" th:if="${dc.uid == f.uid}" style="margin-top: -41px;margin-left: -30px; height: 37px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" data-username="叁拾" class="btn-status follow-status-box pull-right link-cancel   show" rel="nofollow">
+			                        <span class="text"><i class="followed-icon"></i>已关注</span>
+			                    </a>
+			                    <a th:onclick="'add(\''+${f.uid}+'\',\''+${users.uid}+'\')'" th:if="${dc.uid != f.uid}" style="margin-top: -40px;margin-left: -30px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" data-username="叁拾" class="user-follow pull-right link-follow btn btn-primary   show" rel="nofollow">
+			                        <span class="text"><i class="add-follow-icon"></i>关注</span>
+			                    </a>
+           					</div>
+                   		</div>
+                    	</li>
+                    </ul>
+                    <ul id="follow" style="display: block;" class="main-list m-status-list user-post-list qy-post-list">
+                    	<li class="no-content">
+                    		<div th:each="dc : ${dana}" th:onclick="'showFans('+${dc.uid}+')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+								<div>
+		                            <span class="avatar-pic">
+		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="@{'../static/myselfimg/'+${dc.upic}}">
+		                            </span>
+		                        </div>
+	                        	<div>
+	                                 <h1 style="font-size: 18px;width: 300px; margin-top: -45px; margin-left: -55px;"  th:text="${dc.uname}"></h1><br/>
+	                      		</div>
+	                      		<div style="width: 350px; height:auto; text-align:left; margin-left:80px; font-size: 12px; color: blue;">
+	                  				<h6 th:text="${dc.details}"></h6>
+	                   			 </div>
+	           					<div>
+	           						<a th:onclick="'del(\''+${dc.uid}+'\',\''+${users.uid}+'\')'" style="margin-top: -40px;margin-left: -30px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" data-username="叁拾" class="btn-status follow-status-box pull-right link-cancel   show" rel="nofollow">
+				                        <span class="text"><i class="followed-icon"></i>已关注</span>
+				                    </a>
+	           					</div>	
+                   			 </div>
+                    	</li>
+                    </ul>
+                    <ul class="main-list m-status-list user-post-list qy-post-list hidden">
+                        <li class="no-content">
+                          <span class="user-name" th:text="${users.uname}"></span>
+					      <img src="../static/myself_files/empty-content.png">
+					      <div class="like-find"><span>这里没有内容了，去首页看看吧。</span><a target="_blank" href="querycity" rel="nofollow">发现</a></div>
+					    </li>
+					</ul>
+                    <ul class="main-list m-status-list user-post-list qy-post-list hidden">
+                        <li class="no-content">
+					      <img src="../static/myself_files/empty-content.png">
+					      <div class="like-find"><span>这里没有内容了，去首页看看吧。</span><a target="_blank" href="querycity" rel="nofollow">发现</a></div>
+					    </li>
+					</ul>
+                    <ul class="main-list m-status-list user-post-list qy-company-list hidden">
+                        <li class="no-content">
+					        <img src="../static/myself_files/empty-content.png">
+					        <div class="like-find"><span>我还没结伴过，有哪些人在结伴?</span><a target="_blank" href="http://www.iqingyi.com/company" rel="nofollow">结伴广场</a></div>
+					    </li>
+					</ul>
+                    <ul class="main-list m-status-list user-scenic-review-list qy-scenic-review-list hidden">
+					    <li class="no-content">
+					        <img src="../static/myself_files/empty-content.png">
+					        <div class="like-find"><span>我还没有发布的游记</span><a target="_blank" href="http://www.iqingyi.com/scenics/square" rel="nofollow">游记</a></div>
+					    </li>
+					</ul>
+·					<div class="pull-right clearfix" id="pageNotSkip"><div id="topicPage" class="pagination">    
+			            <span class="current prev"></span>
+			            <a href="http://www.iqingyi.com/user/548687998787519947/all/p/2" class="next" rel="nofollow"></a>
+				    </div>
+				  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal2InboxTemp" style="display: none">
+        <div class="m-wid-mask"></div>
+        <div class="m-wid-inbox" style="top: 50%;left: 50%;margin: -250px 0 0 -148px;">
+            <div class="wid-header">’
+                <h3 class="pull-left title">发送私信</h3>
+                <a href="javascript:;" class="pull-right btn-close" title="关闭" rel="nofollow"></a>
+            </div>
+        </div>
+    </div>
+
+<script>var _qy_pushid_="548687998787519947";</script>
+<script src="../static/myself_files/qymain.js.下载"></script><a href="javascript:void(0)" class="m-gotop" title="回到顶部" style="right: 303.5px; bottom: -90px;" id="goTop"></a><script src="../static/myself_files/qyeditor.js.下载"></script>
+<script src="../static/myself_files/qy-d-user-index.js.下载"></script>
+<script src="../static/js/jquery-3.3.1.js"></script>
+<!-- footer start -->
+	<div class="container footer">
+		<div class="copyright">
+            <a href="http://www.iqingyi.com/sitemap" target="_blank">网站地图</a>
+            <a href="http://www.iqingyi.com/about/faq" target="_blank" rel="nofollow">目的地</a>
+            <a href="http://www.iqingyi.com/about/founders_words" target="_blank">景点</a>
+            <a href="http://www.iqingyi.com/about/contact_us" target="_blank" rel="nofollow">联系我们</a>
+			© 2019 travle.com
+			<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备15028558号</a>
+		</div>
+	</div>
+<script>
+	var _UP_THUMBNAIL_ = 'poststd';
+</script>
+<script type="text/javascript">
+	function shows(objs){
+		if(objs==1){
+			document.getElementById("follow").style.display="block";
+			document.getElementById("fans").style.display="none";
+		}else if(objs==2){
+			document.getElementById("follow").style.display="none";
+			document.getElementById("fans").style.display="block";
+		}
+	}
+	
+	function add(obj1,obj2){
+		console.log("obj1:"+obj1);
+		console.log("obj2:"+obj2);
+		$.ajax({
+			url:"add?uid="+obj2+"&usid="+obj1,
+            type:'post',
+            success:function(data) {
+                if (data == 1){
+               	console.log("关注成功！");
+               	window.location.reload();
+                }else{
+                	console.log("关注失败");
+                }
+            }
+		});
+	}
+	
+	function del(obj1,obj2){
+		console.log("obj1:"+obj1);
+		console.log("obj2:"+obj2);
+		$.ajax({
+			url:"del?uid="+obj2+"&usid="+obj1,
+            type:'post',
+            success:function(data) {
+                if (data == 1){
+               	console.log("取消关注成功！");
+               	window.location.reload();
+                }else{
+                	console.log("取消关注失败");
+                }
+            }
+		});
+	}
+	
+	function showFans(obj){
+		
+	}
+</script>
+</body>
+</html>

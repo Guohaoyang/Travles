@@ -11,6 +11,11 @@ public class ht {
 	@RequestMapping("aa")
 	public String a() {
 		System.out.println("a");
+		return "index";
+	}
+	@RequestMapping("bb")
+	public String b() {
+		System.out.println("b");
 		return "zhu";
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aaa.entity.city;
 import com.aaa.entity.scenicspots;
@@ -35,13 +36,33 @@ public class myselfController {
 	
 	@RequestMapping("my")
 	public String my(Model m,Integer uid){
+		tusers users = ms.queryusers(uid).get(0);
 		List<tusers> fans = ms.queryfans(uid);
 		Integer fansnum = fans.size();
-		List<tusers> dana = ms.querydana(uid);
-		Integer dananum = dana.size();
-		System.out.println(fansnum);
-		System.out.println(dananum);
+		List<tusers> danas = ms.querydana(uid);
+		Integer dananum = danas.size();
+		m.addAttribute("users",users);
+		m.addAttribute("fans",fans);
+		m.addAttribute("dana",danas);
+		m.addAttribute("fansnum",fansnum);
+		m.addAttribute("dananum",dananum);
 		return "myself";
+	}
+	
+	@RequestMapping("add")
+	@ResponseBody
+	public Integer addAttention(Integer uid,Integer usid){
+		Integer add = ms.addAttention(uid, usid);
+		System.out.println(add);
+		return 1;
+	}
+	
+	@RequestMapping("del")
+	@ResponseBody
+	public Integer delAttention(Integer uid,Integer usid){
+		Integer add = ms.delAttention(uid, usid);
+		System.out.println(add);
+		return 1;
 	}
 	
 }
