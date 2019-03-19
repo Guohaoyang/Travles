@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://plan.qyer.com/ -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="keywords" content="旅游行程安排,旅游线路推荐,行程单,穷游行程助手">
+  <meta name="description" content="穷游行程助手：为旅行者提供最佳旅游线路推荐，旅游线路规划，详细旅游行程安排，并支持一键导出行程单，方便随时查看及送签使用。">
+  <meta name="google-site-verification" content="DVVM1p1HEm8vE1wVOQ9UjcKP--pNAsg_pleTU5TkFaM">
+  <title>旅游线路推荐-旅游攻略</title>
+  <link rel="shortcut icon" href="http://www.qyer.com/favicon.ico">
+  <link rel="stylesheet" href="../static/Trip_files/style.9fb5dd3b90552d8b26dc9714006cda75.css">
+  
+  
+
+<style type="text/css">
+  .q-layer-header .logo{width: auto!important;}
+  #search_city1{position:absolute;left:235px;}
+ #city{float: left;}
+  #zh{float: left;}
+</style>
+
+  <script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+<link type="text/css" rel="stylesheet" href="../static/Trip_files/pages.css"><link type="text/css" rel="stylesheet" href="../static/Trip_files/inputAutocomplete.css"><link type="text/css" rel="stylesheet" href="../static/Trip_files/popup.css"><link type="text/css" rel="stylesheet" href="../static/Trip_files/tip.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="web_old_tip2" src="../static/Trip_files/tip2.js.下载"></script><link type="text/css" rel="stylesheet" href="../static/Trip_files/tip2.css">
+</head>
+
+<body style="">
+  
+<link rel="stylesheet" href="../static/Trip_files/headerfoot_black.min-432199a511540a5637600436ca6f91ae.css">
+
+
+<div class="q-layer-header">
+    <div class="header-inner">
+        <a class="q-header-logo" data-bn-ipg="head-logo" href="http://www.qyer.com/"><img class="logo" src="../static/Trip_files/16.jpg" width="58" height="18"></a>
+        <div class="q-header-nav">
+                        <ul class="nav-ul">
+              <li class="nav-list ">
+                <a class="nav-span" href="http://place.qyer.com/" data-bn-ipg="head-nav-place" title="目的地">
+                  <span>目的地</span>
+                </a>
+              </li>
+              <li class="nav-list ">
+                <a class="nav-span" href="http://guide.qyer.com/" data-bn-ipg="head-nav-guide" title="锦囊">
+                  <span>锦囊</span>
+                </a>
+              </li>
+
+              <li class="nav-list nav-list-selected">
+                <a class="nav-span" href="http://plan.qyer.com/" data-bn-ipg="head-nav-plan" title="行程助手">
+                  <span>行程助手</span>
+                </a>
+              </li>
+          
+            </ul>
+        </div>
+        <div class="q-header-fun">
+            <div id="siteSearch" class="q-header-search">
+                <form action="http://search.qyer.com/index" method="get">
+                    <input class="txt-search" name="wd" type="text" autocomplete="off">
+                    <button class="btn-search" type="submit">
+                        <i class="frame-iconfont frame-icon-search"></i>
+                        <span>搜索</span>
+                    </button>
+                </form>
+            <div class="q-layer q-layer-sitesearch-history"><ul></ul><div class="history-clear"><a href="javascript:;">清空历史记录</a></div></div><div class="q-layer q-layer-sitesearch-autocomplete"><ul></ul></div></div>
+            <span class="q-header-cut">|</span>
+            <div id="js_qyer_header_userStatus" class="q-header-user-status"><div class="user-status"><div class="user-info"> <span class="username"><a target="_blank" data-bn-ipg="index-head-user" href="http://www.qyer.com/u/11169937">wu3322</a></span><i class="frame-iconfont frame-icon-arrow-down"></i><div class="q-layer q-layer-userstatus">
+    <ul>
+        <li>
+            <a data-bn-ipg="index-head-userdrop-home" href="http://www.qyer.com/u/11169937">我的首页</a>
+        </li>
+        <li>
+            <span class="fr"><a class="link" data-bn-ipg="index-head-userdrop-collectThread" href="http://www.qyer.com/u/11169937/travel#collect">收藏的帖子</a></span>
+            <a data-bn-ipg="index-head-userdrop-thread" href="http://www.qyer.com/u/11169937/travel">我的帖子</a>
+        </li>
+        <li>
+            <a data-bn-ipg="index-head-userdrop-zhuanlan" href="http://i.qyer.com/11169937/zhuanlan">我的专栏</a>
+        </li>
+        <li>
+            <span class="fr"><a class="link" data-bn-ipg="index-head-userdrop-poicomment" href="http://www.qyer.com/u/11169937/footprint?showcomm=1">写点评</a></span>
+            <a data-bn-ipg="index-head-userdrop-footprint" href="http://www.qyer.com/u/11169937/footprint">我的足迹</a>
+        </li>
+        <li>
+            <a data-bn-ipg="index-head-userdrop-wishlist" href="http://www.qyer.com/u/11169937/planto">我的想去</a>
+        </li>
+        <li>
+            <a data-bn-ipg="index-head-userdrop-ask" href="http://www.qyer.com/u/11169937/ask">我的问答</a>
+        </li>
+        <li>
+            <a data-bn-ipg="index-head-userdrop-plan" href="http://www.qyer.com/u/11169937/plan">我的行程</a>
+        </li>
+        <li>
+            <span class="fr"><a class="link" data-bn-ipg="index-head-userdrop-promocode" href="http://www.qyer.com/u/promocode/">优惠券</a></span>
+            <a data-bn-ipg="index-head-userdrop-order" href="http://www.qyer.com/u/lm-order/">我的订单</a>
+        </li>
+          <li>
+            <a data-bn-ipg="index-head-userdrop-traveler" href="https://zuser.qyer.com/traveler/list">常用旅客管理</a>
+          </li>
+        <li class="setting">
+            <span class="fr"><a class="link" data-bn-ipg="index-head-userdrop-logout" href="https://passport.qyer.com/logout">退出</a></span>
+            <a class="link_setting" data-bn-ipg="index-head-userdrop-setting" href="http://www.qyer.com/u/11169937/editprofile">帐号设置</a>
+        </li>
+            </ul>
+</div>
+</div><div class="user-message"><span class="icon-message-wrap"><i class="frame-iconfont frame-icon-message"></i><em class="dot"></em></span><em class="count">2</em><div class="q-layer q-layer-message"><div class="layer-msg-tab"><ul><li class="current" data-msg-type="board"><a href="javascript:;">站内通知</a></li><li class="new" data-msg-type="notice"><a href="javascript:;">消息</a></li><li data-msg-type="message"><a href="javascript:;">私信</a></li></ul></div><div class="layer-msg-container"><div class="layer-msg-item layer-msg-item-board" style="display: block;"><div class="layer-msg-inner"><div class="loading"></div></div><div class="layer-msg-more"><a href="http://www.qyer.com/u/11169937/notice?type=board" data-bn-ipg="index-head-black-all">查看全部</a></div></div><div class="layer-msg-item layer-msg-item-notice"><div class="layer-msg-inner"><div class="loading"></div></div><div class="layer-msg-more"><a href="http://www.qyer.com/u/11169937/notice?type=notice&amp;isnew=1" data-bn-ipg="index-head-notice-all">查看未读消息</a></div></div><div class="layer-msg-item layer-msg-item-message"><div class="layer-msg-inner"><div class="loading"></div></div><div class="layer-msg-more"><a href="http://www.qyer.com/u/11169937/shortmail" data-bn-ipg="index-head-letter-all">查看全部</a></div></div></div></div></div></div></div>
+        </div>
+    </div>
+</div>
+<div class="ind_titles fontYaHei">不知道出去怎么玩，为什么不看看别人的？</div>
+ <!-- 首页筛选 -->
+  <div class="ind_sifter">
+        <div class="items clearfix" style="display: ;">
+      <strong class="title">
+        已选条件:
+      </strong>
+          <div class="ylist clearfix">
+                <span class="tag" data-type="countryName" href="http://plan.qyer.com/search_0_0_0_0_0_0_1/" data-val="日本">目的地：<strong>日本</strong><a class="clearfilter" href="http://plan.qyer.com/search_0_0_0_0_0_0_1/" data-bn-ipg="planhome-select-delete"></a></span>
+              </div>
+    </div>
+   
+        <div class="items clearfix" style="display: ;">
+            <strong class="title">
+        前往城市:
+      </strong>
+     
+          <div id="js_placeList" class="list clearfix" >
+          	<span th:each="z:${zhou}">
+              <a id="zh"  data-bn-ipg="planhome-select-country1" data-id="50" data-key="香港" href="javascript:0" th:text="${z.contname}"></a>
+            </span>
+          </div>
+      <div class="seting destination">
+      
+      <!-- 更多样式 -->
+    <a id="js_placeToggleLink" onclick="gd()" href="javascript:;" class="moreBtn setMore js_cmd" data-cmd="place_more" data-status="open" data-bn-ipg="planhome-select-city-more">
+          更多
+        </a>
+      </div>
+    </div>
+    
+    <div id="js_selectCountry" class="selectCountry" style="display:none">
+      <div class="tab">
+       
+       
+        <div class="search">
+          <input type="text" id="search_city1"  class="ui2_input" placeholder="搜索你想要去的地方" data-bn-ipg="planhome-select-more-searchcountry">
+        </div>
+      </div>
+      <div id="js_continents" class="tabMain">
+	
+               <ul id ="city1" class="clearfix" style="" >
+               
+               	
+                   	<li th:each="cs:${cs}">
+                   		<a  id="c1" th:href="'glBayCity?Cname='+${cs.cname}" onclick="city1()" data-id="11"   th:text="${cs.cname}"></a>
+                   	</li> 
+   			  </ul> 
+    		
+       </div>
+    </div>
+
+      <div id="js_cityList" class="items clearfix" style="display:none;">
+          <strong class="title">
+              前往城市:
+          </strong>
+          <div class="list clearfix">
+          </div>
+
+          <div class="selectdiv clearfix" style="display:none;">
+          </div>
+
+          <div class="subbtn" style="display:none;">
+              <input type="button" class="ui_button js_cmd" id="selectCitysOKBtn" data-cmd="goPage" data-type="accept" value="确定" data-bn-ipg="planhome-select-city-confirm">
+              <input type="button" class="ui_button_cancel js_cmd" data-cmd="city_select_close" data-type="cancel" value="取消" data-bn-ipg="planhome-select-city-cancel"> 
+          </div>
+
+
+          <div class="seting destination">
+              <a href="javascript:;" class="moreBtn setMore js_cmd" data-cmd="city_more" data-status="close" data-bn-ipg="planhome-select-city-more">
+                  更多
+              </a>
+              <a href="javascript:;" class="setSelect js_cmd" data-cmd="city_select" data-bn-ipg="planhome-select-city-multipleselect">
+                  多选
+              </a>
+          </div>
+      </div>
+    
+        <div class="items clearfix times">
+      <strong class="title">
+       
+  
+        
+        出发城市:
+      </strong>
+          <div id="js_placeList" class="list clearfix">
+                       </div>
+    </div>
+    
+
+        <div class="items clearfix">
+      <strong class="title">
+        出行时间:
+      </strong>
+
+      <div id="js_planTopic_links" class="list clearfix">
+      </div>
+
+          <div id="js_planTopic_more" class="list clearfix" style="display:none;">
+         
+                </div>
+
+      <div id="js_planTopic_subbtn" class="subbtn" style="display: none;">
+        <input type="button" class="ui_button js_cmd" id="selectPlanTopicOKBtn" data-cmd="goPage" data-type="accept" value="确定" data-bn-ipg="planhome-select-city-confirm">
+        <input type="button" class="ui_button_cancel js_cmd" data-cmd="planType_close" data-type="cancel" value="取消" data-bn-ipg="planhome-select-city-cancel"> 
+          </div>
+
+      <div class="seting">
+        <a id="js_moreTopic" href="javascript:;" class="setSelect js_cmd" data-cmd="planType_more" data-bn-ipg="planhome-select-city-multipleselect">
+        
+        </a>
+      </div>
+    </div>
+            <div class="items clearfix noneborder">
+      <strong class="title">
+        精华等级:
+      </strong>
+   
+    </div>
+      </div>
+
+  <!-- 首页行程列表 -->
+  <div class="ind_lists">
+    <div class="seting">
+      <!-- 排序 -->
+      <div class="sort  ">
+       
+      </div>
+
+      <!-- 搜索 -->
+      <div class="search">
+        <!-- <span>150个行程</span> -->
+        <!-- <input type="text" id="search_plan" value="" class="ui2_input" placeholder="在当前结果下搜索">
+    -->   </div>
+    </div>
+
+    <!-- 行程无内容 -->
+    
+    <!-- 行程列表 -->
+    <div class="lists clearfix">
+      <div class="list" id="qwe">
+	    <div class="items" th:each="gl:${gl}">
+	    	<input type="hidden" th:value='${gl.id}'>
+	          <a  th:href="'xiangqing?id='+${gl.id}" class="link" target="_blank" data-bn-ipg="planhome-plan-content-10822625">
+	              <div class="img">
+	                <img class="plan-cover" data-original="" th:title="${gl.bt}"  src="../static/Trip_files/325x240.jpg">
+	                空层，遮罩背景
+	                <span class="bg" th:text='${gl.id}'></span>
+	              </div>
+	                <div class="title clearfix">
+	               <div class="day"><strong th:text='${gl.cs}'></strong></div>
+	                <dl class="fontYaHei">
+	                  <dt>2023-09-26 出发</dt>
+	                  <dd th:text='${gl.bt}'></dd>
+	                </dl>
+	              </div>
+	             <div class="content">
+	                 <div class="plan">
+	                  <p th:text='${gl.nr}'></p>
+	                </div> 	
+	              </div>
+	             <div class="number">
+                     <span class="icon1">300</span>
+                </div>
+	         </a> 
+	        <!--  <a rel="nofollow" href="" target="_blank" class="name" data-bn-ipg="planhome-plan-username" ></a>
+	   -->   </div> 
+      </div>
+    </div> 
+<!-- 2222222222222 -->
+    <!-- 翻页 -->
+    <div >
+      <!-- 翻页公用样式 -->
+ 123456wdefrgthyjuk
+  </div>
+            <!--ad-->
+      <div class="mkt_zone advertising loaded nocontent" style="width: 980px; height: 130px; display: none;" id="zoneid-17" data-countries="" data-areas=""></div>
+      <!--/ad-->
+      
+
+  <!-- 1.5新增列表 -->
+  <div class="bot_list  clearfix">
+   
+     
+  
+    <dl>
+      <dt>热门季节线路</dt>
+              <dd><a href="http://plan.qyer.com/search_1_0_0_0_0_0_1/">一月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_2_0_0_0_0_0_1/">二月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_3_0_0_0_0_0_1/">三月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_4_0_0_0_0_0_1/">四月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_5_0_0_0_0_0_1/">五月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_6_0_0_0_0_0_1/">六月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_7_0_0_0_0_0_1/">七月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_8_0_0_0_0_0_1/">八月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_9_0_0_0_0_0_1/">九月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_10_0_0_0_0_0_1/">十月出发旅游线路</a></dd>
+          
+              <dd><a href="http://plan.qyer.com/search_11_0_0_0_0_0_1/">十一月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_12_0_0_0_0_0_1/">十二月出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_13_0_0_0_0_0_1/">新年出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_14_0_0_0_0_0_1/">春节出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_15_0_0_0_0_0_1/">清明出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_16_0_0_0_0_0_1/">劳动节出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_17_0_0_0_0_0_1/">端午出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_18_0_0_0_0_0_1/">中秋出发旅游线路</a></dd>
+              <dd><a href="http://plan.qyer.com/search_19_0_0_0_0_0_1/">国庆出发旅游线路</a></dd>
+          </dl>
+  </div>
+
+  <!-- 全站底部 -->
+    <div style="display: none;">http://plan.qyer.com/trip/V2UJYFFmBzNTZFI3CmgNOg/</div>
+<div class="qyer_footer">
+	<div class="topline"></div>
+	
+</div>
+
+
+
+
+
+  <!--创建新的行程 更多选择-->
+  <ul class="createFun createFun2 fontYaHei" id="createBtnMore">
+    <li><a data-bn-ipg="planhome-1-createplan-bymyself" href="http://plan.qyer.com/create" target="_blank">自己制定</a></li>
+    <li><a data-bn-ipg="planhome-1-createplan-createforme" href="http://plan.qyer.com/smartcreate/" target="_blank">帮我制定</a></li>
+  </ul>
+  <!--/创建新的行程 更多选择-->
+
+  <!--loading 弹层-->
+  <div class="plan-dialog plan-dialog-loading" style="display:none;">
+    <div class="plan-dialog-bg"></div>
+    <div class="plan-dialog-icon">
+      <img src="../static/Trip_files/loadingding.gif">
+      <i>行程复制中...</i>
+    </div>
+  </div>
+  <!--/loading 弹层-->
+
+
+  
+
+
+</div><div class="qui-popup" style="display:none"><div><div class="qui-popup-dt"><div class="qui-popup-box"><div class="qui-popup-closeIcon">&nbsp;</div><div class="qui-popup-box-title fontYaHei">title</div><div class="qui-popup-box-content"></div><div class="qui-popup-box-bottom">&nbsp;<input class="qui-popup-cancelBtn ui_button_cancel" type="button" value="取消">  <input class="qui-popup-okBtn ui_button" type="button" value="确定">  <input class="qui-popup-loadingBtn  ui_button_load" type="button" value="">  </div></div></div></div></div><div class="qui-tip" style="display:none;"><div class="qui-tip-box"><span class="qui-tip-text fontYaHei">这里是提示文本</span></div></div><div class="qui-inputAutocomplete" style="display:none;"><ul class="qui-inputAutocomplete-ul"><li class="disableDefalut">loading ... </li></ul></div>
+<script type="text/javascript">
+	var status=0;
+	function gd()
+	{
+		//alert($("#js_selectCountry").attr('style')); 
+		if($("#js_selectCountry").attr('style').indexOf('none')!=-1){
+		   
+			$("#js_selectCountry").attr('style','display:block')
+			
+			$("#js_placeToggleLink").html("收起")
+		}else{
+			
+			$("#js_selectCountry").attr('style','display:none')
+			$("#js_placeToggleLink").html("更多")
+		}
+		
+		
+	}
+	
+	
+	$(function(){  
+		 /* $.ajax({
+			 type : "post",
+			 url : gl,
+			 
+			 dataType : "json",
+			 success : function(data){
+			 	var obj = JSON.stringify(data);
+			 	alert(obj)
+				  var str ="";
+				 $("#alubm").html('');
+				 for(var i = 0;i<data.length;i++){
+					 var category  = data[i];
+					 str += "<div class='content' style='float: left; margin-right: 55px;'>"+
+
+				 		"<div class='content' style='float: left; margin-right: 55px;'>"；
+				 }
+				$("#alubm").html(str);			  		
+		});  */
+		
+	});
+	
+	
+	function city1()
+	{
+		var ci=$("#ci").val();
+		//alert(ci);
+		
+	}
+		
+
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+
+.flightServiceV2-wrap{overflow: hidden;height: 370px;width:980px;position: relative;}
+.flightServiceV2-ul{position: absolute;left: 0;top:0;width: 1010px;height: 370px;}
+.flightServiceV2-ul .fsBox{background-color: #fff;float: left;width: 308px;height: 368px;
+	margin-right: 25px;border:solid 1px #ececec;position: relative;}
+.flightServiceV2-single .fsBox{width: 978px;}	
+.flightServiceV2-double .fsBox{width: 476px;margin-right: 24px;}	
+.flightServiceV2 .fsTitle{height: 40px;position: relative;border-bottom: solid 1px #ececec;}
+.flightServiceV2 .fsTitle .normalText,
+.flightServiceV2 .fsTitle .hoverText
+{display: block;height: 40px;line-height: 40px;text-indent: 19px;color: #636363;
+	background-color: #f5f5f5;text-decoration: none;font-size: 20px;overflow: hidden;
+	text-overflow:ellipsis;white-space: nowrap;
+}
+.flightServiceV2 .fsTitle .hoverText:hover{
+	color:#323232 ;background-color: #ececec;
+}
+.flightServiceV2 .fsTitle .normalText:hover{
+	cursor:text;
+}
+.flightServiceV2 .fsList{padding:19px 19px 0 19px;}
+.flightServiceV2 .fsListBox_1,
+.flightServiceV2 .fsListBox_2
+{overflow: hidden;}
+.flightServiceV2 .itemGuide{background-color: #fff;border: solid 1px transparent;margin-top: -17px;border-bottom: solid 1px #ececec;}
+.flightServiceV2 .borderNone{border:none;}
+.flightServiceV2 .itemGuide h4{height: 50px;border-bottom: solid 1px #ececec;line-height: 50px;
+color:#959595;font-size: 16px;position: relative;}
+.flightServiceV2 .itemGuide h4:last-child{border: none;}
+.flightServiceV2 .itemGuide .side{position: absolute;right: 0;top:3px;}
+.flightServiceV2 .itemGuide .detail{color: #959595;background: url(//static.qyer.com/models/project/place/images/flightService/icons-arrowV2.png) no-repeat right 2px;
+padding-right: 15px;}
+.flightServiceV2 .itemGuide .detail:hover{color: #0073b6;font-size: 12px;
+background: url(//static.qyer.com/models/project/place/images/flightService/icons-arrowV2Hover.png) no-repeat right 2px; }
+.flightServiceV2 .fsListType1{display: block;height: 85px;text-decoration: none;overflow: hidden;}
+.flightServiceV2 .fsListType1 .fsTitle1{margin-top: 16px;}
+.flightServiceV2 .fsListType1:hover .text{color: #0073b6;}
+.flightServiceV2 .fsListBox_1 .itemNormal{margin-bottom: 16px;}
+.flightServiceV2 .fsListType2{display: block;padding-bottom:16px;text-decoration: none;overflow: hidden;}
+.flightServiceV2 .fsListType2 .tag{position: relative;top:-1px;}
+.flightServiceV2 .fsListType2:hover .text{color: #0073b6;}
+.flightServiceV2 .fsListType2 .fsInfo1{margin: 5px 0 0 0;}
+.flightServiceV2 .fsListType2 .fsTitle1{height: 50px;}
+.flightServiceV2 .fsListType2 .fsTitle1 .text{height: auto;white-space: normal;line-height: 24px;}
+.flightServiceV2 .fsTitle1{height:18px;line-height: 18px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;color: #323232;font-size: 14px;
+}
+.flightServiceV2 .fsList .tag{
+	display: inline-block;
+	padding: 0 6px;
+	border: solid 1px #5cad77;
+	height: 16px;
+	border-radius: 2px;
+	color: #5cad77;
+	margin-right: 4px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.flightServiceV2 .fsInfo1{height: 20px;line-height: 20px;position: relative;margin: 14px 0 0 0;}
+.flightServiceV2 .fsInfo1 .discount{float: left;font-size: 14px;color: #959595;}
+.flightServiceV2 .fsInfo1 .discount em{font-size: 16px;color: #ff7466;}
+.flightServiceV2 .fsInfo1 .selled{float: left;color: #959595;margin: 2px 0 0 10px;font-family: "HelveticaNeue-Light","Helvetica","Avenir-light","Avenir Next","Arial";}
+.flightServiceV2 .price{position:absolute;right:0;top:0px;font-size:12px;color: #959595;}
+.flightServiceV2 .price em{font-size: 18px;color: #ff7466;padding-right: 5px;font-family: "HelveticaNeue-Light","Helvetica","Avenir-light","Avenir Next","Arial";}
+.flightServiceV2 .itemNormal{padding: 0;border-bottom: solid 1px #ececec;}
+.flightServiceV2 .itemNormal:last-child{border: none;}
+.flightServiceV2 .fsListBox_2{padding:0 0 15px 0;margin: 0 0 18px 0;border-bottom: solid 1px #ececec;}
+.flightServiceV2 .fsListBox_2 .fsListType1{height: 37px;position: relative;}
+.flightServiceV2 .fsListBox_2 .fsListType1 .text{display: inline-block;max-width: 150px;white-space: nowrap;overflow: hidden;
+text-overflow:ellipsis;vertical-align: top;}
+.flightServiceV2 .fsListBox_2 .fsTitle1 .price{position: absolute;right: 0;top:16px;font-weight: normal;}
+.flightServiceV2 .fsListBox_2 .itemNormal{padding: 0;border: none;}
+.flightServiceV2 .fsListBox_2.border_naked{border:none;padding: 0;}
+.flightServiceV2 .fsAdvertise{display: block;position: absolute;bottom: 0;left: 0;width: 100%;
+height: 90px;text-align: center;overflow: hidden;}
+.flightServiceV2 .fsAdvertise img{width: 308px;height: 90px;}
+.flightServiceV2 .fsList .fsTitle2{color: #959595;font-size: 16px;position: relative;height: 18px;line-height: 18px;
+}
+.flightServiceV2 .fsList2 .fsTitle2{margin: 0 0 5px;}
+.flightServiceV2 .fsList2 .itemNormal:last-child{border-bottom: solid 1px #ececec;}
+.flightServiceV2 .fsList2 .fsListType2{height: 42px;padding-bottom: 35px;}
+.flightServiceV2 .fsList2 .fsListType2 .fsTitle1{height: 43px;}
+.flightServiceV2 .fsList .side{right: 0;top:1px;position: absolute;}
+.flightServiceV2 .fsList .detail{color: #959595;font-size: 12px;}
+.flightServiceV2 .fsCover1{height: 125px;position:relative;overflow: hidden;}
+.flightServiceV2 .fsCover1 img{width: 100%;text-align: center;}
+.flightServiceV2-double .fsListBox_3 .fsCover1 img{width: 438px;margin-top: -50px;}
+.flightServiceV2 .fsCover1 .tag{position: absolute;left: 5px;bottom: 5px;background-color: rgba(61,176,65,0.75);
+border:none;color: #fff;height: 18px;line-height:20px;border-radius: 2px;}
+.flightServiceV2 .fsListBox_3{border-bottom: solid 1px #ececec;}
+.flightServiceV2 .fsListBox_3 .itemNormal,
+.flightServiceV2 .fsListBox_3 .fsListType1{height: 221px;}
+.flightServiceV2 .fsListBox_3 .fsTitle1{height: 36px;line-height: 20px;display: block;color: #323232;font-size: 14px;white-space:normal;}
+.flightServiceV2 .fsListBox_3 .fsListType1 .fsTitle1{margin-top: 10px;}
+.flightServiceV2 .fsListBox_3 .fsListType1:hover .fsTitle1{color: #0073b6;}
+.flightServiceV2 .fsListBox_3.border_naked{border: none;}
+.flightServiceV2 .fsListBox_4 .itemNormal{margin:0 0 19px;padding: 2px 0 0;}
+.flightServiceV2 .fsListBox_4 .fsListType1{height: 141px;}
+.flightServiceV2 .fsListBox_4 .fsCover1{float: left;width: 120px;height: 120px;margin-right: 10px;}
+.flightServiceV2 .fsListBox_4 .fsCover1 img{height: 120px;}
+.flightServiceV2-double .fsListBox_4 .fsCover1{width: 160px;}
+.flightServiceV2 .fsListBox_4 .fsTitle1{margin: 0;color: #323232;font-size: 14px;white-space: normal;height: 83px;}
+.flightServiceV2 .fsListBox_4 .fsInfo1{margin: 7px 0 0 0;}
+.flightServiceV2 .fsListBox_4 .fsListType1:hover .fsTitle1{color: #0073b6;}
+.flightServiceV2 .fsListBox_4 .selled{color:#959595;font-family: "HelveticaNeue-Light","Helvetica","Avenir-light","Avenir Next","Arial";height: 14px;line-height: 12px;margin-bottom: 5px; }
+.flightServiceGT{position: fixed;left: 50%;margin-left: 526px;top:620px;z-index: 100;}
+.flightServiceTar{width: 48px;height: 48px;overflow: hidden;display: block;
+	background-image: url(//static.qyer.com/models/project/place/images/flightService/icon-gt.png);
+	background-repeat: no-repeat;background-position: 0 0;cursor: pointer;
+}
+.flightServiceTar:hover{background-position: -48px 0;}
+.flightServiceGTArrow{width: 48px;height: 47px;overflow: hidden;display: block;
+	background-image: url(//static.qyer.com/models/project/place/images/flightService/icon-gt.png);
+	background-repeat: no-repeat;background-position: 0 -48px;cursor: pointer;
+	opacity: 0;
+	transition:opacity 0.5s;
+	-webkit-transition:opacity 0.5s;
+	-moz-transition:opacity 0.5s;
+	-o-transition:opacity 0.5s;
+}
+.flightServiceGTArrow:hover{background-position:-48px -48px;}
+.flightServiceHide{display: none!important;}

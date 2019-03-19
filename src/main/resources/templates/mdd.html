@@ -1,0 +1,1318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+
+
+	<meta name="google-site-verification"
+		content="DVVM1p1HEm8vE1wVOQ9UjcKP--pNAsg_pleTU5TkFaM"></meta>
+	<meta name="renderer" content="webkit"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"></meta>
+	<meta http-equiv="mobile-agent" content="format=html5; url=https://m.qyer.com/place/"></meta>
+	<meta http-equiv="Cache-Control" content="no-transform"></meta>
+	<title>出境游目的地旅游攻略_出国旅游目的地指南_旅游景点推荐 - 穷游网</title>
+	<meta name="keywords" content="目的地概况,旅行目的地,旅游攻略,游记攻略"></meta>
+	<meta name="description" content="旅行指南"></meta>
+	<link rel="shortcut icon" href="https://static.qyer.com/images/favicon.ico"></link>
+	<link rel="stylesheet" href="../static/mdd_files/common_css_78476bde8d733a478e46ceab78531a99.css"></link>
+	<script src="../static/mdd_files/common_js_a2c02a9550f122b24ccb9131b6774d64.js"></script>
+	<meta name="mobile-agent" content="format=html5;url=https://m.qyer.com/place/"></meta>
+	<script type="text/javascript" async="" src="../static/mdd_files/base_beacon_ga.js"></script>
+	<script src="../static/mdd_files/get"></script>
+	<script src="../static/mdd_files/get(1)"></script>
+	<script src="../static/mdd_files/get(2)"></script>
+	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+	<script>
+	function searchCountry(){
+    	var cname = $("#countryName").val();//获取文本框的值
+    	var flag = false;//定义变量
+    	//文本框为空的时间不执行，直接返回
+    	if(cname == "" || cname.length < 1){
+    		return;
+    	}
+    	//异步查询文本框输入的值是否和数据库里的值匹配
+    	$.ajax({
+    		url:'queryCname',
+    		type:'post',
+    		success:function(data){
+    			//循环数据库的国家值
+    			for (var i = 0; i < data.length; i++) {
+					if(cname == data[i]){
+						flag = true;
+						break;
+					}
+				}//成功 
+    			if(flag){
+    	    		//跳转到其他页面
+    	    		top.location.href = "http://localhost:8090/Travle/citys/queryMuHu?cname="+cname;
+    	    	}else{//失败清空并且弹框不纯在!
+    	    		$("#countryName").val("");
+    	        	alert("对不起，您搜索的国家数据不存在!");
+    	    	}
+    		}
+    	});
+    }
+	</script>
+</head>
+
+<body style="">
+	<script>
+    window.QYER={uid:[11169937][0]||0};
+
+    window._RATrack = window._RATrack||{
+        'platform':'web',
+        'channel':'place',
+        'page_type':'index',
+        'ugc_type':'place_index',
+        'ugc_content':'',
+        'abt':''
+    };
+   
+    function searchs(cname){
+    	$.post('citys/queryMuHu',{"cname":cname},function(data){
+    		
+    	}
+    }
+
+    
+</script>
+
+
+	<link rel="stylesheet"
+		href="../static/mdd_files/headerfoot_black.min-432199a511540a5637600436ca6f91ae.css">
+		<script src="../static/mdd_files/headerfoot_black.min-7a04836a5d760bad5cbbf37bafe01b05.js"></script>
+		<div class="q-layer-header">
+			<div class="header-inner">
+				<a class="q-header-logo" data-bn-ipg="head-logo"
+					href="javascript:void(0)"><img class="logo"
+					src="../static/mdd_files/logo_116x36.png" width="58" height="18"></a>
+				<div class="q-header-nav">
+					<ul class="nav-ul">
+						<li class="nav-list nav-list-selected"><a class="nav-span"
+							href="javascript:void(0)" data-bn-ipg="head-nav-place"
+							title="目的地"> <span>目的地</span>
+						</a></li>
+						<li class="nav-list "><a class="nav-span"
+							href="javascript:void(0)" data-bn-ipg="head-nav-guide"
+							title="锦囊"> <span>锦囊</span>
+						</a></li>
+						<li class="nav-list nav-list-layer "><a class="nav-span"
+							href="javascript:void(0)" data-bn-ipg="head-nav-hotel"
+							title="酒店·民宿"> <span>酒店·民宿</span><i
+								class="frame-iconfont frame-icon-arrow-down"></i>
+						</a>
+							<div class="q-layer q-layer-nav q-layer-arrow">
+								<ul>
+									<li><a href="javascript:void(0)"
+										data-bn-ipg="head-nav-booking" title="酒店" target="_blank">
+											<i class="frame-iconfont frame-icon-hotel"></i> <span>酒店</span>
+									</a></li>
+									<li><a
+										href="javascript:void(0)"
+										data-bn-ipg="head-nav-airbnb" title="爱彼迎" target="_blank">
+											<i class="frame-iconfont frame-icon-airbnb"></i> <span>爱彼迎</span>
+									</a></li>
+									<li><a href="javascript:void(0)"
+										data-bn-ipg="head-nav-shop" title="华人旅馆" target="_blank">
+											<i class="frame-iconfont frame-icon-shop"></i> <span>华人旅馆</span>
+									</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="q-header-fun">
+					<div id="siteSearch" class="q-header-search">
+						<form action="javascript:void(0)" method="get">
+							<input class="txt-search" name="wd" type="text"
+								autocomplete="off">
+								<button class="btn-search" type="submit">
+									<i class="frame-iconfont frame-icon-search"></i> <span>搜索</span>
+								</button>
+						</form>
+						<div class="q-layer q-layer-sitesearch-history">
+							<ul></ul>
+							<div class="history-clear">
+								<a href="javascript:;">清空历史记录</a>
+							</div>
+						</div>
+						<div class="q-layer q-layer-sitesearch-autocomplete">
+							<ul></ul>
+						</div>
+					</div>
+					<span class="q-header-cut">|</span>
+					<div id="js_qyer_header_userStatus" class="q-header-user-status">
+						<div class="user-status">
+							<div class="user-info">
+								<span class="username"><a target="_blank"
+									data-bn-ipg="index-head-user"
+									href="javascript:void(0)37">wu3322</a></span><i
+									class="frame-iconfont frame-icon-arrow-down"></i>
+								<div class="q-layer q-layer-userstatus">
+									<ul>
+										<li><a data-bn-ipg="index-head-userdrop-home"
+											href="javascript:void(0)">我的首页</a></li>
+										<li><span class="fr"><a class="link"
+												data-bn-ipg="index-head-userdrop-collectThread"
+												href="https://www.qyer.com/u/11169937/travel#collect">收藏的帖子</a></span>
+											<a data-bn-ipg="index-head-userdrop-thread"
+											href="javascript:void(0)">我的帖子</a></li>
+										<li><a data-bn-ipg="index-head-userdrop-zhuanlan"
+											href="javascript:void(0)">我的专栏</a></li>
+										<li><span class="fr"><a class="link"
+												data-bn-ipg="index-head-userdrop-poicomment"
+												href="javascript:void(0)">写点评</a></span>
+											<a data-bn-ipg="index-head-userdrop-footprint"
+											href="javascript:void(0)">我的足迹</a></li>
+										<li><a data-bn-ipg="index-head-userdrop-wishlist"
+											href="javascript:void(0)">我的想去</a></li>
+										<li><a data-bn-ipg="index-head-userdrop-ask"
+											href="javascript:void(0)">我的问答</a></li>
+										<li><a data-bn-ipg="index-head-userdrop-plan"
+											href="javascript:void(0)">我的行程</a></li>
+										<li><span class="fr"><a class="link"
+												data-bn-ipg="index-head-userdrop-promocode"
+												href="javascript:void(0)">优惠券</a></span> <a
+											data-bn-ipg="index-head-userdrop-order"
+											href="javascript:void(0)">我的订单</a></li>
+										<li><a data-bn-ipg="index-head-userdrop-traveler"
+											href="javascript:void(0)">常用旅客管理</a></li>
+										<li class="setting"><span class="fr"><a
+												class="link" data-bn-ipg="index-head-userdrop-logout"
+												href="javascript:void(0)">退出</a></span> <a
+											class="link_setting"
+											data-bn-ipg="index-head-userdrop-setting"
+											href="javascript:void(0)">帐号设置</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="user-message">
+								<span class="icon-message-wrap"><i
+									class="frame-iconfont frame-icon-message"></i><em class="dot"></em></span><em
+									class="count">3</em>
+								<div class="q-layer q-layer-message">
+									<div class="layer-msg-tab">
+										<ul>
+											<li class="current" data-msg-type="board"><a
+												href="javascript:;">站内通知</a></li>
+											<li class="new" data-msg-type="notice"><a
+												href="javascript:;">消息</a></li>
+											<li data-msg-type="message"><a href="javascript:;">私信</a></li>
+										</ul>
+									</div>
+									<div class="layer-msg-container">
+										<div class="layer-msg-item layer-msg-item-board"
+											style="display: block;">
+											<div class="layer-msg-inner">
+												<div class="loading"></div>
+											</div>
+											<div class="layer-msg-more">
+												<a href="https://www.qyer.com/u/11169937/notice?type=board"
+													data-bn-ipg="index-head-black-all">查看全部</a>
+											</div>
+										</div>
+										<div class="layer-msg-item layer-msg-item-notice">
+											<div class="layer-msg-inner">
+												<div class="loading"></div>
+											</div>
+											<div class="layer-msg-more">
+												<a
+													href="https://www.qyer.com/u/11169937/notice?type=notice&amp;isnew=1"
+													data-bn-ipg="index-head-notice-all">查看未读消息</a>
+											</div>
+										</div>
+										<div class="layer-msg-item layer-msg-item-message">
+											<div class="layer-msg-inner">
+												<div class="loading"></div>
+											</div>
+											<div class="layer-msg-more">
+												<a href="https://www.qyer.com/u/11169937/shortmail"
+													data-bn-ipg="index-head-letter-all">查看全部</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="zoneid-112" class="mkt_zone loaded nocontent"
+			style="display: none;"></div>
+		<link rel="stylesheet"
+			href="../static/mdd_files/index_css_03fb7e74bc1543bf9c1c3728cb6a9a13.css">
+			<script
+				src="../static/mdd_files/index_js_284345a6754e0a26c88e545ad6116ffe.js"></script>
+			<div class="place-home-banner" style="background-image: url(../static/mdd_files/background.jpeg)">
+				<div class="inner">
+					<div class="title-box">
+						<span class="title"> 你好, 世界! </span>
+					</div>
+					<div class="search-box loading" id="js-search">
+						<div class="search-container place-search" data-selector="sss">
+							<div class="left">
+								<input type="text" id="countryName" class="search js-search-input" value=""
+									placeholder="搜索国家名..."/>
+							</div>
+							<div class="right">
+							<!-- @{/citys/queryMuHu(cname='+${cname}+')} -->
+								<a href="javascript:searchCountry()" class="btn js-search-btn"> 
+								<span class="iconfont search-icon" ></span>搜索
+								</a>
+							</div>
+							<div class="searchList js-search-list" style="display: none"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="Q-place-adbox Q-place-home-box">
+				<div class="Q-place-adboxinner">
+					<div class="mkt_zone loaded nocontent" id="zoneid-11"
+						data-zone_name="目的地首页通栏1（2轮播）" style="display: none;"></div>
+				</div>
+			</div>
+			
+			<div class="place-home-box">
+				<h3 class="place-home-title">
+					<span class="title"> 热门城市推荐 </span>
+				</h3>
+				<div class="place-home-tab">
+					<ul class="tab" id="js-tab-1">
+						<li class="on" data-bn-ipg="place-index-hotcitytab-1"><span>
+								热门推荐 </span></li>
+						<li data-bn-ipg="place-index-hotcitytab-2" class=""><span>
+								中国城市 </span></li>
+						<li data-bn-ipg="place-index-hotcitytab-3" class=""><span>
+								东南亚及亚洲其他 </span></li>
+						<li data-bn-ipg="place-index-hotcitytab-4"><span> 欧洲 </span>
+						</li>
+					</ul>
+					<span class="js-line line" style="left: 105.5px;">热门推荐</span>
+				</div>
+				<div class="place-home-card1" id="js-container-1">
+					<ul class="center">
+						<li class="item">
+							<dl>  
+							<dt>推荐城市</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${cl.cid})}" th:each="cl:${cityList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${cl.cname}"></a> 
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<ul class="">
+						<li class="item">
+						
+							<dl>
+								<dt>中国城市</dt>
+								<dd >
+									<a th:href="@{/citys/queryByCids(cid=${china.cid})}" th:each="china:${chinaList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${china.cname}"></a>  
+								</dd>
+							</dl>
+							
+							<dl>
+								<dt>中国城市</dt>
+								<dd >
+									<a th:href="@{/citys/queryByCids(cid=${desc.cid})}" th:each="desc:${descList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${desc.cname}"></a>  
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<ul class="">
+						<li class="item">
+							<dl>
+								<dt>印度</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${india.cid})}" th:each="india:${IndiaList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${india.cname}"></a> 
+								</dd>
+							</dl>
+							<dl>
+								<dt>越南</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${vietnam.cid})}" th:each="vietnam:${vietnamList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${vietnam.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>尼泊尔</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${nepal.cid})}" th:each="nepal:${nepalList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${nepal.cname}"></a>
+								</dd>
+							</dl>
+
+						</li>
+						<li class="item">
+							<dl>
+								<dt>日本</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${japan.cid})}" th:each="japan:${japanList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${japan.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>印度尼西亚</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${indonesia.cid})}" th:each="indonesia:${IndonesiaList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${indonesia.cname}"></a>  
+								</dd>
+							</dl>
+							<dl>
+								<dt>马来西亚</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${malaysia.cid})}" th:each="malaysia:${malaysiaList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${malaysia.cname}"></a>  
+								</dd>
+							</dl>
+
+						</li>
+					</ul>
+					<ul>
+						<li class="item">
+							<dl>
+								<dt>意大利</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${italiana.cid})}" th:each="italiana:${italianaList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${italiana.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>英国</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${uk.cid})}" th:each="uk:${ukList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${uk.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>德国</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${deutschland.cid})}" th:each="deutschland:${deutschlandList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${deutschland.cname}"></a>
+								</dd>
+							</dl>
+
+						</li>
+						<li class="item">
+							<dl>
+								<dt>法国</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${france.cid})}" th:each="france:${franceList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${france.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>西班牙</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${reino.cid})}" th:each="reino:${ReinoList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${reino.cname}"></a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>瑞士</dt>
+								<dd>
+									<a th:href="@{/citys/queryByCids(cid=${land.cid})}" th:each="land:${SwitzerlandList}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${land.cname}"></a>
+								</dd>
+							</dl>
+
+						</li>
+						</ul>
+				</div>
+				<div class="place-btn-container">
+					<a href="javascript:void(0)" data-bn-ipg="place-index-hotcity-all"
+						class="place-home-btn" id="js-see-all"> 查看全部国家 </a>
+				</div>
+			</div>
+
+
+			<!-- 主题列表(探索主题目的地 and 月度推荐) -->
+			<div class="place-home-box">
+				<h3 class="place-home-title">
+					<span class="title"> 主题目的地 </span>
+				</h3>
+				<div class="place-home-tab">
+					<ul class="tab" id="js-tab-2">
+						<li class="" data-bn-ipg="place-index-exploretab-1"><span>
+								雨天 </span></li>
+						<li data-bn-ipg="place-index-exploretab-2" class="on"><span>
+								浪漫 </span></li>
+						<li data-bn-ipg="place-index-exploretab-3" class=""><span>
+								探险</span></li>
+						<li data-bn-ipg="place-index-exploretab-4"><span>
+								游历</span></li>					
+					</ul>
+					<span class="js-line line" style="left: 332px;">怀旧时光</span>
+				</div>
+				<div class="place-home-card2" id="js-container-2">
+					<ul data-lazyload="true" class="" style="margin-left:90px;">
+						<li th:each="t:${queryByRain}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+							th:style="'background-image:url('+${t.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${t.ssid})}"
+							target="_blank" class="inner"
+							data-bn-ipg="place-index-explore-0-1">
+								<h4 th:text="${t.ssname}"></h4>
+								<div class="content" th:text="${t.details}"></div>
+						</a>
+					</li>
+				</ul>
+				<ul data-lazyload="true" class="center" style="margin-left:90px;">
+					<li th:each="q:${queryByRomantic}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+							th:style="'background-image:url('+${q.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							target="_blank" class="inner"
+							data-bn-ipg="place-index-explore-0-1">
+								<h4 th:text="${q.ssname}"></h4>
+								<div class="content" th:text="${q.details}"></div>
+						</a>
+					</li>
+				</ul>
+				<ul data-lazyload="true" class="center" style="margin-left:90px;">
+					<li th:each="q:${queryByExplore}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+							th:style="'background-image:url('+${q.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							target="_blank" class="inner"
+							data-bn-ipg="place-index-explore-0-1">
+								<h4 th:text="${q.ssname}"></h4>
+								<div class="content" th:text="${q.details}"></div>
+						</a>
+					</li>
+				</ul>
+				
+					<ul data-lazyload="true" style="margin-left:90px;">
+						<li th:each="q:${queryByTravel}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+							th:style="'background-image:url('+${q.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							target="_blank" class="inner"
+							data-bn-ipg="place-index-explore-0-1">
+								<h4 th:text="${q.ssname}"></h4>
+								<div class="content" th:text="${q.details}"></div>
+						</a>
+					</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="place-home-box">
+				<h3 class="place-home-title">
+					<span class="title"> 月度推荐 </span>
+				</h3>
+				<div class="place-home-tab place-home-month">
+					<ul class="tab" id="js-tab-3">
+						<li class="" data-bn-ipg="place-index-monthlytab-1"><span>
+								1月 </span></li>
+						<li data-bn-ipg="place-index-monthlytab-2"><span> 2月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-3" class=""><span>
+								3月 </span></li>
+						<li data-bn-ipg="place-index-monthlytab-4"><span> 4月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-5"><span> 5月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-6"><span> 6月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-7"><span> 7月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-8"><span> 8月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-9"><span> 9月 </span>
+						</li>
+						<li data-bn-ipg="place-index-monthlytab-10" class="on"><span>
+								10月 </span></li>
+						<li data-bn-ipg="place-index-monthlytab-11"><span> 11月
+						</span></li>
+						<li data-bn-ipg="place-index-monthlytab-12"><span> 12月
+						</span></li>
+					</ul>
+				</div>
+				<div class="place-home-card3" id="js-container-3">
+					<ul data-lazyload="true" class="center">
+						<li th:each="one:${queryOne}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}"
+							target="_blank" class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryTwo}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" 
+							target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+						
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryThree}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryFour}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryFive}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${querySix}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${querySeven}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryEight}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryNine}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryTen}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryEleven}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+					<ul data-lazyload="true">
+						<li th:each="one:${queryTwelve}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
+						th:style="'background-image:url('+${one.scenicspotspic}+')'">
+							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							class="inner" data-bn-ipg="place-index-monthly-0-0">
+								<h4 th:text="${one.ssname}"></h4>
+								<div class="content" th:text="${one.details}"></div>
+						</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			<!-- 目的地列表 -->
+			<div class="place-home-box" id="js-country-box">
+				<h3 class="place-home-title">
+					<span class="title"> 国家列表 </span>
+				</h3>
+				<div class="place-home-tab">
+					<ul class="tab" id="js-tab-4">
+						<li class="on" data-bn-ipg="place-index-continent-1"><span>
+								亚洲 </span></li>
+						<li data-bn-ipg="place-index-continent-2"><span> 欧洲 </span></li>
+						<li data-bn-ipg="place-index-continent-4"><span> 北美 </span></li>
+						<li data-bn-ipg="place-index-continent-6"><span> 大洋洲 </span>
+						</li>
+					</ul>
+					<span class="js-line line" style="left: 196px;">亚洲</span>
+				</div>
+				<div class="place-home-destination">
+					<div class="place-home-card4" id="js-container-4">
+						<ul class="center">
+							<li th:each="asiaist:${asiaistList}"><span class="item "> 
+							<a href="javascript:void(0)" target="_blank"
+									data-bn-ipg="place-index-countrylist-0-0">
+									 <span th:text="${asiaist.cname}"></span> 
+								</a>
+							</span></li>
+						</ul>
+						<ul>
+							<li th:each="europe:${europeList}"><span class="item "> 
+							<a href="javascript:void(0)" target="_blank"
+									data-bn-ipg="place-index-countrylist-0-0">
+									 <span th:text="${europe.cname}"></span> 
+								</a>
+							</span></li>
+						</ul>
+						<ul>
+							<li th:each="america:${americaList}"><span class="item "> 
+							<a href="javascript:void(0)" target="_blank"
+									data-bn-ipg="place-index-countrylist-0-0">
+									 <span th:text="${america.cname}"></span> 
+								</a>
+							</span></li>
+						</ul>
+						<ul>
+						<li th:each="oceania:${oceaniaList}"><span class="item "> 
+							<a href="javascript:void(0)" target="_blank"
+									data-bn-ipg="place-index-countrylist-0-0">
+									 <span th:text="${oceania.cname}"></span> 
+								</a>
+							</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="place-home-box Q-place-home-box-last">
+				<div class="Q-place-adboxinner">
+					<div class="mkt_zone loaded nocontent" id="zoneid-12"
+						data-zone_name="目的地首页通栏2" style="display: none;"></div>
+				</div>
+			</div>
+
+<style>
+.web_components_sidebar {
+	display: none;
+	width: 55px;
+	box-sizing: border-box;
+	position: fixed;
+	bottom: 120px;
+	right: 40px;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB",
+		"Microsoft YaHei", 宋体, sans-serif;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px;
+}
+
+.web_components_sidebar-item {
+	display: block;
+	width: 55px;
+	height: 55px;
+	box-sizing: border-box;
+	border: solid 1px #e2e2e2 !important;
+	color: #b2b2b2 !important;
+	text-align: center;
+	margin-top: -1px;
+	position: relative;
+}
+
+.web_components_sidebar-item:hover {
+	border: solid 1px rgba(0, 0, 0, 0) !important;
+	color: white !important;
+	z-index: 1;
+	background-color: #07AE72;
+}
+
+.web_components_sidebar-item .title {
+	font-size: 12px;
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	transform: scale(0.8);
+	display: block;
+	position: absolute;
+	bottom: 1px;
+	width: 100%;
+}
+
+.web_components_sidebar-item:hover   .web_components_sidebar-layer {
+	display: block;
+}
+
+.web_components_sidebar-layer {
+	display: none;
+	padding: 14px;
+	text-align: center;
+	position: absolute;
+	left: -172px;
+	top: -126px;
+	border: 1px solid rgb(221, 221, 221);
+	background-color: rgb(255, 255, 255);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px;
+}
+
+.web_components_sidebar-layer-img {
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin-top: 9px;
+}
+
+.web_components_sidebar-layer-title {
+	font-size: 14px;
+	color: #323232 !important;
+}
+
+.web_components_sidebar-layer::after,.web_components_sidebar-layer::before
+	{
+	content: "";
+	width: 0;
+	height: 0;
+	position: absolute;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+.web_components_sidebar-layer::before {
+	right: -12px;
+	top: 146px;
+	border-left: 6px solid rgb(221, 221, 221);
+	border-right: 6px solid rgba(0, 0, 0, 0);
+	border-top: 6px solid rgba(0, 0, 0, 0);
+	border-bottom: 6px solid rgba(0, 0, 0, 0);
+}
+
+.web_components_sidebar-layer::after {
+	right: -10px;
+	top: 147px;
+	border-left: 5px solid rgb(255, 255, 255);
+	border-right: 5px solid rgba(0, 0, 0, 0);
+	border-top: 5px solid rgba(0, 0, 0, 0);
+	border-bottom: 5px solid rgba(0, 0, 0, 0);
+}
+
+.web_components_sidebar-layer-hr {
+	margin: 20px 0 18px 0;
+	border: none;
+	height: 1px;
+	background-color: #e2e2e2;
+}
+
+.web_components_sidebar-layer.shoujikantie {
+	top: -207px;
+}
+
+.web_components_sidebar-layer.shoujikantie::before {
+	top: 228px;
+}
+
+.web_components_sidebar-layer.shoujikantie::after {
+	top: 229px;
+}
+
+.web_components_sidebar-icon {
+	background-image:
+		url(//static.qyer.com/models/common/component/sidebar/icons.png);
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 18px;
+	display: block;
+	margin: 12px auto 0 auto;
+	background-position: 0px 0;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.fanhuidingbu
+	{
+	background-position: -28px 0;
+}
+
+.web_components_sidebar-icon.saomaxiazai {
+	background-position: 0px -24px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.saomaxiazai
+	{
+	background-position: -28px -24px;
+}
+
+.web_components_sidebar-icon.shoujikantie {
+	background-position: 0px -24px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.shoujikantie
+	{
+	background-position: -28px -24px;
+}
+
+.web_components_sidebar-icon.wodedingdan {
+	background-position: 0px -116px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.wodedingdan
+	{
+	background-position: -28px -116px;
+}
+
+.web_components_sidebar-icon.wodeshoucang {
+	background-position: 0px -157px;
+	width: 20px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.wodeshoucang
+	{
+	background-position: -27px -157px;
+}
+
+.web_components_sidebar-icon.shoujilijian {
+	background-position: 0px -184px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.shoujilijian
+	{
+	background-position: -28px -184px;
+}
+
+.web_components_sidebar-icon.yijianfankui {
+	background-position: 0px -62px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.yijianfankui
+	{
+	background-position: -29px -62px;
+}
+
+.web_components_sidebar-icon.zhidadibu {
+	background-position: 0px -88px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon.zhidadibu
+	{
+	background-position: -30px -88px;
+}
+
+.web_components_sidebar-item:hover .web_components_sidebar-icon {
+	-webkit-animation: shake .4s;
+	-moz-animation: shake .4s;
+	-o-animation: shake .4s;
+	animation: shake .4s;
+}
+
+@
+keyframes -webkit-shake { 0%,100% {
+	-webkit-transform: rotate(0);
+}
+
+10%,50%,90%
+{
+-webkit-transform
+:rotate(13deg)
+;
+}
+20%,60%,80%
+{
+-webkit-transform
+:rotate(-13deg)
+;
+}
+}
+@
+keyframes -moz-shake { 0%,100% {
+	-webkit-transform: rotate(0);
+}
+
+10%,50%,90%
+{
+-webkit-transform
+:rotate(13deg)
+;
+}
+20%,60%,80%
+{
+-webkit-transform
+:rotate(-13deg)
+;
+}
+}
+@
+keyframes -o-shake { 0%,100% {
+	-webkit-transform: rotate(0);
+}
+
+10%,50%,90%
+{
+-webkit-transform
+:rotate(13deg)
+;
+}
+20%,60%,80%
+{
+-webkit-transform
+:rotate(-13deg)
+;
+}
+}
+@
+keyframes shake { 0%,100% {
+	-webkit-transform: rotate(0);
+}
+10%,50%,90%
+{
+-webkit-transform
+:rotate(13deg)
+;
+}
+20%,60%,80%
+{
+-webkit-transform
+:rotate(-13deg)
+;
+}
+}
+
+.web_components_sidebar_feedbackdialog_warp {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2200;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.web_components_sidebar_feedbackdialog {
+	display: block;
+	padding: 20px;
+	width: 400px;
+	box-sizing: border-box;
+	background-color: #fff;
+	border: solid 1px #e2e2e2;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -240px auto auto -200px;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+	-o-box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+}
+
+.web_components_sidebar_feedbackdialog .closeImg {
+	position: absolute;
+	top: 19px;
+	right: 19px;
+	cursor: pointer;
+}
+
+.web_components_sidebar_feedbackdialog .huiji {
+	opacity: 0;
+	background-image:
+		url(//static.qyer.com/models/common/component/sidebar/huiji.png);
+	width: 132px;
+	height: 120px;
+	display: block;
+	position: absolute;
+	top: -36px;
+	left: 40px;
+}
+
+.web_components_sidebar_feedbackdialog .title {
+	font-size: 20px;
+	color: #222;
+	height: 78px;
+	line-height: 78px;
+	text-align: center;
+	margin-top: -20px;
+}
+
+.web_components_sidebar_feedbackdialog .content {
+	font-size: 14px;
+	height: 190px;
+	padding: 20px 15px;
+	width: 100%;
+	box-sizing: border-box;
+	border: solid 1px #e2e2e2;
+	overflow: hidden;
+}
+
+.web_components_sidebar_feedbackdialog .address_title {
+	color: rgba(34, 34, 34, 0.65);
+	font-size: 14px;
+	margin: 16px 0 8px 0;
+}
+
+.web_components_sidebar_feedbackdialog .address {
+	font-size: 14px;
+	height: 40px;
+	padding: 10px 20px;
+	width: 100%;
+	box-sizing: border-box;
+	border: solid 1px #e2e2e2;
+}
+
+.web_components_sidebar_feedbackdialog .button {
+	display: block;
+	width: 120px;
+	height: 40px;
+	margin: 30px auto 20px auto;
+	border: none;
+	line-height: 40px;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #31b57f;
+	box-shadow: 0 3px 6px rgba(11, 191, 121, 0.3);
+	-webkit-background: linear-gradient(to right, rgb(77, 192, 117) 0%,
+		rgb(31, 175, 133) 100%);
+	-moz-background: linear-gradient(to right, rgb(77, 192, 117) 0%,
+		rgb(31, 175, 133) 100%);
+	-o-background: linear-gradient(to right, rgb(77, 192, 117) 0%,
+		rgb(31, 175, 133) 100%);
+	background: linear-gradient(to right, rgb(77, 192, 117) 0%,
+		rgb(31, 175, 133) 100%);
+}
+
+.web_components_sidebar_feedbackdialog .texttip {
+	position: absolute;
+	right: 30px;
+	top: 240px;
+	font-size: 12px;
+	color: rgba(34, 34, 34, .35);
+}
+
+.web_components_sidebar_feedbackdialog .texttip.error {
+	color: red;
+}
+
+.web_components_sidebar_feedbackdialog .errortip {
+	color: red;
+	margin: 2px 0 -20px 0;
+	font-size: 12px;
+}
+
+.web_components_sidebar_feedbackdialog.zoom {
+	-webkit-animation: zoom .3s linear;
+	-moz-animation: zoom .3s linear;
+	-o-animation: zoom .3s linear;
+	animation: zoom .3s linear;
+}
+
+@
+keyframes -webkit-zoom {
+	from {transform: scale(1)
+}
+
+50%{
+transform
+:scale
+(0
+.98
+)
+}
+to {
+	transform: scale(1)
+}
+
+}
+@
+keyframes -moz-zoom {
+	from {transform: scale(1)
+}
+
+50%{
+transform
+:scale
+(0
+.98
+)
+}
+to {
+	transform: scale(1)
+}
+
+}
+@
+keyframes -o-zoom {
+	from {transform: scale(1)
+}
+
+50%{
+transform
+:scale
+(0
+.98
+)
+}
+to {
+	transform: scale(1)
+}
+
+}
+@
+keyframes zoom {
+	from {transform: scale(1)
+}
+
+50%{
+transform
+:scale
+(0
+.98
+)
+}
+to {
+	transform: scale(1)
+}
+
+}
+.web_components_sidebar_feedbackdialog .huiji.show {
+	-webkit-animation: spin .7s linear;
+	-moz-animation: spin .7s linear;
+	-o-animation: spin .7s linear;
+	animation: spin .7s linear;
+	-webkit-transform-origin: 87px 193px;
+	-moz-transform-origin: 87px 193px;
+	-o-transform-origin: 87px 193px;
+	transform-origin: 87px 193px;
+	opacity: 1;
+}
+
+@
+keyframes -webkit-spin {
+	from {transform: rotate(-200deg);
+	opacity: 0;
+}
+
+40%{
+transform
+:rotate(-120deg)
+;opacity
+:
+0;
+}
+to {
+	transform: rotate(0);
+	opacity: 1;
+}
+
+}
+@
+keyframes -moz-spin {
+	from {transform: rotate(-200deg);
+	opacity: 0;
+}
+
+40%{
+transform
+:rotate(-120deg)
+;opacity
+:
+0;
+}
+to {
+	transform: rotate(0);
+	opacity: 1;
+}
+
+}
+@
+keyframes -o-spin {
+	from {transform: rotate(-200deg);
+	opacity: 0;
+}
+
+40%{
+transform
+:rotate(-120deg)
+;opacity
+:
+0;
+}
+to {
+	transform: rotate(0);
+	opacity: 1;
+}
+
+}
+@
+keyframes spin {
+	from {transform: rotate(-200deg);
+	opacity: 0;
+}
+
+40%{
+transform
+:rotate(-120deg)
+;opacity
+:
+0;
+}
+to {
+	transform: rotate(0);
+	opacity: 1;
+}
+
+}
+.feedback-tip {
+	display: none;
+	position: fixed;
+	top: 200px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 1200;
+}
+
+.feedback-tip-box {
+	display: inline-block;
+	max-width: 390px;
+	padding: 15px 20px;
+	background-color: #fff;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+	border: solid 1px #c0c0c0;
+	text-align: left;
+	font-size: 18px;
+	line-height: 32px;
+	border-radius: 5px;
+}
+
+.feedback-tip-text {
+	display: block;
+	position: relative;
+	color: #323232;
+}
+</style>
+
+	
+</body>
+</html>

@@ -1,7 +1,13 @@
 package com.aaa.entity;
 
-public class theme {
+import java.io.Serializable;
 
+public class theme implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer tid;
 	private String tname;
 	private Integer tstatus;

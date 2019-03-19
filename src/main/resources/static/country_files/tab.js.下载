@@ -1,0 +1,49 @@
+/*
+	tab切换
+ */
+define(function(){
+
+	
+	function Tab(config){
+		this._tab = config.tab;
+		this._content = config.content;
+		this._onChanged = config.onChanged;
+		this._eventType = config.eventType || "click";
+	}
+
+	Tab.prototype.change = function(index){
+		// console.log(index);
+		var curTab = this._tab.find("li").eq(index),
+			curContent = this._content.eq(index);
+
+		curTab.addClass('current').siblings('li').removeClass('current');
+		this._content.hide();
+		curContent.show();
+
+		if (typeof this._onChanged == "function") {
+			this._onChanged(index, curTab[0], curContent[0]);
+		};
+		
+	};
+
+	Tab.prototype.init = function(){
+		var self = this;
+
+		this._tab.on(this._eventType, "li", function(){
+			var index = $(this).index();
+			self.change(index);
+		});
+
+		this.change(0);
+	}
+
+	function control(cfg){
+		var tab = new Tab(cfg);
+		tab.init();
+		return tab;
+	}
+
+	return control;
+
+	
+});
