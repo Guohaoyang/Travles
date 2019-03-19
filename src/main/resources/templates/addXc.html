@@ -1,0 +1,739 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- <base href="//webapi.amap.com/ui/1.0/ui/misc/MarkerList/examples/" /> -->
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+<link rel="stylesheet" type="text/css" href="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/index.css">
+<link rel="stylesheet" type="text/css" href="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/pagination.css">
+<style type="text/css">
+.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div {
+	font-weight: 400
+}
+
+</style>
+<style type="text/css">
+.gm-control-active>img {
+	box-sizing: content-box;
+	display: none;
+	left: 50%;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.gm-control-active>img:nth-child(1) {
+	display: block
+}
+
+.gm-control-active:hover>img:nth-child(1),.gm-control-active:active>img:nth-child(1)
+	{
+	display: none
+}
+
+.gm-control-active:hover>img:nth-child(2),.gm-control-active:active>img:nth-child(3)
+	{
+	display: block
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../static/addXc_files/1.css">
+<style type="text/css">
+.gm-ui-hover-effect {
+	opacity: .6
+}
+
+.gm-ui-hover-effect:hover {
+	opacity: 1
+}
+
+</style>
+<style type="text/css">
+.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div
+	{
+	font-size: 10px;
+	box-sizing: border-box
+}
+</style>
+<style type="text/css">
+@media print {
+	.gm-style .gmnoprint,.gmnoprint {
+		display: none
+	}
+}
+
+@media screen {
+	.gm-style .gmnoscreen,.gmnoscreen {
+		display: none
+	}
+}
+
+</style>
+<style type="text/css">
+.gm-style-pbc {
+	transition: opacity ease-in-out;
+	background-color: rgba(0, 0, 0, 0.45);
+	text-align: center
+}
+
+.gm-style-pbt {
+	font-size: 22px;
+	color: white;
+	font-family: Roboto, Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%)
+}
+</style>
+
+<meta name="keywords" content="创建行程, 行程助手">
+<meta name="description" content="快来穷游网规划你的行程吧！">
+<meta name="google-site-verification"
+	content="DVVM1p1HEm8vE1wVOQ9UjcKP--pNAsg_pleTU5TkFaM">
+<title>添加行程</title>
+<link rel="shortcut icon" href="http://www.qyer.com/favicon.ico">
+<link rel="stylesheet"
+	href="../static/addXc_files/style.d8e46b36410b485ce0c582e5e8a62479.css">
+
+
+
+
+<script type="text/javascript" charset="utf-8" async=""
+	data-requirecontext="_" data-requiremodule="lodash"
+	src="../static/addXc_files/lodash.js"></script>
+
+<script type="text/javascript" charset="utf-8" async=""
+	data-requirecontext="_"
+	data-requiremodule="../static/addXc_files/css.js"
+	src="../static/addXc_files/css.js"></script>
+<link type="text/css" rel="stylesheet" href="../static/addXc_files/popup.css">
+<link type="text/css" rel="stylesheet"
+	href="../static/addXc_files/inputAutocomplete.css">
+
+
+<link type="text/css" rel="stylesheet"
+	href="../static/addXc_files/datepicker.css">
+
+
+<script type="text/javascript" charset="UTF-8"
+	src="../static/addXc_files/util.js"></script>
+
+<style type="text/css">
+.gm-style {
+	font: 400 11px Roboto, Arial, sans-serif;
+	text-decoration: none;
+}
+
+.gm-style img {
+	max-width: none;
+}
+</style>
+
+
+<style type="text/css">
+@
+-webkit-keyframes _gm2865 { 0% {
+	-webkit-transform: translate3d(0px, 0px, 0);
+	-webkit-animation-timing-function: ease-out;
+}
+50%
+{
+-webkit-transform
+:
+ 
+translate3d
+(0px
+,
+-20
+px
+,
+0);
+-webkit-animation-timing-function
+:
+ 
+ease-in
+;
+ 
+}
+100%
+{
+-webkit-transform
+:
+ 
+translate3d
+(0px
+,
+0
+px
+,
+0);
+-webkit-animation-timing-function
+:
+ 
+ease-out
+;
+ 
+}
+}
+ #keywords {
+        position: absolute;
+        right: 310px;
+        top: 7px;
+        line-height: 200%;
+        padding: 0 5px;
+        font-size: 13;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        width: 150px;
+        z-index: 11;
+    }
+</style>
+<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="//webapi.amap.com/ui/1.0/plug/ext/jquery-1.12.4.min.js?v=1.0.11"></script>
+    <script type="text/javascript" src="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/jquery.twbsPagination.min.js?v=1.0.11"></script>
+   <script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
+    <!-- UI组件库 1.0 -->
+    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+  
+</head>
+
+<body style="">
+   
+	<!--创建流程 -->
+	<div id="localCityName" style="display:none;" data-cityid="0"
+		data-city=""></div>
+	<div class="plan_creat">
+		<!--创建地图 -->
+		<div class="plan_map_layer" id="container" tabindex="0" >
+		</div>
+		 <input type="text" id="keywords" value="AAA软件教育" />
+		 <div id="panel" class="scrollbar1">
+            <ul id="pagination-demo" class="pagination-sm"></ul>
+            <ul id="myList">
+            </ul>
+        </div>
+		<!-- <div class="plan_map_loading" id="createplan_map_loading"
+			style="display: none;">
+			<span>加载中...</span>
+		</div> -->
+		<!--创建布局 -->
+		<div class="plan_creat_warp" id="yd" style="left: 0px;">
+			<!--国家城市内容 -->
+			<div class="plan_foundcity_content" id="js_plan_foundcity_content
+			"
+				style="z-index:100;">
+				<!--标题 -->
+				<div class="titles">
+					<strong>选择目的地</strong> <a href=""
+						class="clickmebtn lshow" id="js_mask_showhide" title="收起"
+						data-bn-ipg="Plan-plan_create-place_list-flod"></a>
+					<!--收起class lshow   展开class lhide -->
+				</div>
+				<div class="searchs">
+					<!--搜索框 -->
+					<input type="text" id="js_search_desti" class="searchInput"
+						value="" maxlength="20"
+						data-bn-ipg="Plan-plan_create-place_list-search">
+				</div>
+				<div class="creatLoading" id="js_creatLoading"
+					style="display: none;">
+					<div></div>
+				</div>
+				<div id="create_box" style="height:100%;">
+					<div class="address_box">
+						<!--大洲筛选 -->
+						<div class="order" id="country_typelist">
+							<a href="javascript:;" data-typeid="0"
+								data-bn-ipg="Plan-plan_create-place_list-continent-1"
+								class="current">到达</a> </div>
+					</div>
+					<!--国家列表 -->
+					<div class="founds" id="cityP">
+						<ul class="lists">
+							<p>加载中...</p>
+						</ul>
+					</div>
+
+					<div class="clearfix page"
+						style="width:100%; position:absolute; bottom:0; left:0; text-align:center; line-height:64px; border-top:1px solid #ededed; z-index:30; background:#fff; border-bottom-left-radius:5px; border-bottom-right-radius:5px;">
+						<div class="ui_page" id="fenye">
+							66666666666
+						</div>
+					</div>
+				</div>
+				<!--城市浮动层 -->
+				<div class="plan_maskLayer" style="display:none;">
+					<div class="minfo" id="card_layer_box"></div>
+					<div class="mask_arrow"></div>
+					<div class="mask_close"></div>
+				</div>
+			</div>
+			<!--我的行程列表 ---总大-->
+			<div class="plan_myplan_content" style="display:none;"id="js_myplanbox">
+				<div class="titles">
+          			<strong>我的行程</strong>
+         		 		<div class="date" title="选择日期" id="datepicker" data-bn-ipg="plan-plan_create-place_list-date">出发日期</div>
+       			 </div>
+       			<!--  主 -->
+				<div class="lists" id="js_height_resize">
+					<div class="listGo updown" data-type="20">
+						<div class="text" id="te">
+							<strong id="c">输入出发城市</strong> <a href="javascript:c();" id="c" title="修改"
+								class="js_edit_city"
+								data-bn-ipg="plan-plan_create-place_list-alter_depart"></a>
+						</div>
+						<div class="input" id="input" style="display:none;">
+							<input type="text" class="js_start_city" value=""
+								placeholder="输入出发城市" maxlength="20"> <span class="enter">enter</span>
+						</div>
+					</div>
+					<div id="js_plancitys" class="ui-sortable">
+						<div class="traffics js_traffic" data-cid="0_c1" data-fromxcid="0"
+							data-toxcid="c1">
+							<p class="cnt js_traffic_info">
+								<span class="traffic noinfo">地理信息缺失</span>
+							</p>
+						</div>
+				  <div class="items js_cityitem" id="mm" data-xcid="c1" style="cursor:move;">
+							<a href="javascript:fun()"  class="close" title="delete"
+								data-bn-ipg="plan-plan_create-place_list-delcity"></a> <strong id="sh">上海</strong>
+							<div class="number">
+								<span class="licon js_reduceday" title="减"
+									data-bn-ipg="plan-plan_create-place_list-reduceday"></span> <span
+									class="nmr js_day">3天</span> <span class="ricon js_addday"
+									title="加" data-bn-ipg="plan-plan_create-place_list-addday"></span>
+							</div>
+						</div> 
+						<div class="traffics js_traffic" data-cid="c1_1"
+							data-fromxcid="c1" data-toxcid="1">
+							<p class="cnt js_traffic_info">
+								<span class="traffic noinfo">地理信息缺失</span>
+							</p>
+						</div> 
+					</div>
+					<!-- <div class="listSpace updown" data-type="21">
+						<div class="text">
+							<strong>输入返回城市</strong> <a href="javascript:;" title="修改"
+								class="js_edit_city"
+								data-bn-ipg="plan-plan_create-place_list-alter_back"></a>
+						</div>
+						<div class="input" style="display:none;">
+							<input type="text" class="js_end_city" value=""
+								placeholder="输入返回城市" maxlength="20"> <span class="enter">enter</span>
+						</div>
+					</div> -->
+				</div>
+				<!--  下一步 -->
+       			 <div class="next">
+         			 <a href="javascript:;" title="下一步" id="js_createplan_save" data-bn-ipg="plan-plan_create-place_list-nextstep"></a>
+       			 </div>
+		   </div>
+				
+				
+				
+				
+			</div>
+	</div>
+
+
+	
+
+	<div class="qui-popup" style="display:none">
+		<div>
+			<div class="qui-popup-dt">
+				<div class="qui-popup-box">
+					<div class="qui-popup-closeIcon">&nbsp;</div>
+					<div class="qui-popup-box-title fontYaHei">title</div>
+					<div class="qui-popup-box-content"></div>
+					<div class="qui-popup-box-bottom">
+						&nbsp;<input class="qui-popup-cancelBtn ui_button_cancel"
+							type="button" value="取消"> <input
+							class="qui-popup-okBtn ui_button" type="button" value="确定">
+						<input class="qui-popup-loadingBtn  ui_button_load" type="button"
+							value="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="//webapi.amap.com/ui/1.0/plug/ext/jquery-1.12.4.min.js?v=1.0.11"></script>
+    <script type="text/javascript" src="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/jquery.twbsPagination.min.js?v=1.0.11"></script>
+   <script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
+
+    <!-- UI组件库 1.0 -->
+    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>	
+<script type="text/javascript">
+//创建地图
+var map = new AMap.Map('container', {
+    zoom: 9
+});
+
+AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWindow'],
+    function(MarkerList, SimpleMarker, SimpleInfoWindow) {
+
+        //即jQuery/Zepto
+        var $ = MarkerList.utils.$;
+
+        var defaultIconStyle = function(index) {
+                return 'red-' + (index + 1);
+            }, //默认的图标样式
+            hoverIconStyle = function(index) {
+                return 'blue-' + (index + 1);
+            }, //鼠标hover时的样式
+            selectedIconStyle = function(index) {
+                return 'blue-' + (index + 1);
+            } //选中时的图标样式
+        ;
+
+
+
+        var markerList = new MarkerList({
+            map: map,
+            //ListElement对应的父节点或者ID
+            listContainer: "myList", //document.getElementById("myList"),
+            //选中后显示
+
+            //从数据中读取位置, 返回lngLat
+            getPosition: function(item) {
+                return item.location;
+            },
+            //数据ID，如果不提供，默认使用数组索引，即index
+            getDataId: function(item, index) {
+
+                return item.id;
+            },
+            getInfoWindow: function(data, context, recycledInfoWindow) {
+
+                if (recycledInfoWindow) {
+
+                    recycledInfoWindow.setInfoTitle(data.name);
+                    recycledInfoWindow.setInfoBody(data.address);
+
+                    return recycledInfoWindow;
+                }
+
+                return new SimpleInfoWindow({
+                    infoTitle: data.name,
+                    infoBody: data.address,
+                    offset: new AMap.Pixel(0, -32)
+                });
+            },
+            //构造marker用的options对象, content和title支持模板，也可以是函数，返回marker实例，或者返回options对象
+            getMarker: function(data, context, recycledMarker) {
+
+                if (recycledMarker) {
+                    recycledMarker.setIconStyle(defaultIconStyle(context.index));
+                    return;
+                }
+
+                return new SimpleMarker({
+                    iconTheme: 'numv1',
+                    containerClassNames: 'my-marker',
+                    iconStyle: defaultIconStyle(context.index),
+                });
+            },
+            //构造列表元素，与getMarker类似，可以是函数，返回一个dom元素，或者模板 html string
+            getListElement: function(data, context, recycledListElement) {
+
+                var label = '' + (context.index + 1);
+
+                //使用模板创建
+                var innerHTML = MarkerList.utils.template(
+                    '<% if(data.photos && data.photos[0]) { %>' +
+                    '<div class="poi-imgbox">' +
+                    '    <span class="poi-img" style="background-image:url(<%- data.photos[0].url %>)"></span>' +
+                    '</div>' +
+                    '<% } %>' +
+                    '<div class="poi-info-left">' +
+                    '    <h3 class="poi-title">' +
+                    '        <%- label %>. <%- data.name %>' +
+                    '    </h3>' +
+                    '    <div class="poi-info">' +
+                    '        <p class="poi-addr">地址：<%- data.address %></p>' +
+                    '<% if(data.tel ){ %>' +
+                    '        <p class="poi-addr">电话：<%- data.tel %></p>' +
+                    '<% } %>' +
+                    '    </div>' +
+                    '</div>' +
+                    '<div class="clear"></div>', {
+                        data: data,
+                        label: label
+                    });
+
+                if (recycledListElement) {
+                    recycledListElement.innerHTML = innerHTML;
+                    return recycledListElement;
+                }
+
+                return '<li class="poibox">' +
+                    innerHTML +
+                    '</li>';
+            },
+            //列表节点上监听的事件
+            listElementEvents: ['click', 'mouseenter', 'mouseleave'],
+            //marker上监听的事件
+            markerEvents: ['click', 'mouseover', 'mouseout'],
+            //makeSelectedEvents:false,
+            selectedClassNames: 'selected',
+            autoSetFitView: true
+        });
+
+        window.markerList = markerList;
+
+        AMap.plugin(["AMap.PlaceSearch"], function() {
+
+            var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                pageSize: 5,
+                pageIndex: 1,
+                extensions: 'all',
+                city: "010" //城市
+            });
+
+            var $pagination = $('#pagination-demo');
+
+            function initPagination(page, totalPages) {
+
+                //初始化分页器
+                $pagination.twbsPagination({
+                    totalPages: totalPages,
+                    startPage: page,
+                    prev: null,
+                    first: '首页',
+                    next: '下一页',
+                    last: null,
+                    initiateStartPageClick: false,
+                    onPageClick: function(event, page) {
+                        goPage(page);
+                    }
+                });
+            }
+
+            var inited = false;
+
+            var $keywords = $('#keywords');
+
+            function goPage(page) {
+
+                //设置当前页
+                placeSearch.setPageIndex(page);
+                //关键字查询
+                placeSearch.search($keywords.val(), function(status, result) {
+
+                    if (status !== 'complete') {
+                        alert('返回数据出错!');
+                    }
+
+                    //render当前页的数据
+                    markerList.render(result.poiList.pois);
+
+                    if (!inited) {
+                        inited = true;
+                        //首次初始化
+                        initPagination(page, Math.ceil(result.poiList.count / result.poiList.pageSize));
+                    }
+
+                });
+            }
+
+            goPage(1);
+
+            $keywords.on('keypress', function(e) {
+                if (e.which === 13) {
+                    inited = false;
+                    $pagination.twbsPagination('destroy');
+                    goPage(1);
+                }
+            });
+        });
+
+        markerList.on('selectedChanged', function(event, info) {
+
+            if (info.selected) {
+
+                if (info.selected.marker) {
+                    //更新为选中样式
+                    info.selected.marker.setIconStyle(selectedIconStyle(info.selected.index));
+                }
+            }
+
+            if (info.unSelected && info.unSelected.marker) {
+                //更新为默认样式
+                info.unSelected.marker.setIconStyle(defaultIconStyle(info.unSelected.index));
+            }
+        });
+
+
+        markerList.on('listElementMouseenter markerMouseover', function(event, record) {
+
+            if (record && record.marker) {
+                //非选中的id
+                if (!this.isSelectedDataId(record.id)) {
+                    //设置为hover样式
+                    record.marker.setIconStyle(hoverIconStyle(record.index));
+                    //this.closeInfoWindow();
+                }
+            }
+        });
+
+        markerList.on('listElementMouseleave markerMouseout', function(event, record) {
+
+            if (record && record.marker) {
+
+                if (!this.isSelectedDataId(record.id)) {
+                    //恢复默认样式
+                    record.marker.setIconStyle(defaultIconStyle(record.index));
+                }
+            }
+        });
+
+
+    });
+
+
+  
+	var curPage;        //当前页数
+	var totalItem;      //总记录数
+	var totalPage;      //总页数
+	
+	function page(num)
+	{
+		
+		$.ajax({
+            type: "post",
+            url: "pageCity",
+            data : {pageNum:num},
+            dataType: "json",
+            success: function(data){
+            	//var obj = JSON.stringify(data);
+            	//后台是Map集合 需要取集合值然后遍历
+            	var citys=data.list;    //list数据
+            	curPage=data.curPage;     //当前页数
+            	totalPage=data.totalPage; //总页数
+            	var str ="";
+            	$("#cityP").html('');
+            	str+="<ul class='lists'>";
+            	//拼接
+            	 for(var i = 0;i<citys.length;i++){
+        			 var city  = citys[i]; 
+        			 str +="<li class='items js_country js_items' data-type='country' data-bn-ipg='Plan-plan_create-place_list-country-11'>"
+        			 		+"<a href='javascript:;'><img src='../static/pic/"+city.citypic+"' width='80' height='80' class='listImg' id='p'></a>"
+        			 		+"<div class='title'>"
+        			 		+"<a href='javascript:;'> <span class='cn' name='cns' id='cns"+i+"'>"+city.cname+"</span></a> <span class='en'>"+city.english+"</span>"
+        			 		+"</div> <div class='text'> </div>"
+        			 		+"<a href='javascript:void(0);' id='o' onclick='add("+i+")' class='addcity _js_addcity' data-cityid='11595' title='添加到行程' data-bn-ipg='plan-plan_create-place_list-city-addcity'></a></li>";
+        		 }
+            	str+="</ul>";
+            	$("#cityP").html(str);
+            	
+            },
+            complete: function() {    //添加分页按钮栏
+                getPageBar();
+             },
+            //失败方法
+            error: function() {    
+                alert("数据加载失败");
+            }
+        });
+	}
+	function getPageBar()
+	{
+		if(curPage>totalItem)  //如果当前页数大于总页数
+		{
+			curPage = totalPage;
+		}
+		//如果小于1就等于1从第一页开始
+		if(curPage < 1) {
+		    curPage = 1;
+		}
+		var pageBar = "";
+		
+		//如果不是第一页
+		if(curPage !=1 )
+		{
+			pageBar+="<a  href='javascript:page("+(curPage-1)+");' class='ui_page_item ui_page_prev' title='上页'" 
+			+">上一页</a>";
+		}
+		//显示的页码按钮(5个)
+		  var start,end;
+		  if(totalPage <= 5) {
+		    start = 1;
+		    end = totalPage;
+		  } else {
+		    if(curPage-2 <= 0) {
+		        start = 1;
+		        end = 5;
+		    } else {
+		        if(totalPage-curPage < 2) {
+		            start = totalPage - 4;
+		            end = totalPage;
+		        } else {
+		            start = curPage - 2;
+		            end = curPage + 2;
+		        }
+		    }
+		  }
+		  
+		  
+		  //拼接分页数字
+		for(var i=start;i<=end;i++)
+		{
+			if(i==curPage)
+			{
+				pageBar+="<a "
+ 						+"href='javascript:page("+i+");' class='ui_page_item ui_page_item_current'"
+ 						+">"+i+"</a>";
+			}else{
+				pageBar+="<a "
+						+"href='javascript:page("+i+");' class='ui_page_item'"
+						+">"+i+"</a>";
+			}
+		}
+		  //如果不是最后页
+		  if(curPage != totalPage){
+			  pageBar+="<a  href='javascript:page("+(curPage+1)+");' class='ui_page_item ui_page_prev' title='上页'" 
+				+">下一页</a>";
+		  }  
+		  $("#fenye").html(pageBar);
+	}
+	
+	
+	
+	$(function(){  
+	
+		page(1);
+	});  
+	
+	function add(e)
+	{
+		
+		var a=e;
+		//当前页的所有值
+		$("span[name='cns']").each(function(){
+            var value = $(this).text(); 
+            //alert(value);
+    	 });
+		
+		//点击当前的值
+		var v=$("#cns"+a).text();
+		//alert(v);
+		//淡出效果
+		$("#js_myplanbox").fadeIn(1000);
+		$("#sh").text(v);
+	}
+	function fun()
+	{
+		$("#js_myplanbox").fadeOut(1000);
+	}
+    function c()
+    {
+    	
+    	$("#input").attr('style','display:block');
+    	$("#te").attr('style','display:none');
+    }
+	
+</script>
+</body>
+</html>
