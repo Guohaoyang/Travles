@@ -46,7 +46,6 @@
 					        </ul>
 						</li>
 					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -111,7 +110,7 @@
                     <!--攻略 ，游记-->
                     <ul id="fans" style="display: none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    	<div  th:each="f:${fans}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${f.uid}+'\')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    	<div  th:each="f:${fans}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${f.uid}+'\')'" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
 							<div>
 	                            <span class="avatar-pic">
 	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="${f.upic}">
@@ -140,7 +139,7 @@
                     </ul>
                     <ul id="follow" style="display: block;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="dc : ${dana}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${dc.uid}+'\')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="dc : ${dana}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${dc.uid}+'\')'" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
 								<div>
 		                            <span class="avatar-pic">
 		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="${dc.upic}">
@@ -162,7 +161,7 @@
                     </ul>
                     <ul id="youji" style="display:none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="t : ${trave}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="t : ${trave}" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
 	                        	<div>
 	                                 <h1 style="font-size: 18px;width: 300px; margin-top: 10px; margin-left: -85px;"  th:text="${t.title}"></h1><br/>
 	                      		</div>
@@ -172,36 +171,34 @@
 	                   			 <div style="width: 350px; height:auto; text-align:left; margin-left:30px; font-size: 12px; color: blue;">
 	                  				发表时间：<span th:text="${t.createtime}"></span>
 	                   			 </div>
-	                   			 <!-- <div style="width: 350px; height:auto; text-align:left; margin-left:30px; font-size: 12px; color: blue;">
-	                  				收藏人数：<span th:text="${t.createtime}"></span>
-	                   			 </div>
-	                   			 <div style="width: 350px; height:auto; text-align:left; margin-left:30px; font-size: 12px; color: blue;">
-	                  				评论：<span th:text="${t.createtime}"></span>
-	                   			 </div> -->
                    			 </div>
                     	</li>
                     </ul>
                     
                     <ul id="company" style="display: none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="com : ${comes}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
-								<div>
+                    		<div th:each="com : ${comes}" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
+                   				<div>
 		                            <span class="avatar-pic">
 		                                <img style="width: 75px;height: 75px;" th:alt="${com.csname}" th:src="${com.url}">
 		                            </span>
 		                        </div>
 	                        	<div>
-	                                 <h1 style="font-size: 18px;width: 300px; margin-top: -45px;"  th:text="${com.csname}"></h1><br/>
+	                                 <h1 style="font-size: 18px;width: 300px; margin-top: -45px; margin-left: 100px;text-align: left;"  th:text="${com.csname}"></h1><br/>
 	                      		</div>
 	                      		<div style="width: 350px; height:auto; text-align:left; margin-left:80px; font-size: 12px; color: blue;">
 	                  				<h6 th:text="${com.cscontent}"></h6>
 	                   			 </div>
+	           					<div style="margin-right: -500px; margin-top: -40px;">
+	           						<a th:href="@{'../backf/jbxq'(id=${com.csid})}">查看</a>
+	           					</div>
+	                   			 
                    			 </div>
                     	</li>
                     </ul>
                     <ul id="collect" style="display:none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="coll : ${collect}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="coll : ${collect}" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
 	                        	<div>
 	                                 <span style="font-size: 18px;width: 300px; margin-top: 10px; margin-left: -405px;"  th:text="${coll.title}"></span> 
 	                                 &nbsp;&nbsp;&nbsp;作者：<a th:onclick="'showFollows(\''+${users.uid}+'\',\''+${coll.uuid}+'\')'" th:text="${coll.uname}"></a><br/>

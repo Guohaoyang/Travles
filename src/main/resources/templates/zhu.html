@@ -87,14 +87,8 @@
                   </div>
                   <ul class="q-header-nav">
                     <li class="nav-list">
-                      <a href="https://place.qyer.com/" data-bn-ipg="index-head-place" title="目的地" class="nav-span">
+                      <a href="../citys/queryCity" data-bn-ipg="index-head-place" title="目的地" class="nav-span">
                         <span>目的地</span>
-                        <!---->
-                        <!----></a>
-                      <!----></li>
-                    <li class="nav-list">
-                      <a href="https://guide.qyer.com/" data-bn-ipg="index-head-guide" title="景点" class="nav-span">
-                        <span>景点</span>
                         <!---->
                         <!----></a>
                       <!----></li>
@@ -105,7 +99,7 @@
                         <!----></a>
                     </li>
                     <li class="nav-list">
-                      <a href="https://plan.qyer.com/" data-bn-ipg="index-head-plan" title="结伴" class="nav-span">
+                      <a href="../backf/cs" data-bn-ipg="index-head-plan" title="结伴" class="nav-span">
                         <span>结伴</span>
                         <!----></a>
                       <!----></li>
@@ -149,8 +143,8 @@
                       <a href="https://passport.qyer.com/oauth?using=weixin&amp;ref=https%3A%2F%2Fwww.qyer.com%2F" rel="nofollow" data-bn-ipg="index-head-un-wechat">
                         <i class="frame-iconfont frame-icon-wechat"></i>
                       </a>
-                      <a href="https://passport.qyer.com/register/mobile?ref=https%3A%2F%2Fwww.qyer.com%2F" data-bn-ipg="index-head-un-register" class="login-link">注册</a>
-                      <a href="https://passport.qyer.com/login?ref=https%3A%2F%2Fwww.qyer.com%2F" data-bn-ipg="index-head-un-login" class="login-link">登录</a></div>
+                      <a href="../user/aa" data-bn-ipg="index-head-un-register" class="login-link">注册</a>
+                      <a href="../user/a" data-bn-ipg="index-head-un-login" class="login-link">登录</a></div>
                   </div>
                 </div>
               </div>
@@ -166,16 +160,16 @@
                      <div class="wrapper"><h2 class="title">地区推荐</h2>
                      <div class="recommend">
                      <ul th:each="c : ${citys}" class="gradually_col4_show">
-                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank">
-                     <img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="${c.citypic}" lazy="loaded"><div class="tag"><span class="bt" th:text="${c.cname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${c.details}"></p></div></a></div></div></li>
+                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" th:href="@{'../citys/queryByCids?cid='+${c.cid}}" target="_blank">
+                     <img width="275" height="185" th:data-src="@{'../citys/queryByCids?cid='+${c.cid}}" th:src="${c.citypic}" lazy="loaded"><div class="tag"><span class="bt" th:text="${c.cname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${c.details}"></p></div></a></div></div></li>
                      </ul>
-                     <ul><li><div data-type="login" class="login"><div class="login-title"><h3>让我们更懂你</h3><p>拥有游世纪账号，获得更准确的推荐</p></div><div class="login-link" style="text-align: center;"><a data-bn-ipg="index-guess-un-register" href="javascript:;" class="register-btn register-phone">立即注册</a><span>已有帐号？<a data-bn-ipg="index-guess-un-login" href="javascript:;" class="login-mail">登录</a></span></div><div class="auth-login" style="text-align: center;"><a data-bn-ipg="index-guess-un-qq" href="https://passport.qyer.com/oauth?using=qq&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-qq"></a><a data-bn-ipg="index-guess-un-weibo" href="https://passport.qyer.com/oauth?using=weibo&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weibo"></a><a data-bn-ipg="index-guess-un-wechat" href="https://passport.qyer.com/oauth?using=weixin&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weixin"></a></div></div></li></ul></div></div>
+                     <ul><li><div data-type="login" class="login"><div class="login-title"><h3>让我们更懂你</h3><p>拥有游世纪账号，获得更准确的推荐</p></div><div class="login-link" style="text-align: center;"><a data-bn-ipg="index-guess-un-register" href="../user/aa" class="register-btn register-phone">立即注册</a><span>已有帐号？<a data-bn-ipg="index-guess-un-login" href="../user/a" class="login-mail">登录</a></span></div><div class="auth-login" style="text-align: center;"><a data-bn-ipg="index-guess-un-qq" href="https://passport.qyer.com/oauth?using=qq&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-qq"></a><a data-bn-ipg="index-guess-un-weibo" href="https://passport.qyer.com/oauth?using=weibo&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weibo"></a><a data-bn-ipg="index-guess-un-wechat" href="https://passport.qyer.com/oauth?using=weixin&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weixin"></a></div></div></li></ul></div></div>
                      </div>
                      <div class="section" style="padding-top:0;padding-bottom:30px;"><div class="wrapper"></div></div><div class="section section-green">
                      <div class="wrapper"><h2 class="title">景点推荐</h2>
                      <div class="recommend">
                      <ul th:each="s : ${scenicspot}" class="gradually_col4_show">
-                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="${s.scenicspotspic}" lazy="loaded"><div class="tag"><span class="bt" th:text="${s.ssname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${s.details}"></p></div></a></div></div></li>
+                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" th:href="@{'../citys/queryBySsid?ssid='+${s.ssid}}" target="_blank"><img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="${s.scenicspotspic}" lazy="loaded"><div class="tag"><span class="bt" th:text="${s.ssname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${s.details}"></p></div></a></div></div></li>
                      </ul>
                     </div>
                  </div>

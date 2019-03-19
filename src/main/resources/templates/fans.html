@@ -38,7 +38,7 @@
 							<ul class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span></li>
 								<li class="clearfix"><a class="clearfix" th:title="${useres.uname}" target="_blank" th:onclick="'refeashs('+${useres.uid}+')'">
-									<img class="photo-sm" th:src="@{'../static/myselfimg/'+${useres.upic}}"></a>
+									<img class="photo-sm" th:src="${useres.upic}"></a>
 								</li>
 					            <li><a th:href="@{'showupd?uid='+${useres.uid}}" title="个人设置">个人设置</a></li>
 					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
@@ -56,7 +56,7 @@
                     <div class="clearfix">
                         <div class="status-avatar pull-left">
                             <span class="avatar-pic">
-                                <img th:alt="${users.uname}" th:src="@{'../static/myselfimg/'+${users.upic}}">
+                                <img th:alt="${users.uname}" th:src="${users.upic}">
                             </span>
                         </div>
                         <div class="status-content pull-left">
@@ -118,10 +118,10 @@
                     <!--攻略 ，游记-->
                     <ul id="fans" style="display: none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    	<div  th:each="f:${fans}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    	<div  th:each="f:${fans}" style="width: 600px; height: 150px; padding: 10px; margin: 15px;">
 							<div th:onclick="'showFollows(\''+${useres.uid}+'\',\''+${f.uid}+'\')'">
 	                            <span class="avatar-pic">
-	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="@{'../static/myselfimg/'+${f.upic}}">
+	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="${f.upic}">
 	                            </span>
 	                        </div>
                         	<div>
@@ -148,10 +148,10 @@
                     </ul>
                     <ul id="follow" style="display: block;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="dc : ${dana}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="dc : ${dana}" style=" width: 600px; height: 150px; padding: 10px; margin: 15px;">
 								<div th:onclick="'showFollows(\''+${useres.uid}+'\',\''+${dc.uid}+'\')'">
 		                            <span class="avatar-pic">
-		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="@{'../static/myselfimg/'+${dc.upic}}">
+		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="${dc.upic}">
 		                            </span>
 		                        </div>
 	                        	<div>
@@ -183,7 +183,7 @@
                     
                     <ul id="youji" style="display:none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="t : ${trave}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="t : ${trave}" style=" width: 600px; height: 150px; padding: 10px; margin: 15px;">
 	                        	<div>
 	                                 <h1 style="font-size: 18px;width: 300px; margin-top: 10px; margin-left: -85px;"  th:text="${t.title}"></h1><br/>
 	                      		</div>
@@ -199,10 +199,10 @@
                     
                     <ul id="company" style="display: none;" class="main-list m-status-list user-post-list qy-post-list">
                     	<li class="no-content">
-                    		<div th:each="com : ${comes}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
+                    		<div th:each="com : ${comes}" style=" width: 600px; height: 150px; padding: 10px; margin: 15px;">
 								<div>
 		                            <span class="avatar-pic">
-		                                <img style="width: 75px;height: 75px;" th:alt="${com.csname}" th:src="@{'../static/myselfimg//'+${com.url}}">
+		                                <img style="width: 75px;height: 75px;" th:alt="${com.csname}" th:src="${com.url}">
 		                            </span>
 		                        </div>
 	                        	<div>
