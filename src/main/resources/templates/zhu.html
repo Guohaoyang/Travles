@@ -83,8 +83,7 @@
               <div class="q-header">
                 <div class="q-header-nav-wrapper">
                   <div class="q-header-logo">
-                    <a href="https://www.qyer.com/" data-bn-ipg="head-logo">
-                      <img src="" width="76" height="36"></a>
+                     <a class="logo" title="游世纪旅游"><img src="../static/myselfimg/top.jpg" width="70" height="70" style="margin-top: -5px;margin-left: 40px;" alt="游世纪"></a>
                   </div>
                   <ul class="q-header-nav">
                     <li class="nav-list">
@@ -157,59 +156,30 @@
               </div>
             </header>
           </div>
-          <div class="home-banner">
-            <div class="carousel" style="height: 441.333px;">
-              <div class="carousel-inner">
-                <div>
-                  <div class="carousel-list" style="">
-                    <div class="carousel-item" style="">
-                      <img src="../static/zhu_files/15516670116754">
+          	<div>
+          		<img style="width: 1440px; height: 550px;" alt="" th:src="@{'../static/myselfimg/'+${company.url}}">
+          		<a style="font-size: 20px; margin-left: 800px; margin-top: -400px;" href="" th:text="${company.csname}"></a>
+          	</div>
+           		   </div>
+                     <div class="section">
+                     <div class="wrapper"><h2 class="title">地区推荐</h2>
+                     <div class="recommend">
+                     <ul th:each="c : ${citys}" class="gradually_col4_show">
+                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank">
+                     <img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="@{'../static/myselfimg/'+${c.citypic}}" lazy="loaded"><div class="tag"><span class="bt" th:text="${c.cname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${c.details}"></p></div></a></div></div></li>
+                     </ul>
+                     <ul><li><div data-type="login" class="login"><div class="login-title"><h3>让我们更懂你</h3><p>拥有游世纪账号，获得更准确的推荐</p></div><div class="login-link" style="text-align: center;"><a data-bn-ipg="index-guess-un-register" href="javascript:;" class="register-btn register-phone">立即注册</a><span>已有帐号？<a data-bn-ipg="index-guess-un-login" href="javascript:;" class="login-mail">登录</a></span></div><div class="auth-login" style="text-align: center;"><a data-bn-ipg="index-guess-un-qq" href="https://passport.qyer.com/oauth?using=qq&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-qq"></a><a data-bn-ipg="index-guess-un-weibo" href="https://passport.qyer.com/oauth?using=weibo&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weibo"></a><a data-bn-ipg="index-guess-un-wechat" href="https://passport.qyer.com/oauth?using=weixin&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weixin"></a></div></div></li></ul></div></div>
+                     </div>
+                     <div class="section" style="padding-top:0;padding-bottom:30px;"><div class="wrapper"></div></div><div class="section section-green">
+                     <div class="wrapper"><h2 class="title">景点推荐</h2>
+                     <div class="recommend">
+                     <ul th:each="s : ${scenicspot}" class="gradually_col4_show">
+                     <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="@{'../static/myselfimg/'+${s.scenicspotspic}}" lazy="loaded"><div class="tag"><span class="bt" th:text="${s.ssname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${s.details}"></p></div></a></div></div></li>
+                     </ul>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-text-panel">
-                <span class="num">
-                  <i>
-                  </i>
-                  <em></em>
-                </span>
-                <div class="text">
-                  <a data-bn-ipg="index-top-video-0" href="cc" target="_blank">
-                    <p class="fz16">
-                      <strong>【游世纪专栏】漫长的一天｜乞力马扎罗（上）</strong></p>
-                    <span>星座的浪漫</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="q-search active-place">
-              <div class="q-search-wrapper">
-                <div class="panel">
-                  <div class="panel-cont">
-                    <div class="panel-item" style="display:none;">
-                      </div><div class="panel-item" style="display:none;"><div class="form-control"><form target="_blank" action="https://z.qyer.com/" data-action="//z.qyer.com/?_type=search&amp;action=list" method="get" class="z_search_form"><input type="hidden" name="_type" value="search"><input type="hidden" name="action" value="list"><input type="hidden" name="zfrom" value="header"><input type="text" placeholder="搜索目的地/商品类型/关键词" autocomplete="off" name="keyword" value="" class="txt focus zsearch_txt"><button type="submit" data-bn-ipg="index-top-place-lastminute" class="btn">搜索</button></form></div></div><div class="panel-item" style="display:none;"><div class="form-control"><form action="https://www.qyer.com/" target="_blank" class="hotel_search_form"><input data-url="" type="text" placeholder="请输入目的地/酒店名" value="" class="txt focus hotelsearch_txt"><div class="el-date-editor el-range-editor el-input__inner txt date_txt el-date-editor--daterange"><i class="el-input__icon el-range__icon el-icon-date"></i><input placeholder="入住时间" readonly="readonly" name="" value="" class="el-range-input"><span class="el-range-separator">-</span><input placeholder="退房时间" readonly="readonly" name="" value="" class="el-range-input"><i class="el-input__icon el-range__close-icon"></i></div><a href="javascript:;" target="_blank" data-bn-ipg="index-top-hotel-search" class="btn hotel_btn">搜索酒店</a></form></div></div></div></div></div><div class="q-layer q-layer-history" style="display:none;"><div class="history-title"><span>热门城市</span></div><div class="history-cont"><a data-bn-ipg="index-top-placeCity-0" href="https://place.qyer.com/hong-kong/" target="_blank">香港</a><a data-bn-ipg="index-top-placeCity-1" href="https://place.qyer.com/bangkok/" target="_blank">曼谷</a><a data-bn-ipg="index-top-placeCity-2" href="https://place.qyer.com/tokyo/" target="_blank">东京</a><a data-bn-ipg="index-top-placeCity-3" href="https://place.qyer.com/macau/" target="_blank">澳门</a><a data-bn-ipg="index-top-placeCity-4" href="https://place.qyer.com/seoul/" target="_blank">首尔</a><a data-bn-ipg="index-top-placeCity-5" href="https://place.qyer.com/kyoto/" target="_blank">京都</a><a data-bn-ipg="index-top-placeCity-6" href="https://place.qyer.com/osaka/" target="_blank">大阪</a><a data-bn-ipg="index-top-placeCity-7" href="https://place.qyer.com/taiwan/" target="_blank">台湾</a><a data-bn-ipg="index-top-placeCity-8" href="https://place.qyer.com/paris/" target="_blank">巴黎</a><a data-bn-ipg="index-top-placeCity-9" href="https://place.qyer.com/rome/" target="_blank">罗马</a><a data-bn-ipg="index-top-placeCity-10" href="https://place.qyer.com/chiang-mai/" target="_blank">清迈</a><a data-bn-ipg="index-top-placeCity-11" href="https://place.qyer.com/singapore/" target="_blank">新加坡</a><a data-bn-ipg="index-top-placeCity-12" href="https://place.qyer.com/taipei/" target="_blank">台北</a><a data-bn-ipg="index-top-placeCity-13" href="https://place.qyer.com/kuala-lumpur/" target="_blank">吉隆坡</a><a data-bn-ipg="index-top-placeCity-14" href="https://place.qyer.com/venice/" target="_blank">威尼斯</a><a data-bn-ipg="index-top-placeCity-15" href="https://place.qyer.com/phuket-island/" target="_blank">普吉岛</a><a data-bn-ipg="index-top-placeCity-16" href="https://place.qyer.com/florence/" target="_blank">佛罗伦萨</a><a data-bn-ipg="index-top-placeCity-17" href="https://place.qyer.com/los-angeles/" target="_blank">洛杉矶</a><a data-bn-ipg="index-top-placeCity-18" href="https://place.qyer.com/milan/" target="_blank">米兰</a><a data-bn-ipg="index-top-placeCity-19" href="https://place.qyer.com/nara/" target="_blank">奈良</a></div></div><div class="q-layer q-layer-search-autocomplete" style="display:none;"><div class="loading"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIGNsYXNzPSJ1aWwtZGVmYXVsdCI+PHBhdGggZmlsbD0ibm9uZSIgY2xhc3M9ImJrIiBkPSJNMCAwaDEwMHYxMDBIMHoiLz48cmVjdCB4PSI0Ni41IiB5PSI0MCIgd2lkdGg9IjciIGhlaWdodD0iMjAiIHJ4PSI1IiByeT0iNSIgZmlsbD0iIzY2NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMzApIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMCIgZHVyPSIxcyIgYmVnaW49IjBzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPjwvcmVjdD48cmVjdCB4PSI0Ni41IiB5PSI0MCIgd2lkdGg9IjciIGhlaWdodD0iMjAiIHJ4PSI1IiByeT0iNSIgZmlsbD0iIzY2NiIgdHJhbnNmb3JtPSJyb3RhdGUoMzAgMTA1Ljk4IDY1KSI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAiIGR1cj0iMXMiIGJlZ2luPSIwLjA4MzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAiIGR1cj0iMXMiIGJlZ2luPSIwLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKDkwIDY1IDY1KSI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAiIGR1cj0iMXMiIGJlZ2luPSIwLjI1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKDEyMCA1OC42NiA2NSkiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwIiBkdXI9IjFzIiBiZWdpbj0iMC4zMzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1NC4wMiA2NSkiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwIiBkdXI9IjFzIiBiZWdpbj0iMC40MTY2NjY2NjY2NjY2NjY3cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwIiBkdXI9IjFzIiBiZWdpbj0iMC41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKC0xNTAgNDUuOTggNjUpIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMCIgZHVyPSIxcyIgYmVnaW49IjAuNTgzMzMzMzMzMzMzMzMzNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+PC9yZWN0PjxyZWN0IHg9IjQ2LjUiIHk9IjQwIiB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgcng9IjUiIHJ5PSI1IiBmaWxsPSIjNjY2IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTIwIDQxLjM0IDY1KSI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAiIGR1cj0iMXMiIGJlZ2luPSIwLjY2NjY2NjY2NjY2NjY2NjZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPjwvcmVjdD48cmVjdCB4PSI0Ni41IiB5PSI0MCIgd2lkdGg9IjciIGhlaWdodD0iMjAiIHJ4PSI1IiByeT0iNSIgZmlsbD0iIzY2NiIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAiIGR1cj0iMXMiIGJlZ2luPSIwLjc1cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKC02MCAyNC4wMiA2NSkiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwIiBkdXI9IjFzIiBiZWdpbj0iMC44MzMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PHJlY3QgeD0iNDYuNSIgeT0iNDAiIHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM2NjYiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwIiBkdXI9IjFzIiBiZWdpbj0iMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L3JlY3Q+PC9zdmc+" width="22" height="22"></div><ul style="display:none;"><li data-index="0" data-type="result-empty" data-url="//search.qyer.com/index?wd=" class=""><div class="search-title"><a href="https://search.qyer.com/index?wd=" target="_blank" class="search-poi">
-                          查看更多关于“<span class="c-green"></span>”的搜索结果
-                          </a></div></li></ul></div></div></div>
-                          <div class="section section-gray"><div class="wrapper"><div class="advertising"><ul><li data-bn-ipg="index-ad-0"><div id="zoneid-6" class="mkt_zone" style="width: 740px; height: 110px;"><a href="https://hades.qyer.com/ad/hobbit?adid=87908700&amp;to=c72f53351ef84df1c72f0266117ab9fd&amp;r=61d5e81eb147410d61d525accd6b9f99&amp;context=ad" target="_blank">
-                          <img src="../static/zhu_files/FrixbKwP9Ix2LdK6_5PZCBiPuf6u"></a></div></li><li data-bn-ipg="index-ad-1"><div id="zoneid-7" class="mkt_zone" style="width: 400px; height: 110px;"><a href="https://hades.qyer.com/ad/hobbit?adid=87908829&amp;to=fa56308649ae4937fa5651392beb0ba0&amp;r=e4dae47ca3364610e4daf8c5c804db9e&amp;context=ad" target="_blank"><img src="../static/zhu_files/FlqbT60JKpsCst_O5ueglVFu8wt9"></a></div></li></ul></div></div></div><div class="section">
-                          <div class="wrapper"><h2 class="title">地区推荐</h2>
-                          <div class="recommend">
-                          <ul th:each="c : ${citys}" class="gradually_col4_show">
-                          <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="@{'../static/myselfimg/'+${c.citypic}}" lazy="loaded"><div class="tag"><span class="bt" th:text="${c.cname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${c.details}"></p></div></a></div></div></li>
-                          </ul>
-                          <ul><li><div data-type="login" class="login"><div class="login-title"><h3>让我们更懂你</h3><p>拥有游世纪账号，获得更准确的推荐</p></div><div class="login-link" style="text-align: center;"><a data-bn-ipg="index-guess-un-register" href="javascript:;" class="register-btn register-phone">立即注册</a><span>已有帐号？<a data-bn-ipg="index-guess-un-login" href="javascript:;" class="login-mail">登录</a></span></div><div class="auth-login" style="text-align: center;"><a data-bn-ipg="index-guess-un-qq" href="https://passport.qyer.com/oauth?using=qq&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-qq"></a><a data-bn-ipg="index-guess-un-weibo" href="https://passport.qyer.com/oauth?using=weibo&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weibo"></a><a data-bn-ipg="index-guess-un-wechat" href="https://passport.qyer.com/oauth?using=weixin&amp;ref=https%3A%2F%2Fhome.qyer.com%2F" class="login-auth iconfont-home icon-cir-weixin"></a></div></div></li></ul></div></div>
-                          </div>
-                          <div class="section" style="padding-top:0;padding-bottom:30px;"><div class="wrapper"></div></div><div class="section section-green">
-                          
-                          
-                          <div class="wrapper"><h2 class="title">景点推荐</h2>
-                          <div class="recommend">
-                          <ul th:each="s : ${scenicspot}" class="gradually_col4_show">
-                          <li><div data-type="bbs" class="item"><div class="img"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><img width="275" height="185" data-src="https://pic.qyer.com/album/user/3100/62/QkhVQhwFaEg/index/480x320" th:src="@{'../static/myselfimg/'+${s.scenicspotspic}}" lazy="loaded"><div class="tag"><span class="bt" th:text="${s.ssname}"></span></div></a></div><div class="info"><a data-bn-ipg="index-guess-bbs-p3" href="http://bbs.qyer.com/thread-3112134-1.html" target="_blank"><div class="subtitle"><p th:text="${s.details}"></p></div></a></div></div></li>
-                          </ul>
-                         </div></div></div>
+                 </div>
+               </div>
             </div>
           </div>
      </body>
 </html>
-                          <!--pageendtag-->

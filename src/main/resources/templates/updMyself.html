@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://www.iqingyi.com/setting?type=basic -->
+<html lang="zh-CN" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="renderer" content="webkit">
+    <meta name="apple-itunes-app" content="app-id=1070845754">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+        <link rel="bookmark" type="image/x-icon" href="http://www.iqingyi.com/static/common/favicon.ico">
+    <link rel="shortcut icon" href="http://www.iqingyi.com/static/common/favicon.ico" type="image/x-icon">
+	<title>个人设置</title>
+    <link rel="stylesheet" id="layuicss-laydate" href="../static/updMyself_files/pc.css" charset="UTF-8">
+<style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top g-header">
+		<div style="background-color: black;" class="navbar-inner">
+			<div class="container">
+                 <a class="logo" title="游世纪旅游"><img src="../static/myselfimg/top.jpg" width="60" height="60" style="margin-top: -10px;margin-left: 40px;" alt="游世纪"></a>
+				<div class="nav-logined clearfix">
+					<ul class="nav navbar-nav header-nav"> 
+						<li style="margin-left: 60px;" id="navOfIndex"><a href="http://www.iqingyi.com/" title="目的地">目的地</a></li>
+						<li style="margin-left: 40px;" id="headerNav"><a href="http://www.iqingyi.com/explore" title="景点">景点</a></li>
+						<li style="margin-left: 40px;" id="qaIndex"><a href="http://www.iqingyi.com/qa_square" title="游记">游记</a></li>
+						<li style="margin-left: 40px;" id="companyIndex"><a href="http://www.iqingyi.com/company" title="结伴">结伴</a></li>
+						<li style="margin-left: 40px;"><a href="http://www.iqingyi.com/scenics" title="攻略">攻略</a></li>
+					</ul>
+					<ul class="nav navbar-nav pull-right  header-nav" id="userInfo">
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${tt.uname}"></span><span class="caret"></span>	</a>
+							<ul class="dropdown-menu g-dropdown-menu" role="menu">
+								<li><span class="arrow-top"></span></li>
+								<li class="clearfix"><a class="clearfix" th:title="${tt.uname}" target="_blank" th:onclick="'refeashs('+${tt.uid}+')'"><img class="photo-sm" th:src="@{'../static/myselfimg/'+${tt.upic}}"></a></li>
+					            <li><a th:href="@{'showupd?uid='+${tt.uid}}" title="个人设置">个人设置</a></li>
+					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
+					        </ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="container clearfix" id="center">
+	<div class="m-edit-info">
+		<ul class="nav nav-tabs setting-tabs">
+		    <li><a onclick="clicks(1)">修改头像</a></li>
+		    <li><a onclick="clicks(2)">基本资料</a></li>
+		    <li><a>账号密码</a></li>
+		 	<li><a>消息提醒</a></li>
+		</ul>
+		<form id="pics" action="edit" method="post" enctype="multipart/form-data" class="m-set-face form-horizontal tab-items mt30" style="display:none">
+			<div class="ml20 clearfix header-img">
+				
+				<p style="color:#999; width:350px; font-size:12px;" class="mb15">支持JPG、GIF、PNG格式图片，不超过5M。拖拽或缩放图中的虚线方格可调整头像，注意右侧小头像预览效果。</p>
+			    <label class="text-right pull-left">当前头像:</label>
+			    <div class="mt30 pull-left">
+			    	<div id="cropperDIV" class="pull-left ">
+			     	 	<div class="b-img-wrp" id="viewBgImg">
+							<div style="overflow:hidden;width:200px;height:200px;border:1px solid #CCC;background:#FFF;" id="picture_original">
+								<div class="jcrop-holder" style="width: 200px; height: 200px; position: relative; background-color: black;">
+									<div style="position: absolute; z-index: 600; width: 140px; height: 140px; top: 30px; left: 30px;">
+										<div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;">
+											<div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div>
+											<div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div>
+											<div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div>
+											<div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div>
+											<div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div>
+										</div>
+									<div style="width: 100%; height: 100%; z-index: 320; display: block;">
+										<div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div>
+										<div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div>
+										<div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div>
+										<div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div>
+										<div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;"></div>
+										<div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;"></div>
+										<div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;"></div>
+										<div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;"></div>
+										<div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;"></div>
+										<div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;"></div>
+										<div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;"></div>
+										<div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;"></div>
+									</div>
+								</div>
+									<div class="jcrop-tracker" style="width: 204px; height: 204px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div>
+									<input type="radio" class="jcrop-keymgr" style="position: fixed; left: -120px; width: 12px;">
+									<div style="position: absolute; z-index: 240; opacity: 0.4;">
+										<div style="position: absolute; background-color: black; left: 30px; width: 140px; height: 30px;">
+									</div>
+									<div style="position: absolute; background-color: black; height: 200px; width: 30px;"></div>
+										<div style="position: absolute; background-color: black; height: 200px; left: 170px; width: 30px;"></div>
+										<div style="position: absolute; background-color: black; top: 170px; left: 30px; width: 140px; height: 30px;"></div>
+									</div>
+									<img id="pic" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="@{'../static/myselfimg/'+${tt.upic}}">
+								</div>
+							</div>
+			     	 	</div>
+					</div>
+			     	 <label class="pull-left mlr10">头像预览:</label>
+			     	 <div class=" pull-left  mt20 s-img-wrp" id="viewSmImg">
+						<div id="picture_50" style="float: left; margin-left: 20px; position: relative; overflow: hidden; height: 50px; width: 50px;">
+							<img style="width: 71px; height: 71px; margin-left: -11px; margin-top: -11px;" th:src="@{'../static/myselfimg/'+${tt.upic}}" alt="">
+						</div>
+			     	 </div>
+			     	<input hidden type="text" name="uid" th:value="${tt.uid}" id="uid"/>
+					<div style="display:none;overflow:hidden" id="div_avatar">
+						<input type="hidden" id="x1" name="x1" value="30">
+						<input type="hidden" id="y1" name="y1" value="30">
+						<input type="hidden" id="cw" name="cw" value="140">
+						<input type="hidden" id="ch" name="ch" value="140">
+						<input type="hidden" id="imgsrc" name="imgsrc" value="http://qzapp.qlogo.cn/qzapp/101260148/C843C421E5F35555108799E7BAEEC5ED/100">
+						<input type="hidden" id="imgExt" name="ext" value="">
+					</div>
+			    </div>
+			</div>
+			<div class="form-group mt30">
+			    <div class="col-sm-offset-2  col-sm-10">
+			      	<button type="button" class="btn btn-primary btn-lg mr15 btn-register" id="btnUpload">上传头像</button>
+			      	<!-- <input type="file" name="faceFile" class="face-file" id="faceFile"> -->
+			      	<input type="file" id="pic" name="pic" class="face-file" onchange="ajaxFileUpload()">
+			      	<button type="submit" id="btnCrop" class="btn btn-primary btn-lg btn-register">保存</button>
+			    </div>
+			</div>
+		</form>
+		<form id="baseInfoForm" action="edit" method="post" class="form-horizontal tab-items mt30">
+			<div class="form-group">
+				<input hidden type="text" name="uid" th:value="${tt.uid}" id="uid"/>
+			    <label for="uname" class="col-sm-2 text-right control-label">昵称:</label>
+			    <div class="col-sm-4">
+			     	<input type="text" class="form-control" th:value="${tt.uname}" id="uname" name="uname" placeholder="昵称">
+			     	<div class="tooltip right required" role="tooltip" style="left:242px;top:-2px;width:140px;">
+				      	<div class="tooltip-inner"></div>
+				    </div>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="details" class="col-sm-2 text-right control-label">个人简介:</label>
+			    <div class="col-sm-6">
+			     	 <textarea name="details" id="signature" cols="30" rows="9" placeHolder="请填写一段个人简介，长度可达200个字，简介将显示在你的个人页上。" class="form-control" th:text="${tt.details}"></textarea>
+			     	 <div class="tooltip right required" role="tooltip" style="position:static;">
+				      	<div class="tooltip-inner">个人简介请控制在200个字以内</div>
+				    </div>
+			    </div>
+			</div>				
+			<div class="form-group">
+			    <div class="col-sm-offset-3  col-sm-10">
+			      	<button type="submit" id="baseInfoBtn" class="btn btn-primary btn-lg btn-register">保存</button>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>var _qy_pushid_="548687998787519947";</script>
+<script src="../static/updMyself_files/qymain.js.下载"></script><a href="javascript:void(0)" class="m-gotop" title="回到顶部" style="right: 304.5px; display: none;" id="goTop"></a>
+<script src="../static/updMyself_files/qy-m-setting-index.js.下载"></script>
+	<div class="container footer">
+		<div class="copyright">
+            <a href="http://www.iqingyi.com/sitemap" target="_blank">网站地图</a>
+            <a href="http://www.iqingyi.com/about/faq" target="_blank" rel="nofollow">目的地</a>
+            <a href="http://www.iqingyi.com/about/founders_words" target="_blank">景点</a>
+            <a href="http://www.iqingyi.com/about/contact_us" target="_blank" rel="nofollow">联系我们</a>
+			© 2019 travle.com
+			<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备15028558号</a>
+		</div>
+	</div>
+<div id="popInfo" class="m-pop-info-wrp"></div>
+<script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?a5cef09d62cc5f7d9e96609eb03080a3":"https://jspassport.ssl.qhimg.com/11.0.1.js?a5cef09d62cc5f7d9e96609eb03080a3";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
+<script src="../static/updMyself_files/11.0.1.js.下载" id="sozz"></script><script charset="utf-8" src="../static/updMyself_files/ab77b6ea7f3fbf79.js.下载"></script>
+<script type="text/javascript">
+	function clicks(obj){
+		if(obj==1){
+			document.getElementById("pics").style.display="block";
+			document.getElementById("baseInfoForm").style.display="none";
+		}else if(obj==2){
+			document.getElementById("pics").style.display="none";
+			document.getElementById("baseInfoForm").style.display="block";
+		}
+	}
+	
+	function refeashs(obj){
+		window.location.href="my?uid="+obj;
+	}
+	
+	 function ajaxFileUpload() {
+	        var file = $("#btnUpload").val();
+	        if(!/\.(gif|jpg|jpeg|png|JPG|PNG)$/.test(file)){
+	            Error("不支持的图片格式.图片类型必须是.jpeg,jpg,png,gif格式.");
+	            return false;
+	        }
+	        console.log(file);
+	       /*  $.ajaxFileUpload({
+	            url : 'wl/uploadOnePic?inputId=realPicFile',
+	            secureuri : false,
+	            fileElementId : 'realPicFile',
+	            dataType : 'content',
+	            success : function(data, status){
+	                $("#pic").attr("src", data);
+	            },
+	            error : function(data, status, e){
+	                alert(e);
+	            }
+	        }); */
+	        return false;
+	    }
+</script>
+</body></html>

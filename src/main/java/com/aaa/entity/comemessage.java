@@ -13,6 +13,7 @@ public class comemessage {
 	private Integer uid;
 	private Integer cid;
 	private Integer ccid;
+	public String url;
 	private Integer tstatus;
 	public Integer getCsid() {
 		return csid;

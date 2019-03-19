@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.myselfDao">
+	<select id="querytrave" resultType="com.aaa.entity.travelnotes">
+		select * from travelnotes where uid = #{param1}
+	</select>
+	<update id="edit" parameterType="com.aaa.entity.tusers">
+		update tusers 
+		<if test="_parameter != null">
+			<set>
+		  		<if test="uname != null and uname != '' ">
+		  			uname = #{uname},
+		  		</if>
+		  		<if test="details != null and details != '' ">
+		  			details = #{details}
+		  		</if>
+		  		<if test="upic != null and upic != '' ">
+		  			upic = #{upic}
+		  		</if>
+  			</set>
+		</if>
+		<if test="_parameter == null">
+  			set uid = #{uid}
+  		</if>
+  		where uid = #{uid}
+	</update>
+</mapper>

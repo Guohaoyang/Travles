@@ -10,6 +10,7 @@ public class travelnotes {
 	private Date createtime;
 	private Integer uid;
 	private Integer ttid;
+	private String title;
 	private Integer tstatus;
 	public Integer getTid() {
 		return tid;
@@ -52,6 +53,12 @@ public class travelnotes {
 	}
 	public void setTstatus(Integer tstatus) {
 		this.tstatus = tstatus;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	@Override
 	public String toString() {
