@@ -39,7 +39,7 @@
 							<ul class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span></li>
 								<li class="clearfix"><a class="clearfix" th:title="${users.uname}" target="_blank" onclick="refeashs()">
-									<img class="photo-sm" th:src="@{'../static/myselfimg//'+${users.upic}}"></a>
+									<img class="photo-sm" th:src="${users.upic}"></a>
 								</li>
 					            <li><a th:href="@{'showupd?uid='+${users.uid}}" title="个人设置">个人设置</a></li>
 					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
@@ -57,7 +57,7 @@
                     <div class="clearfix">
                         <div class="status-avatar pull-left">
                             <span class="avatar-pic">
-                                <img th:alt="${users.uname}" th:src="@{'../static/myselfimg//'+${users.upic}}">
+                                <img th:alt="${users.uname}" th:src="${users.upic}">
                             </span>
                         </div>
                         <div class="status-content pull-left">
@@ -114,7 +114,7 @@
                     	<div  th:each="f:${fans}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${f.uid}+'\')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
 							<div>
 	                            <span class="avatar-pic">
-	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="@{'../static/myselfimg/'+${f.upic}}">
+	                                <img style="width: 75px;height: 75px;" th:alt="${f.uname}" th:src="${f.upic}">
 	                            </span>
 	                        </div>
                         	<div>
@@ -143,7 +143,7 @@
                     		<div th:each="dc : ${dana}" th:onclick="'showFollows(\''+${users.uid}+'\',\''+${dc.uid}+'\')'" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
 								<div>
 		                            <span class="avatar-pic">
-		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="@{'../static/myselfimg//'+${dc.upic}}">
+		                                <img style="width: 75px;height: 75px;" th:alt="${dc.uname}" th:src="${dc.upic}">
 		                            </span>
 		                        </div>
 	                        	<div>
@@ -187,7 +187,7 @@
                     		<div th:each="com : ${comes}" style="border:1px dashed gray; width: 600px; height: 100px; padding: 10px; margin: 15px;">
 								<div>
 		                            <span class="avatar-pic">
-		                                <img style="width: 75px;height: 75px;" th:alt="${com.csname}" th:src="@{'../static/myselfimg//'+${com.url}}">
+		                                <img style="width: 75px;height: 75px;" th:alt="${com.csname}" th:src="${com.url}">
 		                            </span>
 		                        </div>
 	                        	<div>

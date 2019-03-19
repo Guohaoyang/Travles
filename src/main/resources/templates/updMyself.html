@@ -29,7 +29,7 @@
 							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${tt.uname}"></span><span class="caret"></span>	</a>
 							<ul class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span></li>
-								<li class="clearfix"><a class="clearfix" th:title="${tt.uname}" target="_blank" th:onclick="'refeashs('+${tt.uid}+')'"><img class="photo-sm" th:src="@{'../static/myselfimg/'+${tt.upic}}"></a></li>
+								<li class="clearfix"><a class="clearfix" th:title="${tt.uname}" target="_blank" th:onclick="'refeashs('+${tt.uid}+')'"><img class="photo-sm" th:src="${tt.upic}"></a></li>
 					            <li><a th:href="@{'showupd?uid='+${tt.uid}}" title="个人设置">个人设置</a></li>
 					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
 					        </ul>
@@ -89,7 +89,7 @@
 										<div style="position: absolute; background-color: black; height: 200px; left: 170px; width: 30px;"></div>
 										<div style="position: absolute; background-color: black; top: 170px; left: 30px; width: 140px; height: 30px;"></div>
 									</div>
-									<img id="pic" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="@{'../static/myselfimg/'+${tt.upic}}">
+									<img id="pic" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="${tt.upic}">
 								</div>
 							</div>
 			     	 	</div>
@@ -97,7 +97,7 @@
 			     	 <label class="pull-left mlr10">头像预览:</label>
 			     	 <div class=" pull-left  mt20 s-img-wrp" id="viewSmImg">
 						<div id="picture_50" style="float: left; margin-left: 20px; position: relative; overflow: hidden; height: 50px; width: 50px;">
-							<img style="width: 71px; height: 71px; margin-left: -11px; margin-top: -11px;" th:src="@{'../static/myselfimg/'+${tt.upic}}" alt="">
+							<img style="width: 71px; height: 71px; margin-left: -11px; margin-top: -11px;" th:src="${tt.upic}" alt="">
 						</div>
 			     	 </div>
 			     	<input hidden type="text" name="uid" th:value="${tt.uid}" id="uid"/>
