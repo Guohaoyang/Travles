@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>loginq.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+  </head>
+  <body>
+    	<div id="dl">
+	  		<h3>登录</h3>
+	  		账号：<input type="text" name="uname" id="uname"><br>
+	  		密码：<input type="text" name="upwd" id="upwd"><br>
+			<input type="button" value="异步" onclick="denglu2()">
+	  </div> 
+  </body>
+  <script type="text/javascript">
+  	function denglu2(){
+  		var p1=document.getElementById("uname").value;
+		var p2=document.getElementById("upwd").value;
+  		 $.ajax({
+  			url:"loginq",
+  			type:'post',
+  			datatype:'json',
+  			data:{'uname':p1,'upwd':p2},
+  			success:function(data){
+  				alert(data);
+  				if(data!=2){
+  					alert("登录成功");
+  					window.location.href="cs";
+  					/* $.ajax({
+  						url:"mc/page",
+  						type:'post',
+  						datatype:'json',
+  						data:{
+  							id:data
+  						},
+  					success:function(data){
+  						window.location.href="mc/page";
+  					}
+  					}); */
+  				}else{
+  					alert("账号或密码错误");
+  				}
+  			}
+  		}); 
+  	}
+  </script>
+  </body>
+</html>

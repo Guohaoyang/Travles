@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>aa.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  
+	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+  </head>
+  
+  <body>
+  <input type="button" onclick="a()">
+  <textarea id="text" style="width: 400px; height: 100px;"></textarea>
+30 
+  </body>
+  <script type="text/javascript">
+	  /* var settings = {
+			  "async": true,
+			  "crossDomain": true,
+			  "url": "Access-Control-Allow-Origin:http://apis.haoservice.com/lifeservice/travel/HotelList?cityid=37&page=1&key=6bddf90ddbef40188600c2bcce9b32f9",
+			  "method": "GET" ,
+			  "headers": {withCredentials:true}
+			};
+			$.getJSON(settings).done(function(response){
+			  console.log(response);
+			}); */
+			function showData (data) {
+				console.info("调用showData");
+				var result = JSON.stringify(data);
+				$("#text").val(result);
+			}
+			function a(){	
+				$.ajax({
+					 "url": "http://apis.haoservice.com/lifeservice/travel/HotelList",
+					 "async": true,
+					 "crossDomain": true,
+					 type: "GET",
+					 //dataType:"jsonp",
+					 jsonpCallback: "showData",
+					 data:{"cityid":37,"page":1,"key":"6bddf90ddbef40188600c2bcce9b32f9"},
+					 success:function(data){
+						 var result = JSON.stringify(data);
+						 alert(result);
+						 console.log(data);
+					 },
+					 timeout:3000
+				});
+			}
+  </script>
+</html>

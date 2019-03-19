@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>addjb.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="../static/js/pc.css"></script>
+  </head>
+  <body>
+  <div class="container clearfix" id="center">
+    <!-- g-main start -->
+    <div class="g-main mt25">
+        <div class="main-content">
+            <h3 class="title" style="font-size: 18px;padding: 0 0 15px 0;border-bottom: 1px solid #eee">发布结伴</h3>
+            <form class="add-company-form mt40">
+                <div class="form-group">
+                    <label for="title">标题：<span>（可以输入40个字）</span></label>
+                    <div class="input-box clearfix">
+                        <input type="text" style="width: 80%" class="form-control pull-left" id="title" placeholder="简要概括结伴需求">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="endScenic">旅行地：<span>（还可以选择<span class="num">8</span>个）</span></label>
+                    <div class="scenic-box hidden clearfix" id="destinationBox"></div>
+                    <div class="input-box clearfix">
+                        <input type="text" style="width: 29.3%" class="form-control destination-key pull-left" id="endScenic" placeholder="输入旅行地越多，匹配越精准">
+                    </div>
+                    <div class="hidden result-box list-group"></div>
+                </div>
+                <div class="form-group tip-left-11">
+                    <label for="peopleNum">我方出发人数：<span>（不能超过50个人）</span></label>
+                    <div class="input-box clearfix">
+                        <input type="text" class="form-control pull-left" style="width: 10%" id="peopleNum" value="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="beginDate">旅游起始日：<span>（距离今天半年内）</span></label>
+                    <div class="input-box clearfix">
+                        <input type="text" class="form-control pull-left" style="width: 29.3%" id="beginDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">旅游结束日：<span>（距离起始日，跨度不超过3个月）</span></label>
+                    <div class="input-box clearfix">
+                        <input type="text" class="form-control pull-left" style="width: 29.3%" id="endDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="startScenic">出发地：</label>
+                    <div class="scenic-box hidden clearfix" id="startingBox"></div>
+                    <div class="input-box clearfix">
+                        <input type="text" style="width: 29.3%" class="form-control starting-key pull-left" id="startScenic" placeholder="请输入出发的省份或国家">
+                    </div>
+                    <div class="hidden result-box list-group"></div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">联系方式：<span>（也可以留下微信、手机或QQ号，不超过40个字）</span></label>
+                    <div class="input-box clearfix">
+                        <input type="text" style="width: 80%" class="form-control pull-left" id="contact" value="请在青驿私信我" placeholder="请在青驿私信我">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label for="description">结伴详情：</label><span>（不超过600个字）</span>
+                    <textarea class="form-control" rows="5" id="description" placeholder="如果你不想：&#13;&#10;1、结伴无人问津；&#13;&#10;2、旅游遇到猪队友；&#13;&#10;3、和每个人都沟通相同的问题；&#13;&#10;那就在这里多说点吧！"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contact">封面图：<span>（自拍照、景点照均可，吸引更多目光。最多可以上传3张，每张不能大于10M。）</span></label>
+                    <div class="cover-box clearfix">
+                        <ul class="img-box pull-left">
+                        </ul>
+                        <div class="none-img pull-left">
+                            <p id="file1">上传图片</p>
+                        </div>
+                    </div>
+                </div>
+               
+            </form>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>

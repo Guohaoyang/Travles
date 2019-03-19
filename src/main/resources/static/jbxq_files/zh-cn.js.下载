@@ -1,0 +1,128 @@
+/**
+ * Created with JetBrains PhpStorm.
+ * User: taoqili
+ * Date: 12-6-12
+ * Time: 下午5:02
+ * To change this template use File | Settings | File Templates.
+ */
+UE.I18N['zh-cn'] = {
+    'labelMap':{
+        'bold':'加粗',
+        'italic':'斜体', 'underline':'下划线',
+        'simpleupload':'上传图片', 'insertimage':'图片上传',
+        'emotion':'表情','link':'插入超链接'
+    },
+    'autoupload': {
+        'exceedSizeError': '文件大小超出限制',
+        'exceedTypeError': '文件格式不允许',
+        'jsonEncodeError': '服务器返回格式错误',
+        'loading':"正在上传...",
+        'loadError':"上传错误",
+        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！'
+    },
+    'simpleupload':{
+        'exceedSizeError': '文件大小超出限制',
+        'exceedTypeError': '文件格式不允许',
+        'jsonEncodeError': '服务器返回格式错误',
+        'loading':"正在上传...",
+        'loadError':"上传错误",
+        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！'
+    },
+    'elementPathTip':"元素路径",
+    'wordCountTip':"字数统计",
+    'wordCountMsg':'当前已输入{#count}个字符, 您还可以输入{#leave}个字符。 ',
+    'wordOverFlowMsg':'<span style="color:red;">字数超出最大允许值，服务器可能拒绝保存！</span>',
+    'ok':"确认",
+    'cancel':"取消",
+    'closeDialog':"关闭对话框",
+    'autofloatMsg':"工具栏浮动依赖编辑器UI，您首先需要引入UI文件!",
+    'loadconfigError': '获取后台配置项请求出错，上传功能将不能正常使用！',
+    'loadconfigFormatError': '后台配置项返回格式出错，上传功能将不能正常使用！',
+    'loadconfigHttpError': '请求后台配置项http错误，上传功能将不能正常使用！',
+    'copymsg': "浏览器不支持,请使用 'Ctrl + c'",
+    'pastemsg': "浏览器不支持,请使用 'Ctrl + v'",
+    'anthorMsg':"链接",
+    'property':'属性',
+    'default':'默认',
+    'modify':'修改',
+    'justifyleft':'左对齐',
+    'justifyright':'右对齐',
+    'justifycenter':'居中',
+    'justify':'默认',
+    'clear':'清除',
+    'anchorMsg':'锚点',
+    'delete':'删除',
+    'clickToUpload':"点击上传",
+    'more':'更多',
+    'insertimage':{
+        'static':{
+            'lang_tab_remote':"插入图片", //节点
+            'lang_tab_upload':"本地上传",
+            'lang_tab_online':"在线管理",
+            'lang_tab_search':"图片搜索",
+            'lang_input_url':"地 址：",
+            'lang_input_size':"大 小：",
+            'lang_input_width':"宽度",
+            'lang_input_height':"高度",
+            'lang_input_border':"边 框：",
+            'lang_input_vhspace':"边 距：",
+            'lang_input_title':"描 述：",
+            'lang_input_align':'图片浮动方式：',
+            'lang_imgLoading':"　图片加载中……",
+            'lang_start_upload':"开始上传",
+            'lock':{'title':"锁定宽高比例"}, //属性
+            'searchType':{'title':"图片类型", 'options':["新闻", "壁纸", "表情", "头像"]}, //select的option
+            'searchTxt':{'value':"请输入搜索关键词"},
+            'searchBtn':{'value':"百度一下"},
+            'searchReset':{'value':"清空搜索"},
+            'noneAlign':{'title':'无浮动'},
+            'leftAlign':{'title':'左浮动'},
+            'rightAlign':{'title':'右浮动'},
+            'centerAlign':{'title':'居中独占一行'}
+        },
+        'uploadSelectFile':'点击选择图片',
+        'uploadAddFile':'继续添加',
+        'uploadStart':'开始上传',
+        'uploadPause':'暂停上传',
+        'uploadContinue':'继续上传',
+        'uploadRetry':'重试上传',
+        'uploadDelete':'删除',
+        'uploadTurnLeft':'向左旋转',
+        'uploadTurnRight':'向右旋转',
+        'uploadPreview':'预览中',
+        'uploadNoPreview':'不能预览',
+        'updateStatusReady': '选中_张图片，共_KB。',
+        'updateStatusConfirm': '已成功上传_张照片，_张照片上传失败',
+        'updateStatusFinish': '共_张（_KB），_张上传成功',
+        'updateStatusError': '，_张上传失败。',
+        'errorNotSupport': 'WebUploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器。',
+        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！',
+        'errorExceedSize':'文件大小超过20M',
+        'errorFileType':'文件格式不允许',
+        'errorInterrupt':'文件传输中断',
+        'errorUploadRetry':'上传失败，请重试',
+        'errorHttp':'http请求错误',
+        'errorServerUpload':'服务器返回出错',
+        'remoteLockError':"宽高不正确,不能所定比例",
+        'numError':"请输入正确的长度或者宽度值！例如：123，400",
+        'imageUrlError':"不允许的图片格式或者图片域！",
+        'imageLoadError':"图片加载失败！请检查链接地址或网络状态！",
+        'searchRemind':"请输入搜索关键词",
+        'searchLoading':"图片加载中，请稍后……",
+        'searchRetry':" :( ，抱歉，没有找到图片！请重试一次！"
+    },
+    'link':{
+        'static':{
+            'lang_input_text':'文本内容：',
+            'lang_input_url':'链接网址：',
+            'lang_input_title':'标题：',
+            'lang_input_target':'是否在新窗口打开：'
+        },
+        'validLink':'只支持选中一个链接时生效',
+        'httpPrompt':'输入的超链接中不含http等协议名。青驿将自动添加http://前缀。'
+    },
+    'autosave': {
+        'saving':'保存中...',
+        'success':'本地保存成功'
+    }
+};

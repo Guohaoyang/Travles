@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>aa.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+  </head>
+  
+  <body>
+  </body>
+  <script type="text/javascript">
+	  var settings = {
+			  "async": true,
+			  "crossDomain": true,
+			  "url": "http://apis.haoservice.com/lifeservice/travel/HotelList?cityid=37&page=1&key=6bddf90ddbef40188600c2bcce9b32f9",
+			  "method": "GET" ,
+			  "headers": {}
+			};
+			$.ajax(settings).done(function(response){
+			  console.log(response);
+			});
+  </script>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.TadminDao">
+	<!-- public List<tadmin> login(tname,tpwd) -->
+	<select id="login" resultType="com.aaa.entity.tadmin">
+		select * from tadmin where tname=#{param1} and tpwd=#{param2}
+	</select>
+	<!-- public List<city> queryCity(); -->
+	<select id="queryCity" resultType="com.aaa.entity.city">
+		select *from city
+	</select>
+	<!-- public tadmin queryByName(String name) -->
+	<select id="queryByName" resultType="com.aaa.entity.tadmin">
+		select *from tadmin where tname=#{param1}
+	</select>
+</mapper>

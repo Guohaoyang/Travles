@@ -1,0 +1,1 @@
+var addCompanyBtn=function(){$(".go-add-company").on("click",function(n){$.qy.user.id||(n.preventDefault(),$.get("/user/checkLogin",function(n){"1"==n.status&&n.data.is_login?($(".go-add-company").unbind("click"),$(".go-add-company")[0].click()):$.window({fillText:$("#confirmLoginTemp").html(),title:"提醒",addclass:"wid-msg"})}))})};$(function(){addCompanyBtn()});

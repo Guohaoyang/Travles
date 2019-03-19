@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.ComemessageDao">
+  	<insert id="add" parameterType="comemessage" useGeneratedKeys="true">
+  	<selectKey resultType="comemessage" keyColumn="csid" keyProperty="csid">
+  		select max(csid)+1 csid from comemessage
+  	</selectKey>
+  		insert into comemessage 
+  		<trim prefix="value(" suffixOverrides="," suffix=")">
+  			<if test="csname!=null and cscontent!=null and createtime!=null and endtime!=null and num!=null and uid!=null and cid!=null and ccid!=null and url!=null">
+  				#{csid},#{csname},#{cscontent},#{createtime},#{endtime},#{num},${uid},${cid},${ccid},${tstatus},${url}
+  			</if>
+  		</trim>
+  	</insert>
+  	<!-- public List<city> queryCity() -->
+  	<select id="queryCity" resultType="java.lang.String">
+  		select cname from city
+  	</select>
+  	<!-- public List<tusers> loginq(String uname,String upwd) -->
+  	<select id="loginq" resultType="com.aaa.entity.tusers">
+  		select *from tusers where uname=#{param1} and upwd=#{param2}
+  	</select>
+  	<!-- public int addjieban(int uid 1 ,String title 2 ,String ccid 3,String cid 4 ,String createtime 5,String endtime 6 ,String text 7,int num 8,String url9) -->
+  	<insert id="addjieban" useGeneratedKeys="true">
+  		insert into comemessage (csname,cscontent,createtime,endtime,num,uid,cid,ccid,tstatus,url)
+  		<trim prefix="value(" suffixOverrides="," suffix=")">
+  			<if test="param2!='' and param7!=null and param5!=null and param6!=null and param8!=null and param1!=null and param4!=null and param3!=null and param9!=null">
+  				#{param2},#{param7},#{param5},#{param6},#{param8},#{param1},#{param4},#{param3},1,#{param9}
+  			</if>
+  		</trim>
+  	</insert>
+  	<!-- public int querycityID(String name) -->
+  	<select id="querycityID" resultType="int">
+  		select cid from city where cname=#{param1}
+  	</select>
+  	<!-- public List<comemessage> queryqll() -->
+  	<select id="queryqll" resultType="com.aaa.entity.comemessage">
+  		select *from comemessage ORDER BY csid desc
+  	</select>
+  	<!-- public List<comemessage> queryById(int id) -->
+  	<select id="queryById" resultType="com.aaa.entity.comemessage">
+  		select *from comemessage where csid=#{param1}
+  	</select>
+  	<!-- public tusers tuserByid(int uid) -->
+  	<select id="tuserByid" resultType="com.aaa.entity.tusers">
+  		select *from tusers where uid=#{param1}
+  	</select>
+  	<!-- public int addapply(String acontent,int uid,int uuid) -->
+  	<insert id="addapply">
+  		insert into apply(acontent,uid,uuid)
+  		<trim prefix="value(" suffixOverrides="," suffix=")">
+  			<if test="param1!='' and param2!=null and param3!=null ">
+  				#{param1},#{param2},#{param3}
+  			</if>
+  		</trim>
+  	</insert>
+</mapper>

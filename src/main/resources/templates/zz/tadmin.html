@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tadmin.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+	<link rel="stylesheet" href="../static/layui/css/layui.css"  media="all">
+  </head>
+  
+  <body>
+   		<!-- 欢迎您：${loginlist.tname} -->
+<table class="layui-hide" id="test"></table>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 --> 
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  table.render({
+    elem: '#test'
+    ,url:'queryCity'
+    ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+      layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+      //,curr: 5 //设定初始在第 5 页
+      ,groups: 1 //只显示 1 个连续页码
+      ,first: false //不显示首页
+      ,last: false //不显示尾页
+    }
+    ,cols: 
+    	[
+     	 [
+      {field:'cid', width:80, title: 'ID', sort: true}
+      ,{field:'cname', width:100, title: '地名'}
+      /* ,{field:'contryid', width:80, title: '--', sort: true} */
+      ,{field:'details', width:80, title: '介绍'}
+      ,{field:'cstatus', width:30,title: '--', minWidth: 150}
+      ,{field:'citypic', width:80, title: '图片', sort: true}
+    	]
+      ]
+  });
+});
+</script>
+  </body>
+</html>
