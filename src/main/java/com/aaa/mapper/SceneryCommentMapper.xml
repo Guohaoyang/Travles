@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.SceneryCommentDao">
+	<resultMap type="SceneryComment" id="comment">
+		<id column="scid" property="scid"/>
+		<id column="uid" property="uid"/>
+		<id column="ssid" property="ssid"/>
+		<id column="upic" property="upic"/>
+		<id column="scomment" property="scomment"/>
+		<id column="sdatetime" property="sdatetime"/>
+		<id column="scpic" property="scpic"/>
+		<association property="users" javaType="tusers">
+			<id column="uid" property="uid"/>
+			<id column="uname" property="uname"/>
+			<id column="upwd" property="upwd"/>
+			<id column="qq" property="qq"/>
+			<id column="tchat" property="tchat"/>
+			<id column="idcard" property="idcard"/>
+			<id column="phone" property="phone"/>
+			<id column="upic" property="upic"/>
+			<id column="tstatus" property="tstatus"/>
+		</association>
+	</resultMap>
+  	<select id="queryComment" resultMap="comment">
+  		  select sc.*,ts.* from sceneryComment sc,tusers ts where ts.uid=sc.uid and ssid = #{ssid}
+  	</select>
+  	
+</mapper>

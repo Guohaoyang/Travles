@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.CityDao">
+	<select id="queryCity" resultType="city">
+		select * from city limit 5
+	</select>
+	
+	<select id="queryChina" resultType="city">
+		select * from city where contryid = 1003 limit 5
+	</select>
+	
+	<select id="queryChinaDesc" resultType="city">
+		select * from city where contryid = 1003 order by  cid desc  limit 5
+	</select>
+	
+	<select id="queryIndonesia" resultType="city">
+		select *from city where contryid =1000 
+	</select>
+		
+	<select id="queryIndia" resultType="city">
+		select *from city where contryid =1001 
+	</select>
+	
+	<select id="queryVietnam" resultType="city">
+		select *from city where contryid =1002 
+	</select>
+	
+	<select id="queryNepal" resultType="city">
+		select *from city where contryid =1004 
+	</select>
+	
+	<select id="queryJapan" resultType="city">
+		select *from city where contryid =1005
+	</select>
+	
+	<select id="queryMalaysia" resultType="city">
+		select *from city where contryid =1006
+	</select>
+	
+	<select id="queryUK" resultType="city">
+		select *from city where contryid =1008
+	</select>
+	
+	<select id="queryDeutschland" resultType="city">
+		select *from city where contryid =1009
+	</select>
+	
+	<select id="queryFrance" resultType="city">
+		select *from city where contryid =1010
+	</select>
+	
+	<select id="queryReino" resultType="city">
+		select *from city where contryid =1011
+	</select>
+	
+	<select id="querySwitzerland" resultType="city">
+		select *from city where contryid =1012
+	</select>
+	
+	<select id="queryItaliana" resultType="city">
+		select *from city where contryid =1007
+	</select>
+</mapper>

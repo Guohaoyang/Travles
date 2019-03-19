@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.CountryDao">
+
+	<select id="queryAsia" resultType="country">
+		select * from country where contid  = 1
+	</select>
+	
+	<select id="queryAmerica" resultType="country">
+		select * from country where contid  = 3
+	</select>
+	
+	<select id="queryEurope" resultType="country">
+		select * from country where contid  = 2
+	</select>
+	
+	<select id="queryOceania" resultType="country">
+		select * from country where contid  = 4
+	</select>
+	
+	<select id="queryByRain" resultType="scenicspots">
+		select * from scenicspots where themeid = 1 limit 8
+	</select>
+	
+	<select id="queryByRomantic" resultType="scenicspots">
+		select * from scenicspots where themeid = 2 limit 8
+	</select>
+		
+	<select id="queryByExplore" resultType="scenicspots">
+		select * from scenicspots where themeid = 3 limit 8
+	</select>
+	
+	<select id="queryByTravel" resultType="scenicspots">
+		select * from scenicspots where themeid = 4 limit 8
+	</select>
+	
+	<select id="queryOne" resultType="scenicspots">
+		select * from scenicspots where monthsid = 1 limit 5
+	</select>
+	
+	<select id="queryTwo" resultType="scenicspots">
+		select * from scenicspots where monthsid = 2 limit 5
+	</select>
+	
+	<select id="queryThree" resultType="scenicspots">
+		select * from scenicspots where monthsid = 3 limit 5
+	</select>
+	
+	<select id="queryFour" resultType="scenicspots">
+		select * from scenicspots where monthsid = 4 limit 5
+	</select>
+	
+	<select id="queryFive" resultType="scenicspots">
+		select * from scenicspots where monthsid = 5 limit 5
+	</select>
+	
+	<select id="querySix" resultType="scenicspots">
+		select * from scenicspots where monthsid = 6 limit 5
+	</select>
+	
+	<select id="querySeven" resultType="scenicspots">
+		select * from scenicspots where monthsid = 7 limit 5
+	</select>
+	
+	<select id="queryEight" resultType="scenicspots">
+		select * from scenicspots where monthsid = 8 limit 5
+	</select>
+	
+	<select id="queryNine" resultType="scenicspots">
+		select * from scenicspots where monthsid = 9 limit 5
+	</select>
+	
+	<select id="queryTen" resultType="scenicspots">
+		select * from scenicspots where monthsid = 10 limit 5
+	</select>
+	
+	<select id="queryEleven" resultType="scenicspots">
+		select * from scenicspots where monthsid = 11 limit 5
+	</select>
+	
+	<select id="queryTwelve" resultType="scenicspots">
+		select * from scenicspots where monthsid = 12 limit 5
+	</select>
+	
+	<select id="queryMoHu" resultType="country" parameterType="String">
+		select * from country 
+		<if test="_parameter != null and _parameter != '' ">
+			where cname like concat('%',#{param1},'%')
+		</if>
+	</select>
+</mapper>

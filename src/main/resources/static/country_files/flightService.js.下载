@@ -1,0 +1,128 @@
+/*国家页行前服务第二版*/
+define(["css!project/css/flightServiceV2.css"],function(){
+    function GT(opt){
+    	var t = this;
+    	t.opt = $.extend({
+    		//是否添加回到底点按钮
+    		isSetGoToTop:false,
+    		//是否添加走到对应折扣
+    		isSetServiceTar:false
+    	},opt||{});
+    	t.init();
+    }
+    GT.prototype = {
+    	init:function(){
+    		this.mainDom.appendTo("body");
+    		if(this.opt["isSetGoToTop"]){
+    			this.mainDom.append(this.dom2);
+    		}
+    		if(this.opt["isSetServiceTar"]){
+    			this.mainDom.append(this.dom1);
+    		}
+    		this.bindEvent();
+    		this.setTitleSize();
+    	},
+    	mainDom:$('<div class="flightServiceGT"></div>'),
+    	bindEvent:function(){
+			//去到底部
+			var t = this;
+			t.mainDom.on("click",".flightServiceGTArrow",function(){
+				t.goToPos(0);
+				$(t).trigger("arrivalTop");
+			})
+			.on("click",".flightServiceTar",function(){
+				if($(".flightServiceV2").length>0){
+					t.goToPos($(".flightServiceV2").offset().top-200);
+				}
+				$(t).trigger("arrivalTar");
+			});
+			var timer = setInterval(function(){
+				if($(".qui-gotoTop").length>0){
+					window.clearTimeout(timer);
+					$(".qui-gotoTop").addClass("flightServiceHide");
+				}
+			},100);
+			$(window).scroll(qyerUtil.runOneInPeriodOfTime(function(){
+		        t.checkOpacity();
+		    }));
+		     t.checkOpacity();
+             $("a.fsAdvertise")
+             .each(function(){
+                var $t = $(this),$img = $t.find('img'),
+                        src = $img.attr("src"),
+                        hSrc = $img.attr("data-hover");
+                $t.on({
+                     mouseenter:function(){
+
+                        if(hSrc){
+                            $img.attr("src",hSrc);
+                        }
+                     },
+                     mouseleave:function(){
+                        $img.attr("src",src);
+                     }
+                 });
+             });
+             
+		},
+    	checkOpacity:function(){
+    		$(document).find(".flightServiceGTArrow").css({
+	        	opacity:($(document).scrollTop()>=100?1:0)
+	        });
+    	},
+    	//马上出发
+    	dom1:'<span class="flightServiceTar" data-bn-ipg="Place-country-lm-gonow"></span>',
+    	//回到顶端
+    	dom2:'<span class="flightServiceGTArrow"></span>',
+    	/**
+    	*查检是否存在flightServiceTar
+    	*/
+    	checkTar:function(){
+    		return $(".flightServiceTar")&&$(".flightServiceTar").length;
+    	},
+    	goToPos:function(value){
+			var t = this;
+			$('html,body').animate({'scrollTop':value},300,function(){
+				$(t).trigger("arrival");
+			});
+		},
+		setTitleSize:function(){
+			$(".flightServiceV2").find("h3.fsTitle").each(function(){
+				var $t = $(this),$a = $t.find("a");
+                    $.trim($a.text()).length>10&&$.trim($a.text()).length<14&&$a.css("font-size","18px");
+                    $.trim($a.text()).length>13&&$a.css("font-size","15px");
+			})
+		}
+
+    }
+    var g = new GT();
+    return g;
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

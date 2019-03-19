@@ -1,7 +1,13 @@
 package com.aaa.entity;
 
-public class scenicspots {
+import java.io.Serializable;
 
+public class scenicspots implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer ssid;
 	private String ssname;
 	private String localurl;
