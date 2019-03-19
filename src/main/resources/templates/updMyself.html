@@ -57,65 +57,27 @@
 			     	 	<div class="b-img-wrp" id="viewBgImg">
 							<div style="overflow:hidden;width:200px;height:200px;border:1px solid #CCC;background:#FFF;" id="picture_original">
 								<div class="jcrop-holder" style="width: 200px; height: 200px; position: relative; background-color: black;">
-									<div style="position: absolute; z-index: 600; width: 140px; height: 140px; top: 30px; left: 30px;">
-										<div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;">
-											<div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div>
-											<div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div>
-											<div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div>
-											<div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div>
-											<div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div>
-										</div>
-									<div style="width: 100%; height: 100%; z-index: 320; display: block;">
-										<div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div>
-										<div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div>
-										<div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div>
-										<div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div>
-										<div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;"></div>
-										<div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;"></div>
-										<div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;"></div>
-										<div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;"></div>
-										<div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;"></div>
-										<div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;"></div>
-										<div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;"></div>
-										<div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;"></div>
-									</div>
-								</div>
-									<div class="jcrop-tracker" style="width: 204px; height: 204px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div>
-									<input type="radio" class="jcrop-keymgr" style="position: fixed; left: -120px; width: 12px;">
-									<div style="position: absolute; z-index: 240; opacity: 0.4;">
-										<div style="position: absolute; background-color: black; left: 30px; width: 140px; height: 30px;">
-									</div>
-									<div style="position: absolute; background-color: black; height: 200px; width: 30px;"></div>
-										<div style="position: absolute; background-color: black; height: 200px; left: 170px; width: 30px;"></div>
-										<div style="position: absolute; background-color: black; top: 170px; left: 30px; width: 140px; height: 30px;"></div>
-									</div>
-									<img id="pic" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="${tt.upic}">
+									<div style="position: absolute; z-index: 600; width: 140px; height: 140px; top: 30px; left: 30px;"></div>
+									<img id="pics" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="${tt.upic}">
 								</div>
 							</div>
 			     	 	</div>
 					</div>
-			     	 <label class="pull-left mlr10">头像预览:</label>
-			     	 <div class=" pull-left  mt20 s-img-wrp" id="viewSmImg">
-						<div id="picture_50" style="float: left; margin-left: 20px; position: relative; overflow: hidden; height: 50px; width: 50px;">
-							<img style="width: 71px; height: 71px; margin-left: -11px; margin-top: -11px;" th:src="${tt.upic}" alt="">
-						</div>
-			     	 </div>
-			     	<input hidden type="text" name="uid" th:value="${tt.uid}" id="uid"/>
-					<div style="display:none;overflow:hidden" id="div_avatar">
-						<input type="hidden" id="x1" name="x1" value="30">
-						<input type="hidden" id="y1" name="y1" value="30">
-						<input type="hidden" id="cw" name="cw" value="140">
-						<input type="hidden" id="ch" name="ch" value="140">
-						<input type="hidden" id="imgsrc" name="imgsrc" value="http://qzapp.qlogo.cn/qzapp/101260148/C843C421E5F35555108799E7BAEEC5ED/100">
-						<input type="hidden" id="imgExt" name="ext" value="">
-					</div>
+			     	<label class="pull-left mlr10">头像预览:</label>
+			     	<input hidden type="text" name="uid" th:value="${tt.uid}" id="uid"/>	
+				
+					<div class="cover-box clearfix">
+                         <img class="layui-upload-img" style="width:120px;height: 120px;margin-top: -260px;margin-left: 270px;" th:src="${tt.upic}" id="img_driver">
+                         <!-- <progress id="progressBar"  value="0" max="100" style="width: 300px;"></progress> -->
+						<!-- <input type="file" id="pic" accept="image/jpg, image/png, image/jpeg"  onChange="preview(this,'img_driver');" /> -->
+                    </div>
 			    </div>
 			</div>
 			<div class="form-group mt30">
 			    <div class="col-sm-offset-2  col-sm-10">
 			      	<button type="button" class="btn btn-primary btn-lg mr15 btn-register" id="btnUpload">上传头像</button>
 			      	<!-- <input type="file" name="faceFile" class="face-file" id="faceFile"> -->
-			      	<input type="file" id="pic" name="pic" class="face-file" onchange="ajaxFileUpload()">
+			      	<input type="file" id="pic" name="pic" class="face-file" onchange="preview(this,'img_driver');">
 			      	<button type="submit" id="btnCrop" class="btn btn-primary btn-lg btn-register">保存</button>
 			    </div>
 			</div>
@@ -183,26 +145,74 @@
 		window.location.href="my?uid="+obj;
 	}
 	
-	 function ajaxFileUpload() {
+	function ajaxFileUpload() {
 	        var file = $("#btnUpload").val();
 	        if(!/\.(gif|jpg|jpeg|png|JPG|PNG)$/.test(file)){
 	            Error("不支持的图片格式.图片类型必须是.jpeg,jpg,png,gif格式.");
 	            return false;
 	        }
-	        console.log(file);
-	       /*  $.ajaxFileUpload({
-	            url : 'wl/uploadOnePic?inputId=realPicFile',
-	            secureuri : false,
-	            fileElementId : 'realPicFile',
-	            dataType : 'content',
-	            success : function(data, status){
-	                $("#pic").attr("src", data);
-	            },
-	            error : function(data, status, e){
-	                alert(e);
-	            }
-	        }); */
 	        return false;
 	    }
 </script>
+<script type="text/javascript">
+	/**
+	 * 缩略图预览
+	 * @param file
+	 * @param container
+	 */
+	var preview = function(file, container){
+	    //缩略图类定义
+	    var Picture  = function(file, container){
+	        var height = 0,
+	            width  = 0,
+	            ext    = '',
+	            size   = 0,
+	            name   = '',
+	            path   =  '';
+	        var self   = this;
+	        if(file){
+	            name = file.value;
+	            if(window.navigator.userAgent.indexOf("MSIE")>=1){
+	                file.select();
+	                path = document.selection.createRange().text;
+	            }else {
+	                if(file.files){
+	                    // path =  file.files.item(0).getAsDataURL(); // firefox7.0之后该方法弃用了，用下面那个
+	                    path = window.URL.createObjectURL(file.files[0]);
+	                }else{
+	                    path = file.value;
+	                }
+	            }
+	        }else{
+	            throw '无效的文件';
+	        }
+	        ext = name.substr(name.lastIndexOf("."), name.length);
+	        if(container.tagName.toLowerCase() != 'img'){
+	            throw '不是一个有效的图片容器';
+	            container.visibility = 'hidden';
+	        }
+	        container.src = path;
+	        container.alt = name;
+	        container.style.visibility = 'visible';
+	        height = container.height;
+	        width  = container.width;
+	        size   = container.fileSize;
+	        this.get = function(name){
+	            return self[name];
+	        };
+	        this.isValid = function(){
+	            if(allowExt.indexOf(self.ext) !== -1){
+	                throw '不允许上传该文件类型';
+	                return false;
+	            }
+	        }
+	    };
+
+	    try{
+	        var pic =  new Picture(file, document.getElementById('' + container));
+	    }catch(e){
+	        alert(e);
+	    }
+	};
+	</script>
 </body></html>

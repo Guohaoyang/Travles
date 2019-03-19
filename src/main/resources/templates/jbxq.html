@@ -65,11 +65,11 @@
 					</ul>
 					 <ul class="nav navbar-nav pull-right  header-nav" id="userInfo"> 
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:utext="${list.uname}"></span><span class="caret"></span>	</a>
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${list.uname}"></span><span class="caret"></span>	</a>
 							<ul class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span></li>
-								<li class="clearfix"><a class="clearfix" th:title="${list.uname}" target="_blank" href=""><img class="photo-sm" th:src="${list.upic}"></a></li>
-					            <li><a href="javascrpit:;" onclick="blocksz()" title="个人设置">个人设置</a></li>
+								<li class="clearfix"><a class="clearfix" th:title="${list.uname}" target="_blank" th:onclick="'refeashs('+${list.uid}+')'"><img class="photo-sm" th:src="${list.upic}"></a></li>
+					            <li><a href="javascrpit:;" th:href="@{'../myself/showupd?uid='+${list.uid}}" title="个人设置">个人设置</a></li>
 					            <li><a href="http://www.iqingyi.com/logout" title="退出" id="loginOut">退出</a></li>
 					        </ul>
 						</li>
@@ -338,6 +338,9 @@
 -->
 <!-- 显示隐藏  -->
 <script type="text/javascript">
+	function refeashs(obj){
+		window.location.href="../myself/my?uid="+obj;
+	}
 	function blocksz(){
 		var a=document.getElementById("center");
 		a.style.display="block";

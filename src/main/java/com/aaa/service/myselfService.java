@@ -66,7 +66,7 @@ public class myselfService {
 		return md.delCollect(tid, uid);
 	}
 	
-	public List<comemessage> queryChange(){
+	public List<Map<String,Object>> queryChange(){
 		return md.queryChange();
 	}
 }

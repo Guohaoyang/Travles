@@ -157,8 +157,9 @@
             </header>
           </div>
           	<div>
-          		<img style="width: 1440px; height: 550px;" alt="" th:src="${company.url}">
-          		<a style="font-size: 20px; margin-left: 800px; margin-top: -400px;" href="" th:text="${company.csname}"></a>
+          		<img th:href="@{'../backf/jbxq?id='+${company.csid}}" style="width: 1440px; height: 550px;" alt="" th:src="${company.url}">
+          		<a th:href="@{'../backf/jbxq?id='+${company.csid}}" style="font-size: 20px;color: white; position: absolute; top: 450px; right: 100px;" href="" th:text="@{'《结伴广场》'+${company.csname}}"></a><br/>
+          		<a style="font-size: 16px;color: white; position: absolute; top: 490px; right: 100px;" href="" th:text="@{'发布人：'+${company.uname}}"></a>
           	</div>
            		   </div>
                      <div class="section">

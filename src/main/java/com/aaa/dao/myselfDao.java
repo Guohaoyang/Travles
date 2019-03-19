@@ -52,6 +52,6 @@ public interface myselfDao {
 	//修改个人信息
 	public void edit(tusers tt);
 	//查询最新的结伴信息
-	@Select("select * from comemessage order by createtime desc limit 0,1")
-	public List<comemessage> queryChange();
+	@Select("select c.*,t.uid uuid,t.uname from comemessage c left join tusers t on c.uid=t.uid order by createtime desc limit 0,1")
+	public List<Map<String,Object>> queryChange();
 }

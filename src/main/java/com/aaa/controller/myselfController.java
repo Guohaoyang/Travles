@@ -31,7 +31,7 @@ public class myselfController {
 	public String querycity(Model m){
 		List<city> citys = ms.querycity();
 		List<scenicspots> scenicspot = ms.queryscenicspots();
-		comemessage company = ms.queryChange().get(0);
+		Map<String,Object> company = ms.queryChange().get(0);
 		m.addAttribute("company",company);
 		m.addAttribute("citys",citys);
 		m.addAttribute("scenicspot",scenicspot);
@@ -104,9 +104,9 @@ public class myselfController {
 			SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMddHHmmss");
 			Date nowtime=new Date();
 			String formatnowtime=formatDate.format(nowtime);
-			String upic = formatnowtime+".jpg";
+			String upic = "static/myselfimg/"+formatnowtime+".jpg";
 			//F:\soft\study\Git\Git\local\Travle\target\classes\static\myselfimg
-			File picfile = new File("F:/soft/study/Git/Git/local/Travle/target/classes/static/myselfimg/"+upic);
+			File picfile = new File("F:/soft/study/Git/Git/local/Travle/target/classes/"+upic);
 			//F:/soft/study/Git/Git/local/Travle/src/main/resources/static/myselfimg/
 			try {
 				pic.transferTo(picfile);
@@ -114,6 +114,7 @@ public class myselfController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			upic = "../"+upic;
 			t.setUpic(upic);
 			ms.edit(t);
 		}
