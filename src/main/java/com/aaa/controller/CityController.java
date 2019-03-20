@@ -236,4 +236,20 @@ public class CityController {
 		return countrys.queryCname();
 	}
 	
+	/**
+	 * 根据编号查询国家的详细信息
+	 * 以及国家下面的所有城市信息
+	 * @param model
+	 * @param cid
+	 * @return
+	 */
+	@RequestMapping("queryCountry")
+	public String queryCountry(Model model,Integer cid){
+		country queryCountry = countrys.queryCountry(cid);
+		model.addAttribute("queryCountry", queryCountry);
+		model.addAttribute("cid", cid);
+		List<Map<String, Object>> queryCitys = countrys.queryCitys(cid);
+		model.addAttribute("queryCitys", queryCitys);
+		return "country";
+	}
 }

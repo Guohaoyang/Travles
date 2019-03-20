@@ -78,4 +78,17 @@ public interface CountryDao {
 			+ " country ct on c.contryid = ct.cid where ct.cname = #{param1}")
 	public List<Map<String,Object>> queryCity(String cname);
 	
+	@Select("select c.cid,c.cname cityname,c.contryid,c.citypic,c.details,"
+			+ "ct.cid,ct.cname,ct.details,ct.countrypic from city c inner join "
+			+ "country ct on c.contryid = ct.cid where ct.cid = #{cid} limit 6")
+	public List<Map<String,Object>> queryCitys(Integer cid);
+	
+	/**
+	 * 根据国家景点查询国家详细信息
+	 * @param cid
+	 * @return
+	 */
+	@Select("select * from country where cid = #{cid}")
+	public country queryCountry(Integer cid);
+	
 }

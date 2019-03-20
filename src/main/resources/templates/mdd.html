@@ -678,7 +678,7 @@
 					<div class="place-home-card4" id="js-container-4">
 						<ul class="center">
 							<li th:each="asiaist:${asiaistList}"><span class="item "> 
-							<a href="javascript:void(0)" target="_blank"
+							<a th:href="@{'../citys/queryCountry?cid='+${asiaist.cid}}" target="_blank"
 									data-bn-ipg="place-index-countrylist-0-0">
 									 <span th:text="${asiaist.cname}"></span> 
 								</a>
@@ -686,7 +686,7 @@
 						</ul>
 						<ul>
 							<li th:each="europe:${europeList}"><span class="item "> 
-							<a href="javascript:void(0)" target="_blank"
+							<a th:href="@{'../citys/queryCountry?cid='+${europe.cid}}" target="_blank"
 									data-bn-ipg="place-index-countrylist-0-0">
 									 <span th:text="${europe.cname}"></span> 
 								</a>
@@ -694,7 +694,7 @@
 						</ul>
 						<ul>
 							<li th:each="america:${americaList}"><span class="item "> 
-							<a href="javascript:void(0)" target="_blank"
+							<a th:href="@{'../citys/queryCountry?cid='+${america.cid}}" target="_blank"
 									data-bn-ipg="place-index-countrylist-0-0">
 									 <span th:text="${america.cname}"></span> 
 								</a>
@@ -702,7 +702,7 @@
 						</ul>
 						<ul>
 						<li th:each="oceania:${oceaniaList}"><span class="item "> 
-							<a href="javascript:void(0)" target="_blank"
+							<a th:href="@{'../citys/queryCountry?cid='+${oceania.cid}}" target="_blank"
 									data-bn-ipg="place-index-countrylist-0-0">
 									 <span th:text="${oceania.cname}"></span> 
 								</a>

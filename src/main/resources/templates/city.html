@@ -721,18 +721,15 @@ var __GLOBAL_DATA__ = {
 <div class="plcFirstModuleWrap">
 <div></div>
 <div class="plcFocusPhoto" id="focusPhoto"  th:each="c:${CnameList}">
-    <ul class="plcFocusPhotoList">
-  
-       <li style="position: absolute; left: 0px;">
-       <p th:text="${c.cname}"></p>
-           <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
-               <img th:src="${c.countrypic}" width="950" height="450" alt="">
-           </a>
-       </li>
-     </ul>
+<p th:text="${c.cname}" style="font-size: 24px; font-weight: bold; color: green;"></p>
+    
+      <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
+          <img th:src="${c.countrypic}" width="950" height="450" alt="">
+      </a>
+      
      <div class="poi-detail">
         <div>
-              <p th:text="${c.details}"></p> 
+              <p th:text="${c.details}" style="font-size: 20px;"></p> 
         </div>
      </div>
   
@@ -843,13 +840,13 @@ function fullTrackClose(){
                 <ul class="plcHotCityList clearfix" style="position: absolute; left: 0px;" >
 			         <li th:each="c:${queryCity}">
 			          <p class="top">
-			              <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
+			              <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
 			                  <img th:src="${c.citypic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
 			              </a>
 			          </p>
 			          <div class="bottom">
 			              <h3 class="title fontYaHei">
-			                 <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
+			                 <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
 			              </h3>
 			            <div class="info" th:text="${c.details}"></div>
 			        </div>

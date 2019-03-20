@@ -3,7 +3,6 @@ package com.aaa.entity;
 import java.util.Date;
 
 public class strategy {
-
 	private Integer stid;
 	private String stname;
 	private String stcontent;
@@ -11,7 +10,28 @@ public class strategy {
 	private Integer uid;
 	private Integer cid;
 	private Integer tstatus;
+	private String gpic;
+	private String start;
+	private String end;
 	
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getGpic() {
+		return gpic;
+	}
+	public void setGpic(String gpic) {
+		this.gpic = gpic;
+	}
 	public Integer getStid() {
 		return stid;
 	}
@@ -54,14 +74,11 @@ public class strategy {
 	public void setTstatus(Integer tstatus) {
 		this.tstatus = tstatus;
 	}
-	@Override
-	public String toString() {
-		return "strategy [stid=" + stid + ", stname=" + stname + ", stcontent="
-				+ stcontent + ", createtime=" + createtime + ", uid=" + uid
-				+ ", cid=" + cid + ", tstatus=" + tstatus + "]";
-	}
+	
+	
 	public strategy(Integer stid, String stname, String stcontent,
-			Date createtime, Integer uid, Integer cid, Integer tstatus) {
+			Date createtime, Integer uid, Integer cid, Integer tstatus,
+			String gpic, String start, String end) {
 		super();
 		this.stid = stid;
 		this.stname = stname;
@@ -70,6 +87,16 @@ public class strategy {
 		this.uid = uid;
 		this.cid = cid;
 		this.tstatus = tstatus;
+		this.gpic = gpic;
+		this.start = start;
+		this.end = end;
+	}
+	@Override
+	public String toString() {
+		return "strategy [stid=" + stid + ", stname=" + stname + ", stcontent="
+				+ stcontent + ", createtime=" + createtime + ", uid=" + uid
+				+ ", cid=" + cid + ", tstatus=" + tstatus + ", gpic=" + gpic
+				+ ", start=" + start + ", end=" + end + "]";
 	}
 	public strategy() {
 		super();

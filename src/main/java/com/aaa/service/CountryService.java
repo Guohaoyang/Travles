@@ -126,4 +126,14 @@ public class CountryService {
 	public List<Map<String,Object>> queryCity(String cname){
 		return countrys.queryCity(cname);
 	}
+	
+	//根据国家编号查询所有城市信息
+	public List<Map<String,Object>> queryCitys(Integer cid){
+		return countrys.queryCitys(cid);
+	}
+	
+	//根据国家编号查询国家信息
+	public country queryCountry(Integer cid){
+		return countrys.queryCountry(cid);
+	}
 }

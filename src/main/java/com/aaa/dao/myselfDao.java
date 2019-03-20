@@ -54,4 +54,7 @@ public interface myselfDao {
 	//查询最新的结伴信息
 	@Select("select c.*,t.uid uuid,t.uname from comemessage c left join tusers t on c.uid=t.uid order by createtime desc limit 0,1")
 	public List<Map<String,Object>> queryChange();
+	//查询攻略
+	@Select("select * from strategy where uid = #{param1}")
+	public List<Map<String,Object>> queryStrategy(Integer uid);
 }

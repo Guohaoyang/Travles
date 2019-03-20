@@ -69,6 +69,9 @@ public class myselfService {
 	public List<Map<String,Object>> queryChange(){
 		return md.queryChange();
 	}
+	public List<Map<String,Object>> queryStrategy(Integer uid){
+		return md.queryStrategy(uid);
+	}
 }
 
 

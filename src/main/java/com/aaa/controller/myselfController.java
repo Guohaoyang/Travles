@@ -58,6 +58,11 @@ public class myselfController {
 		Integer comenums = comes.size();
 		List<Map<String, Object>> collect = ms.queryCollect(uid);
 		Integer collectNum = collect.size();
+		List<Map<String,Object>> strats = ms.queryStrategy(uid);
+		Integer stratgyNums = strats.size();
+		System.out.println("stratgyNums"+stratgyNums);
+		m.addAttribute("strats",strats);
+		m.addAttribute("stratgyNums",stratgyNums);
 		m.addAttribute("users",users);
 		m.addAttribute("fans",fans);
 		m.addAttribute("dana",danas);

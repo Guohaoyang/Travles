@@ -3,69 +3,51 @@ package com.aaa.entity;
 import java.util.Date;
 
 public class continect {
-
-	private Integer replayid;
-	private Integer cid;
-	private Integer uid;
-	private String tcontent;
-	private Date createtime;
-	private Integer tstatus;
-	public Integer getReplayid() {
-		return replayid;
+	private Integer contid;
+	private String contname;
+	private String details;
+	private Integer contstatus;
+	public Integer getContid() {
+		return contid;
 	}
-	public void setReplayid(Integer replayid) {
-		this.replayid = replayid;
+	public void setContid(Integer contid) {
+		this.contid = contid;
 	}
-	public Integer getCid() {
-		return cid;
+	public String getContname() {
+		return contname;
 	}
-	public void setCid(Integer cid) {
-		this.cid = cid;
+	public void setContname(String contname) {
+		this.contname = contname;
 	}
-	public Integer getUid() {
-		return uid;
+	public String getDetails() {
+		return details;
 	}
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setDetails(String details) {
+		this.details = details;
 	}
-	public String getTcontent() {
-		return tcontent;
+	public Integer getContstatus() {
+		return contstatus;
 	}
-	public void setTcontent(String tcontent) {
-		this.tcontent = tcontent;
-	}
-	public Date getCreatetime() {
-		return createtime;
-	}
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
-	public Integer getTstatus() {
-		return tstatus;
-	}
-	public void setTstatus(Integer tstatus) {
-		this.tstatus = tstatus;
+	public void setContstatus(Integer contstatus) {
+		this.contstatus = contstatus;
 	}
 	@Override
 	public String toString() {
-		return "continect [replayid=" + replayid + ", cid=" + cid + ", uid="
-				+ uid + ", tcontent=" + tcontent + ", createtime=" + createtime
-				+ ", tstatus=" + tstatus + "]";
+		return "continect [contid=" + contid + ", contname=" + contname
+				+ ", details=" + details + ", contstatus=" + contstatus + "]";
 	}
-	public continect(Integer replayid, Integer cid, Integer uid,
-			String tcontent, Date createtime, Integer tstatus) {
+	public continect(Integer contid, String contname, String details,
+			Integer contstatus) {
 		super();
-		this.replayid = replayid;
-		this.cid = cid;
-		this.uid = uid;
-		this.tcontent = tcontent;
-		this.createtime = createtime;
-		this.tstatus = tstatus;
+		this.contid = contid;
+		this.contname = contname;
+		this.details = details;
+		this.contstatus = contstatus;
 	}
 	public continect() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	
 
+	
 }

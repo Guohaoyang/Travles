@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 
 
@@ -13,7 +13,7 @@
 <script>if (window.navigator.userAgent.match(/(iPhone|Android|ios)/i) && window.location.href.match(/\/\/place\.qyer\.com/) && document.cookie.indexOf('QYER_PLATFORM_STATUS') === -1) window.location = window.location.href.replace(/\/\/place\.qyer\.com/, '//m.qyer.com/place')</script>
 
 
-<title>country</title>
+<title>city</title>
 <link rel="shortcut icon" href="https://static.qyer.com/images/favicon.ico"></link>
 
 <script type="text/javascript">
@@ -568,11 +568,6 @@ window.__qRequire__ = {
 #mguideManagePlatform .blue{color:rgb(0,128,0);}</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/js/flightService" src="../static/country_files/flightService.js.下载"></script><script type="text/javascript" async="" src="../static/country_files/base_beacon_ga.js.下载"></script><script src="../static/country_files/get"></script><script src="../static/country_files/get(1)"></script><script src="../static/country_files/get(2)"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="common/util/template/template" src="../static/country_files/template.js.下载"></script><link type="text/css" rel="stylesheet" href="../static/country_files/flightServiceV2.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/js/tab" src="../static/country_files/tab.js.下载"></script><style type="text/css">.qui-textArea {zoom: 1; }.qui-textArea .red { color: red; }.qui-textArea textarea,.qui-textArea input { word-break:break-all; transition: height 0.2s; -webkit-transition: height 0.2s; -moz-transition: height 0.2s; -ms-transition: height 0.2s; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; }.qui-textArea .autoHeight { overflow: hidden; }</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="web_ct_logindialog" src="../static/country_files/loginDialog.js.下载"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="web_old_popup" src="../static/country_files/popup.js.下载"></script><link type="text/css" rel="stylesheet" href="../static/country_files/popup.css"></head>
 
 <body style="">
-
-
-
-
-
 <script>
     window.QYER={uid:[0][0]||0};
 
@@ -718,16 +713,17 @@ var __GLOBAL_DATA__ = {
 <script src="../static/country_files/placeNavigation_js_c05d63124e83a8e9248d8aa1aab46657.js.下载"></script>
 
 <div class="plcFirstModule">
-<div class="plcFirstModuleWrap" th:each="q:${queryByCid}">
-<div class="plcFocusPhoto" id="focusPhoto" >
-   <p th:text="${q.cname}" style="font-size: 24px; font-weight: bold; color: green;"></p>
-       <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
-           <img th:src="${q.citypic}" width="950" height="450" alt="">
-       </a>
+<div class="plcFirstModuleWrap">
+<div></div>
+<div class="plcFocusPhoto" id="focusPhoto"  th:each="c:${queryCountry}">
+       <p th:text="${c.cname}" style="font-size:22px;font-weight: bold; color: green; "></p>
+           <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
+               <img th:src="${c.countrypic}" width="980" height="450" alt="">
+        </a>
       
      <div class="poi-detail">
         <div>
-              <p th:text="${q.details}"  style="font-size: 20px;"></p> 
+              <p th:text="${c.details}" style="font-size:20px;"></p> 
         </div>
      </div>
   
@@ -832,21 +828,21 @@ function fullTrackClose(){
 </div>
 <div class="plcContainer">
 <div class="qyWrap">
-	<h2 class="bigTitle fontYaHei">热门景点信息</h2>
+	<h2 class="bigTitle fontYaHei">热门城市信息</h2>
 		<div class="plcHotCityContent" >
 			<div class="plcHotCityLists" >
                 <ul class="plcHotCityList clearfix" style="position: absolute; left: 0px;" >
-			         <li th:each="c:${countryId}">
+			         <li th:each="c:${queryCitys}">
 			          <p class="top">
-			              <a th:href="@{/citys/queryBySsid(ssid=${c.ssid})}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
-			                  <img th:src="${c.scenicspotspic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
+			              <a th:href="@{/citys/queryByCids(cid=${c.cid})}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
+			                  <img th:src="${c.citypic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
 			              </a>
 			          </p>
 			          <div class="bottom">
 			              <h3 class="title fontYaHei">
-			                 <a th:href="@{/citys/queryBySsid(ssid=${c.ssid})}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.ssname}"></a>
+			                 <a th:href="@{/citys/queryByCids(cid=${c.cid})}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
 			              </h3>
-			            <div class="info" th:text="${c.localurl}"></div>
+			            <div class="info" th:text="${c.details}"></div>
 			        </div>
 			      </li>   
                 </ul>
@@ -1202,9 +1198,9 @@ window._qyer_userid = 0;
 <div class="qui-popup-box-title fontYaHei">title</div>
 <div class="qui-popup-box-content"></div>
 <div class="qui-popup-box-bottom">&nbsp;
-<input class="qui-popup-cancelBtn ui_button_cancel" type="button" value="取消"/>  
-<input class="qui-popup-okBtn ui_button" type="button" value="确定"/>  
-<input class="qui-popup-loadingBtn  ui_button_load" type="button" value=""/>  
+<input class="qui-popup-cancelBtn ui_button_cancel" type="button" value="取消">  
+<input class="qui-popup-okBtn ui_button" type="button" value="确定">  
+<input class="qui-popup-loadingBtn  ui_button_load" type="button" value="">  
 </div></div></div></div></div><div class="qui-tip" style="display:none;">
 <div class="qui-tip-box"><span class="qui-tip-text fontYaHei">这里是提示文本</span>
 </div></div><div class="flightServiceGT"></div><style type="text/css">/* 底部浮动层 */.qyer_layer_fix 
@@ -1242,7 +1238,7 @@ z-index:900; min-width:980px;display:none;}/* 左侧活动图片 */.qyer_layer_h
       alt=""></a></div><!--快速登录入口 --><div class="qyer_layer_fr"><input data-bn-ipg="bl--weibo" 
       type="button" value="微博登录" url="http://app.qyer.com/guide/" class="qyer_layer_btn_weibo _jsweibologin">
       <input data-bn-ipg="bl--qq" type="button" value="QQ登录" url="http://app.qyer.com/guide/" 
-      class="qyer_layer_btn_qq _jsqqlogin"/><span class="fontYaHei fl"><a data-bn-ipg="bl--login" 
+      class="qyer_layer_btn_qq _jsqqlogin"><span class="fontYaHei fl"><a data-bn-ipg="bl--login" 
       href="javascript:void(0);" url="152" isopen="0" class="_jslogin">登录</a> 或 </span>
       <a data-bn-ipg="bl--dr" href="javascript:void(0);" url="152" isopen="0" 
       class="_jslogin_reg qyer_layer_btn_qy">注册</a></div></div><div data-bn-ipg="bl--close" 
@@ -1251,8 +1247,7 @@ z-index:900; min-width:980px;display:none;}/* 左侧活动图片 */.qyer_layer_h
       style="width: 370px; top: -30px; opacity: 0;"><div class="qui-popup-closeIcon">&nbsp;</div>
       <div class="qui-popup-box-title fontYaHei" style="display: none;">Title</div>
       <div class="qui-popup-box-content"></div><div class="qui-popup-box-bottom" style="display: none;">
-      &nbsp;<input class="qui-popup-cancelBtn ui_button_cancel" type="button" value="取消"/>  
-      <input class="qui-popup-okBtn ui_button" type="button" value="确定"/>  
-      <input class="qui-popup-loadingBtn  ui_button_load" type="button" value="" style="display: none;"/>  
-      </div></div></div></div></div></body>
-</html>
+      &nbsp;<input class="qui-popup-cancelBtn ui_button_cancel" type="button" value="取消">  
+      <input class="qui-popup-okBtn ui_button" type="button" value="确定">  
+      <input class="qui-popup-loadingBtn  ui_button_load" type="button" value="" style="display: none;">  
+      </div></div></div></div></div></body></html>
