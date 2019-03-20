@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,19 +30,23 @@ public class myselfController {
 	@Autowired
 	myselfService ms;
 	@RequestMapping("querycity")
-	public String querycity(Model m){
+	public String querycity(Model m,HttpSession s){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
 		List<city> citys = ms.querycity();
 		List<scenicspots> scenicspot = ms.queryscenicspots();
 		Map<String,Object> company = ms.queryChange().get(0);
 		m.addAttribute("company",company);
 		m.addAttribute("citys",citys);
 		m.addAttribute("scenicspot",scenicspot);
+		m.addAttribute("list", map);
 		return "zhu";
 	}
 	
 	
 	@RequestMapping("my")
-	public String my(Model m,Integer uid){
+	public String my(Model m,HttpSession s){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		tusers users = ms.queryusers(uid).get(0);
 		List<tusers> fans = ms.queryfans(uid);
 		Integer fansnum = fans.size();
@@ -68,27 +74,35 @@ public class myselfController {
 	
 	@RequestMapping("add")
 	@ResponseBody
-	public Integer addAttention(Integer uid,Integer usid){
+	public Integer addAttention(HttpSession s,Integer usid){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		Integer add = ms.addAttention(uid, usid);
 		return add;
 	}
 	
 	@RequestMapping("del")
 	@ResponseBody
-	public Integer delAttention(Integer uid,Integer usid){
+	public Integer delAttention(HttpSession s,Integer usid){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		Integer add = ms.delAttention(uid, usid);
 		return add;
 	}
 	
 	@RequestMapping("delCollect")
 	@ResponseBody
-	public Integer delCollect(Integer tid,Integer uid){
+	public Integer delCollect(Integer tid,HttpSession s){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		Integer nums = ms.delCollect(tid, uid);
 		return nums;
 	}
 	
 	@RequestMapping("showupd")
-	public String showupd(Model m,Integer uid){
+	public String showupd(Model m,HttpSession s){
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		tusers tt = ms.queryusers(uid).get(0);
 		m.addAttribute("tt", tt);
 		return "updMyself";
@@ -152,7 +166,9 @@ public class myselfController {
     }
 	
 	@RequestMapping("showfans")
-	public String showfans(Model m,Integer uid,Integer usid,Integer status) throws Exception{
+	public String showfans(Model m,HttpSession s,Integer usid,Integer status) throws Exception{
+		tusers map =  (tusers) s.getAttribute("loginqlist");
+		Integer uid = map.getUid();
 		//status 1关注2没有关注过uid是登陆者id usid是查询uid的主键
 		if(uid!=usid){
 			tusers useres = ms.queryusers(uid).get(0);
@@ -183,7 +199,7 @@ public class myselfController {
 			m.addAttribute("dananum",dananum);
 			return "fans";
 		}else{
-			my(m,uid);
+			my(m,s);
 			return "myself";
 		}
 	}

@@ -71,7 +71,7 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
         
         <div class="q-login-form-control">
         <!--   密码 -->
-        <label class="hide">用户名</label><input id="upwd" name="upwd" type="text" title="用户名" maxlength="15" placeholder="起一个不容易忘记的密码" class="input">
+        <label class="hide">用户名</label><input id="upwd" name="upwd" type="password" title="用户名" maxlength="15" placeholder="起一个不容易忘记的密码" class="input">
         
         <div class="input-tip"><span class="tip-error" id="mm" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span id="bb">两次密码输入不一致</span></span></div></div><div class="q-login-form-control">
         <!--   密码 -->
@@ -224,9 +224,10 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
             dataType: "json",
             success: function(data){
             	//alert(data);
-             // window.location.href = 'zhu';
+             // 
              	if(data!=0){
-             		alert(666);
+             		alert("注册成功");
+             		window.location.href = '../user/a';
              	}
             }
         });

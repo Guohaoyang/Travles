@@ -40,187 +40,36 @@
 	<![endif]-->
 	<!-- header start -->
 	<div class="navbar navbar-default navbar-fixed-top g-header">
-		<div class="navbar-inner">
+		<div style="background-color: black;" class="navbar-inner">
 			<div class="container">
-                <a href="http://www.iqingyi.com/" class="logo" title="青驿旅游"><img src="../static/jbxq_files/logo.png" width="60" height="40" alt="青驿旅游"></a>
+                <a href="http://www.iqingyi.com/" class="logo" title="游世纪旅游"><img src="../static/myselfimg/top.jpg" width="60" height="60" style="margin-top: -10px; margin-left: 40px;" alt="游世纪"></a>
 				<div class="nav-logined clearfix">
-					<ul class="nav navbar-nav header-nav"> 
-						<li id="navOfIndex"><a href="../myself/querycity" title="青驿">首页</a></li>
-						<li id="headerNav"><a href="http://www.iqingyi.com/explore" title="发现">发现</a></li>
-					</ul>
-					<div class="navbar-form pull-left" id="navbarForm">
-						<div class="header-search-bar" id="searchBar">
-							<input type="text" autocomplete="off" placeholder="搜索 地名/用户" class="typeahead form-control">
-							<button class="btn-seach" title="点击搜索" type="button"></button>
-						</div>
-						<ul class="dropdown-menu search-prompt" role="menu">
-							<li class="search-type type-scenic">地名</li>
-							<li class="search-type type-user">用户</li>
-				        </ul>
-					</div>
 					<ul class="nav navbar-nav header-nav">
-						<li id="qaIndex"><a href="http://www.iqingyi.com/qa_square" title="问答">问答</a></li>
-						<li id="companyIndex"><a href="cs" title="结伴">结伴</a></li>
-						<li><a href="http://www.iqingyi.com/scenics" title="旅行地">旅行地</a></li>
+						<li style="margin-left: 40px;" id="headerNav"><a href="../myself/querycity" title="首页">首页</a></li> 
+						<li style="margin-left: 60px;" id="navOfIndex"><a href="../citys/queryCity" title="目的地">目的地</a></li>
+						<li style="margin-left: 40px;" id="qaIndex"><a href="http://www.iqingyi.com/qa_square" title="游记">游记</a></li>
+						<li style="margin-left: 40px;" id="companyIndex"><a href="../backf/cs" title="结伴">结伴</a></li>
+						<li style="margin-left: 40px;"><a href="../" title="攻略">攻略</a></li>
 					</ul>
 					 <ul class="nav navbar-nav pull-right  header-nav" id="userInfo"> 
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${list.uname}"></span><span class="caret"></span>	</a>
-							<ul class="dropdown-menu g-dropdown-menu" role="menu">
-								<li><span class="arrow-top"></span></li>
-								<li class="clearfix"><a class="clearfix" th:title="${list.uname}" target="_blank" th:onclick="'refeashs('+${list.uid}+')'"><img class="photo-sm" th:src="${list.upic}"></a></li>
-					            <li><a href="javascrpit:;" th:href="@{'../myself/showupd?uid='+${list.uid}}" title="个人设置">个人设置</a></li>
-					            <li><a href="http://www.iqingyi.com/logout" title="退出" id="loginOut">退出</a></li>
+						<li class="dropdown" th:if="${list!=null}">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:utext="${list.uname}"></span><span class="caret"></span></a>
+							<ul style="color: black;" class="dropdown-menu g-dropdown-menu" role="menu">
+								<li><span class="arrow-top"></span>
+								<li class="clearfix"><a  class="clearfix" th:title="${list.uname}" target="_blank" href="../myself/my"><img class="photo-sm" th:src="${list.upic}"></a>
+					            <li><a  href="../myself/showupd" title="个人设置">个人设置</a>
+					            <li><a  href="../myself/querycity" title="退出" id="loginOut">退出</a>
 					        </ul>
-						</li>
-					</ul> 
+							<div th:if="${list==null}">
+								<li class="dropdown">
+									<a href="../user/a" class="header-login" rel="nofollow">登录/注册</a>
+								</li>
+							</div>
+					</ul>  
 				</div>
 			</div>
 		</div>
 	</div> 
-	<!-- <div class="container clearfix" id="center" style="display: none;">
-	<div class="m-edit-info">
-		<ul class="nav nav-tabs setting-tabs">
-		    <li class=""><a href="javascript:;" onclick="blockfm('pic')"  title="">修改头像</a></li>
-		    <li class=""><a href="javascript:;" onclick="blockfm('zl')" title="">基本资料</a></li>
-		    <li class=""><a href="javascript:;" onclick="blockfm('pwd')" title="">账号密码</a></li>
-		</ul>
-		<form id="touxiang" action="http://www.iqingyi.com/setting?type=account" class="m-set-face form-horizontal tab-items mt30" style="display: block;">
-			<div class="ml20 clearfix header-img">
-				
-				<p style="color:#999; width:350px; font-size:12px;" class="mb15">支持JPG、GIF、PNG格式图片，不超过5M。拖拽或缩放图中的虚线方格可调整头像，注意右侧小头像预览效果。</p>
-			    <label class="text-right pull-left">当前头像:</label>
-			    <div class="mt30 pull-left">
-			    	<div id="cropperDIV" class="pull-left ">
-			     	 	<div class="b-img-wrp" id="viewBgImg">
-							<div style="overflow:hidden;width:200px;height:200px;border:1px solid #CCC;background:#FFF;" id="picture_original"><div class="jcrop-holder" style="width: 200px; height: 200px; position: relative; background-color: black;"><div style="position: absolute; z-index: 600; width: 140px; height: 140px; top: 30px; left: 30px;"><div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;"><div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div></div><div style="width: 100%; height: 100%; z-index: 320; display: block;"><div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div><div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div><div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div><div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div><div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;"></div><div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;"></div><div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;"></div><div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;"></div><div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;"></div><div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;"></div><div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;"></div><div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;"></div></div></div><div class="jcrop-tracker" style="width: 204px; height: 204px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div><input type="radio" class="jcrop-keymgr" style="position: fixed; left: -120px; width: 12px;"><div style="position: absolute; z-index: 240; opacity: 0.4;"><div style="position: absolute; background-color: black; left: 30px; width: 140px; height: 30px;"></div><div style="position: absolute; background-color: black; height: 200px; width: 30px;"></div><div style="position: absolute; background-color: black; height: 200px; left: 170px; width: 30px;"></div><div style="position: absolute; background-color: black; top: 170px; left: 30px; width: 140px; height: 30px;"></div></div><img id="img_95869465" style="width: 200px; height: 200px; border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" th:src="${list.upic}"></div></div>
-			     	 	</div>
-					</div>
-			     	 <label class="pull-left mlr10">头像预览:</label>
-			     	 <div class=" pull-left  mt20 s-img-wrp" id="viewSmImg">
-						<div id="picture_50" style="float: left; margin-left: 20px; position: relative; overflow: hidden; height: 50px; width: 50px;">
-							<img style="width: 71px; height: 71px; margin-left: -11px; margin-top: -11px;" th:src="${list.upic}" alt="">
-						</div>
-			     	 </div>
-					<div style="display:none;overflow:hidden" id="div_avatar">
-						<input type="hidden" id="x1" name="x1" value="30">
-						<input type="hidden" id="y1" name="y1" value="30">
-						<input type="hidden" id="cw" name="cw" value="140">
-						<input type="hidden" id="ch" name="ch" value="140">
-						<input type="hidden" id="imgsrc" name="imgsrc" value="http://qzapp.qlogo.cn/qzapp/101260148/C3BE7801851B47F95A8A01D70B93E9ED/100">
-						<input type="hidden" id="imgExt" name="ext" value="">
-					</div>
-			    </div>
-			</div>
-			<div class="form-group mt30">
-			    <div class="col-sm-offset-2  col-sm-10">
-			      	<button type="button" class="btn btn-primary btn-lg mr15 btn-register" id="btnUpload">上传头像</button>
-			      	<!-- <input type="file" name="faceFile" class="face-file" id="faceFile"> -->
-			      	<!-- <input type="file" id="file1" name="file1" class="face-file">
-			      	<button type="button" id="btnCrop" class="btn btn-primary btn-lg btn-register">保存</button>
-			    </div>
-			</div>
-		</form>
-		<form id="baseInfoForm" class="form-horizontal tab-items mt30" style="display: none;">
-			<div class="form-group">
-			    <label for="nickname" class="col-sm-2 text-right control-label">昵称:</label>
-			    <div class="col-sm-4">
-			     	<input type="text" class="form-control" th:value="${list.uname}" id="nickname" placeholder="昵称">
-			     	<div class="tooltip right required" role="tooltip" style="left:242px;top:-2px;width:140px;">
-				      	<div class="tooltip-inner"></div>
-				    </div>
-			    </div>
-			</div>
-			<div class="form-group">
-			    <label class="col-sm-2 text-right control-label">居住地:</label>
-			    <div class="col-sm-3">
-			     	 <select name="provinceid" id="provinceid" class="form-control">
-			     	 	<option value="">请选择</option>
-			     	 <option value="安徽">安徽</option><option value="北京">北京</option><option value="重庆">重庆</option><option value="福建">福建</option><option value="甘肃">甘肃</option><option value="广东">广东</option><option value="广西">广西</option><option value="贵州">贵州</option><option value="海南">海南</option><option value="河北">河北</option><option value="黑龙江">黑龙江</option><option value="河南">河南</option><option value="湖北">湖北</option><option value="湖南">湖南</option><option value="内蒙古">内蒙古</option><option value="江苏">江苏</option><option value="江西">江西</option><option value="吉林">吉林</option><option value="辽宁">辽宁</option><option value="宁夏">宁夏</option><option value="青海">青海</option><option value="山西">山西</option><option value="山东">山东</option><option value="上海">上海</option><option value="四川">四川</option><option value="天津">天津</option><option value="西藏">西藏</option><option value="新疆">新疆</option><option value="云南">云南</option><option value="浙江">浙江</option><option value="陕西">陕西</option><option value="台湾">台湾</option><option value="香港">香港</option><option value="澳门">澳门</option><option value="海外">海外</option></select>
-			    </div>
-			    <div class="col-sm-3">
-			     	 <select name="cityid" id="cityid" class="form-control">
-			     	 	<option value="">请选择</option>
-			     	 </select>
-			    </div>
-			</div>
-			<div class="form-group">
-			    <label for="sex" class="col-sm-2 text-right control-label">性别:</label>
-			    <div class="col-sm-3">
-			     	 <select name="sex" id="sex" class="form-control">
-			     	 	<option value="3">保密</option>
-			     	 	<option value="1" selected="selected">男</option>
-			     	 	<option value="2">女</option>
-			     	 </select>
-			    </div>
-			</div>
-			<div class="form-group">
-			    <label for="signature" class="col-sm-2 text-right control-label">个人简介:</label>
-			    <div class="col-sm-6">
-			     	 <textarea name="signature" id="signature" cols="30" rows="9" placeholder="请填写一段个人简介，长度可达200个字，简介将显示在你的个人页上。" class="form-control"></textarea>
-			     	 <div class="tooltip right required" role="tooltip" style="position:static;">
-				      	<div class="tooltip-inner">个人简介请控制在200个字以内</div>
-				    </div>
-			    </div>
-			</div>				
-			<div class="form-group">
-			    <div class="col-sm-offset-3  col-sm-10">
-			      	<button type="button" id="baseInfoBtn" class="btn btn-primary btn-lg btn-register">保存</button>
-			    </div>
-			</div>
-		</form>
-		账号绑定
-		<form id="bindAccountForm" class="form-horizontal tab-items mt30" style="display: none;">
-			<div class="form-group">
-				<label for="phone" class="col-sm-3 text-right">手机<i class="phone-icon ml5"></i></label>
-				<div class="col-sm-8 phone-box">
-					<div class="phone-box-default hidden">
-						<span class="box-value"></span>
-						<a href="javascript:;" class="box-do">绑定手机</a>
-					</div>
-					<div class="phone-box-next">
-						<input type="text" class="form-control" name="phone" id="phone" placeholder="输入手机号码">
-						<div class="clearfix mt10">
-							<input type="text" style="width: 50%;display: inline-block;margin-right: 10px;" name="code" placeholder="点击右侧发送验证码" class="form-control code-input">
-							<input type="button" style="width: 40%;border: none;cursor: pointer;background: #fff;color: #259;display: inline-block;height: 34px;" href="javascript:;" class="send-code update-phone" value="获取验证码">
-						</div>
-						<div>
-							<button type="button" class="btn btn-primary phone-commit">提交</button>
-							<span class="m-error-msg" id="endMsg"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 text-right">账号的密码</label>
-				<div class="col-sm-6 password-operate">
-					<div class="password-box-default">
-						<a href="javascript:;" class="password-do">修改</a>
-					</div>
-					<div class="password-box-next hidden">
-						<div class="old-password-box">
-							<input type="password" class="form-control" name="oldpwd" id="oldpwd" placeholder="当前密码">
-						</div>
-						<div class="mtb10">
-							<input type="password" class="form-control" name="newpwd" id="newpwd" placeholder="新密码">
-						</div>
-						<div>
-							<input type="password" class="form-control" name="newpwd2" id="newpwd2" placeholder="确认密码">
-						</div>
-						<div>
-							<button type="button" class="btn btn-primary password-commit">提交</button>
-							<span class="m-error-msg" id="endMsg"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</form>
-	</div>
-</div>  -->
-
-	<!-- header end -->
-    <!-- center start -->
     <div class="container clearfix" id="jbxq" style="">
         <!-- g-main start -->
         <div class="g-main attraction-details ac-detail mt30 clearfix" style="">
@@ -297,45 +146,7 @@
                 </div>
             </div>
         </div>
-        <!-- g-main end -->
-        <!-- right sidebar start -->
-        <!-- right sidebar end -->
     </div>
-    <!-- center end -->
-<!-- 查看对话 -->    
-<!--  
-<div id="tempDialog" style="display:none;"></div>
-<script type="text/template" id="dialogTemp">
-<div class="dialog-scroll">
-	<div class="m-status-list window-dialog">
-		<ul class="comment-list">
-			<% for(var n = 0, nlen = dialog.length; n < nlen; n++) {
-				var tempDialog = dialog[n].toJSON();
-			%>
-			<li class="each-comment-list <%= (n == nlen-1) ? 'last' : '' %>">
-	    		<div class="clearfix">
-	        		<div class="status-avatar">
-					    <a class="avatar-pic" target="_blank" href="/user/<%= tempDialog.userId %>">
-					        <img alt="<%= tempDialog.userName %>" src="<%= tempDialog.userImgSrc %>">
-					    </a>
-					</div>
-					<div class="status-content">
-				        <a class="user-name" target="_blank" href="/user/<%= tempDialog.userId %>" title="<%= tempDialog.userName %>"><%= tempDialog.username %></a>
-				        <div class="detail">
-				        	<%= tempDialog.dialogContent %>
-				        </div>
-				        <div class="meta clearfix">
-				        	<div class="infos pull-left"><span class="time"><%= tempDialog.date %></span></div>
-				        </div>
-				    </div>
-			    </div>    
-	    	</li>
-			<%}%>	
-	    </ul>
-	</div>
-</div>
-</script>
--->
 <!-- 显示隐藏  -->
 <script type="text/javascript">
 	function refeashs(obj){
@@ -379,7 +190,7 @@
 		a.style.display="block";
 	}
 </script>
-<div id="modal2InboxTemp" style="display: none">
+<div id="modal2InboxTemp" style="display: none" th:if="${list != null}">
     <div class="m-wid-mask"></div>
     <div class="m-wid" style="top: 50%;left: 50%;margin: -250px 0 0 -148px;">
         <div class="wid-header">’
@@ -394,6 +205,7 @@
                         <div class="col-sm-6 f-pos-rlt" th:each="fbyh:${fabuyonghu}" >
                             <p id="sendUser" class="control-label" style="text-align:left;">
                                 <span id="mz" th:utext="${fbyh.uname}"></span>
+                                
                             	<input hidden="hidden" id="dengluid" th:value="${list.uid}">
                             </p>
                         </div>

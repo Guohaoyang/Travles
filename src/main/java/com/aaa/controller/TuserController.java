@@ -3,6 +3,8 @@ package com.aaa.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,19 +35,16 @@ public class TuserController {
 		return "register";
 	}
 	
-	
-	
-	
-	
 	//登录
 	@RequestMapping("login")	
 	@ResponseBody
-	public Integer login(String phone,String upwd)
+	public Integer login(String phone,String upwd,HttpSession s)
 	{
 		List<tusers> users =user.login(phone, upwd);
 		//System.out.println(phone);
 		//System.out.println(users);
-		
+		s.setAttribute("uid", users.get(0).getUid());
+		s.setAttribute("loginqlist", users.get(0));
 		return users.size()>0 ? 1:0;
 	}
 	
@@ -53,7 +52,7 @@ public class TuserController {
 	@RequestMapping("loginh")
 	public String loginh() {
 		//System.out.println("a");
-		return "Trip";
+		return "redirect:../myself/querycity";
 	}
 	
 	//注册
