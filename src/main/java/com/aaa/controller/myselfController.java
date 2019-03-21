@@ -114,12 +114,10 @@ public class myselfController {
 	}
 
 	@RequestMapping("edit")
-	public String edit(tusers t,MultipartFile pic){
-		//System.out.println(t);
-		String Filename = pic.getOriginalFilename();
-		if(Filename==null){
-			ms.edit(t);
-		}else{
+	public String edit(tusers t,MultipartFile pic,HttpSession s){
+		
+			String Filename = pic.getOriginalFilename();
+			System.out.println("pic:"+Filename);
 			SimpleDateFormat formatDate = new SimpleDateFormat("yyyyMMddHHmmss");
 			Date nowtime=new Date();
 			String formatnowtime=formatDate.format(nowtime);
@@ -135,11 +133,21 @@ public class myselfController {
 			}
 			upic = "../"+upic;
 			t.setUpic(upic);
+			tusers map =  (tusers) s.getAttribute("loginqlist");
+			map.setUpic(upic);
 			ms.edit(t);
-		}
-		return "redirect:my?uid="+t.getUid();
+			return "redirect:my?uid="+t.getUid();
 		
 	}
+	
+	@RequestMapping("edits")
+	public String edits(tusers t,HttpSession s){
+		System.out.println("t:"+t);
+		System.out.println("details:"+t.getDetails());
+		ms.edit(t);
+		return "redirect:my?uid="+t.getUid();
+	}
+	
 	
 	@RequestMapping("/uploadOnePic")
     @ResponseBody
@@ -207,5 +215,11 @@ public class myselfController {
 			my(m,s);
 			return "myself";
 		}
+	}
+	
+	@RequestMapping("quits")
+	public String quits(HttpSession s){
+		s.invalidate();
+		return "redirect:querycity";
 	}
 }

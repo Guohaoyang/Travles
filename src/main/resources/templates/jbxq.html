@@ -52,7 +52,7 @@
 						<li style="margin-left: 40px;"><a href="../" title="攻略">攻略</a></li>
 					</ul>
 					 <ul class="nav navbar-nav pull-right  header-nav" id="userInfo"> 
-						<li class="dropdown" th:if="${list!=null}">
+						<li class="dropdown" th:unless="${list==null}">
 							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:utext="${list.uname}"></span><span class="caret"></span></a>
 							<ul style="color: black;" class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span>
@@ -60,11 +60,10 @@
 					            <li><a  href="../myself/showupd" title="个人设置">个人设置</a>
 					            <li><a  href="../myself/querycity" title="退出" id="loginOut">退出</a>
 					        </ul>
-							<div th:if="${list==null}">
-								<li class="dropdown">
-									<a href="../user/a" class="header-login" rel="nofollow">登录/注册</a>
-								</li>
-							</div>
+						</li>
+						<li class="dropdown" th:if="${list==null}">
+							<a href="../user/a" class="header-login" rel="nofollow">登录/注册</a>
+						</li>
 					</ul>  
 				</div>
 			</div>
@@ -140,8 +139,13 @@
                                 </a>	                                                            </div>
                         </div>
                     </div>
-                    <div class="text-center mt30 ">
-                        <a class="btn btn-primary send-to-auth" onclick="back()" href="javascript:;" rel="nofollow">申请结伴</a>
+                    <div>
+                    	<div th:unless="${list==null}" class="text-center mt30 ">
+	                        <a class="btn btn-primary send-to-auth" onclick="back()" href="javascript:;" rel="nofollow">申请结伴</a>
+	                    </div>
+	                    <div th:if="${list==null}" class="text-center mt30 ">
+	                        <a class="btn btn-primary send-to-auth" href="../user/a" rel="nofollow">登陆后申请结伴</a>
+	                    </div>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
 									<img class="photo-sm" th:src="${useres.upic}"></a>
 								</li>
 					            <li><a th:href="@{'showupd?uid='+${useres.uid}}" title="个人设置">个人设置</a></li>
-					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
+					            <li><a href="quits" title="退出" id="loginOut">退出</a></li>
 					        </ul>
 						</li>
 					</ul>
@@ -70,7 +70,7 @@
 						                        <span class="text"><i class="followed-icon"></i>已关注</span>
 						                    </a>
 					                    </div>
-                   						<div th:if="${users.uid != ds.uid}">
+                   						<div th:unless="${users.uid == ds.uid}">
 			           						<a th:onclick="'add(\''+${users.uid}+'\',\''+${useres.uid}+'\')'" style="padding-right: 10px;margin-top: -40px;margin-left: -30px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" class="btn-status follow-status-box pull-right link-cancel   show" rel="nofollow">
 						                        <span class="text"><i class="followed-icon"></i>关注</span>
 						                    </a>
@@ -81,12 +81,6 @@
 	                       			</div>
                        			</div>
                                 <div class="ml20 pull-left"><span></span></div>
-                                  <!--  <a href="javascript:;" data-userid="548687998787519947" data-fan="" data-follow="" th:data-username="${users.uname}" class="btn-status follow-status-box pull-right link-cancel   show" rel="nofollow">
-                                   		<span class="text"><i class="followed-icon"></i>关注</span>
-                                   </a>
-	                                <a href="javascript:;" data-userid="548687998787519947" th:data-username="${users.uname}" class="link-letter  pull-right hide" style="padding-right: 10px;" rel="nofollow">
-	                                    <span class="text-inbox"></span>
-	                                </a> -->
                             	</div>
 	                            <div class="clearfix" style="min-height:40px"></div>
 	                        </div>
@@ -138,7 +132,7 @@
 				                    </a>
 			                    </div>
 			                    <!-- <div th:text="${d.uid}"></div> -->
-                   				<div th:if="${d.uid ne f.uid && f.uid ne useres.uid}">
+                   				<div th:unless="${d.uid == f.uid && f.uid == useres.uid}">
 	           						<a th:onclick="'add(\''+${f.uid}+'\',\''+${useres.uid}+'\')'" style="padding-right: 10px;margin-top: -40px;margin-left: -30px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" class="user-follow pull-right link-follow btn btn-primary   show">
 				                        <span class="text"><i class="add-follow-icon"></i>关注</span>
 				                    </a>
@@ -167,8 +161,8 @@
 					                        <span class="text"><i class="followed-icon"></i>已关注</span>
 					                    </a>
 				                    </div>
-	          						<div th:if="${d.uid != dc.uid}">
-	          							<div th:if="${dc.uid != useres.uid}">
+	          						<div th:unless="${d.uid == dc.uid}">
+	          							<div th:unless="${dc.uid == useres.uid}">
 			           						<a th:onclick="'add(\''+${dc.uid}+'\',\''+${useres.uid}+'\')'" style=" padding-right: 10px; margin-top: -40px; margin-right:-5px; width: 79px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" class="user-follow pull-right link-follow btn btn-primary   show" >
 						                        <span class="text"><i class="add-follow-icon"></i>关注</span>
 						                    </a>
@@ -212,6 +206,9 @@
 	                      		<div style="width: 350px; height:auto; text-align:left; margin-left:80px; font-size: 12px; color: blue;">
 	                  				<h6 th:text="${com.cscontent}"></h6>
 	                   			 </div>
+	                   			 <div style="margin-right: -500px; margin-top: -40px;">
+	           						<a th:href="@{'../backf/jbxq'(id=${com.csid})}">查看</a>
+	           					</div>
                    			 </div>
                     	</li>
                     </ul>
