@@ -42,7 +42,7 @@
 									<img class="photo-sm" th:src="${users.upic}"></a>
 								</li>
 					            <li><a th:href="@{'showupd?uid='+${users.uid}}" title="个人设置">个人设置</a></li>
-					            <li><a href="querycity" title="退出" id="loginOut">退出</a></li>
+					            <li><a href="quits" title="退出" id="loginOut">退出</a></li>
 					        </ul>
 						</li>
 					</ul>
@@ -65,7 +65,8 @@
                                 <div class="user-name pull-left clearfix">
                                     <h1 style="font-size: 24px;width: 300px; height:35px;" class="pull-left" th:text="${users.uname}"></h1><br/>
                                     <div style="width: 300px; height:10px; left: 50px; font-size: 12px; color: blue;">
-	                       				<h6 th:text="${users.details}"></h6>
+                                    	<h6 th:if="${users.details eq '请填写一段个人简介，长度可达200个字，简介将显示在你的个人页上。'}"></h6>
+	                       				<h6 th:unless="${users.details eq '请填写一段个人简介，长度可达200个字，简介将显示在你的个人页上。'}" th:text="${users.details}"></h6>
 	                       			</div>
                        			</div>
                                 <div class="ml20 pull-left"><span></span></div>
@@ -129,7 +130,7 @@
 				                        <span class="text"><i class="followed-icon"></i>已关注</span>
 				                    </a>
                    			 	</div>
-                   			 	<div th:if="${dc.uid != f.uid}">
+                   			 	<div th:unless="${dc.uid == f.uid}">
 	                  			 	<a th:onclick="'add(\''+${f.uid}+'\',\''+${users.uid}+'\')'" style="margin-top: -40px;margin-left: -30px;" href="javascript:;" data-userid="310551469000491008" data-fan="" data-follow="1" class="btn-status follow-status-box pull-right link-cancel show" rel="nofollow">
 				                        <span class="text"><i class="followed-icon"></i>关注</span>
 				                    </a>
