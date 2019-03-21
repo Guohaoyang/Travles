@@ -7,6 +7,7 @@
   <link rel="dns-prefetch" href="https://pic.qyer.com/" /> 
   <link rel="dns-prefetch" href="https://pic1.qyer.com/" /> 
   <link rel="dns-prefetch" href="https://static.qyer.com/" /> 
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" /> 
   <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
   <meta content="telephone=no" name="format-detection" /> 
@@ -22,6 +23,7 @@
 <style>
     html,body,#app{height:100%;-webkit-overflow-scrolling:touch;}
     body{padding:0;margin:0;}
+    #container{width:480px;height:550px;}
 </style> 
 <title>景点信息</title>
 <script>
@@ -393,7 +395,7 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
           <h3> 有关于 象山自然步道 的问题？让穷游er帮你解答！ <a href="https://ask.qyer.com/addquestion?fr=11&amp;subtitle=%E4%B8%AD%E5%9B%BD+%E5%8F%B0%E5%8C%97+%E8%B1%A1%E5%B1%B1%E8%87%AA%E7%84%B6%E6%AD%A5%E9%81%93" data-bn-ipg="place-poi-ask-addQuestion" target="_blank" class="ui_button">我要提问</a></h3>
          </div> -->
         </div>
-        <div class="compo-rightfix">
+       <!--  <div class="compo-rightfix">
          <div class="wrap compo-poi-map">
           <a href="javascript:void(0)" data-bn-ipg="place-poi-map">
            <div class="map">
@@ -404,27 +406,22 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
          </div>
          <div class="sideAdBox">
          </div>
-         <!-- <div class="compo-mguide wrap">
-          <h2 class="title"> 推荐这里的微锦囊 </h2>
-          <ul class="list">
-           <li class="mar30"><a href="https://place.qyer.com/mguide/4834" target="_blank" data-bn-ipg="place-poi-mguide-1-4834" class="item itemLarge"><img src="../static/jingdianxiangqing_files/80(16)" /><p class="theme"> 台北自由行 </p><p class="author"><span><img src="../static/jingdianxiangqing_files/200(10)" /></span><em> summermiro </em></p></a></li>
-           <li class="mar30"><a href="https://place.qyer.com/mguide/7048" target="_blank" data-bn-ipg="place-poi-mguide-2-7048" class="item itemLarge"><img src="../static/jingdianxiangqing_files/80(17)" /><p class="theme"> 台北我最喜欢的 </p><p class="author"><span><img src="../static/jingdianxiangqing_files/200(11)" /></span><em> SIPO_小胖鱼 </em></p></a></li>
-          </ul>
-         </div> -->
-         
-         <!-- <div class="wrap"> 
-		   <h2 class="title"><a href="https://place.qyer.com/taipei/sight/" target="_blank" data-bn-ipg="place-poi-sightNearby-moreSightNearby" class="seeall">更多&gt;&gt;</a>周边景点 </h2> 
-		   <ul class="list"> 
-		    <li>
-		    	<a href="https://place.qyer.com/poi/V2EJalFkBzZTZA/" target="_blank" data-bn-ipg="place-poi-sightNearby-1-59200" class="item">
-			    	<img src="../static/jingdianxiangqing_files/80(18)" />
-			    	<p class="theme">台北故宫博物院</p><p class="starwrap"></p>
-			    	<p class="theme">台北</p><p class="starwrap"></p>
-			    	<p class="theme">郑州</p><p class="starwrap"></p>
-		    	</a>
-		    </li> 
-		  </ul> 
-		</div> -->
+        
+       </div> -->
+       <div class="compo-rightfix">
+         <div class="wrap compo-poi-map">
+         <!--  <a href="javascript:void(0)" data-bn-ipg="place-poi-map">
+           <div class="map">
+            <span class="mask"></span>
+            <em class="des"> 查看地图 </em>
+            <img src="../static/jingdianxiangqing_files/108867_270x180.png" />
+           
+           </div></a> -->
+           <div id="container"></div>
+         </div>
+         <div class="sideAdBox">
+         </div>
+        
        </div>
       </div>
      </div>
@@ -480,5 +477,14 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
   </div>
   <script src="../static/jingdianxiangqing_files/app.fce2b1e1dac1bdcff12f.js.下载" defer=""></script> 
   <script type="text/javascript" async="" src="../static/jingdianxiangqing_files/base_beacon_ga.js.下载"></script>
+  <!-- 地图接口 -->
+ <script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
+<script>
+    var map = new AMap.Map('container', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:11, //初始化地图层级
+        center: [116.397428, 39.90923] //初始化地图中心点
+    });
+</script>
  </body>
 </html>
