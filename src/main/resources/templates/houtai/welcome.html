@@ -4,16 +4,21 @@
         <meta charset="UTF-8">
         <title>欢迎页面-X-admin2.0</title>
         <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta  content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="../static/houtai/css/font.css">
         <link rel="stylesheet" href="../static/houtai/css/xadmin.css">
+        <script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
     </head>
     <body>
+    
     <div class="x-body layui-anim layui-anim-up">
-        <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">test</span>！当前时间:2018-04-25 20:50:53</blockquote>
+         <blockquote class="layui-elem-quote">欢迎管理员：
+            <span class="x-red" th:text="${session.loginAdmin.tname}"></span>
+            	！当前时间:
+            <span class="x-red" id="time"></span>
+        </blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
             <div class="layui-field-box">
@@ -25,44 +30,45 @@
                                     <ul class="layui-row layui-col-space10 layui-this">
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
+                                                <h3>用户数</h3>
                                                 <p>
-                                                    <cite>66</cite></p>
+                                                    <cite th:text="${session.UserNum}"></cite>
+                                                </p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>会员数</h3>
+                                                <h3>景点数量</h3>
                                                 <p>
-                                                    <cite>12</cite></p>
+                                                    <cite th:text="${session.scenicspotsNum}"></cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>回复数</h3>
+                                                <h3>游记数量</h3>
                                                 <p>
-                                                    <cite>99</cite></p>
+                                                    <cite th:text="${session.travelnotesNum}"></cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>商品数</h3>
+                                                <h3>攻略数量</h3>
                                                 <p>
-                                                    <cite>67</cite></p>
+                                                    <cite th:text="${session.strategyNum}"></cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
+                                                <h3>结伴数量</h3>
                                                 <p>
-                                                    <cite>67</cite></p>
+                                                    <cite th:text="${session.comemessage}"></cite></p>
                                             </a>
                                         </li>
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
+                                                <h3>城市数量</h3>
                                                 <p>
-                                                    <cite>6766</cite></p>
+                                                    <cite  th:text="${session.cityNum}"></cite></p>
                                             </a>
                                         </li>
                                     </ul>
@@ -153,14 +159,44 @@
         </fieldset>
         <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote>
     </div>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-    </body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+window.onload=function(){
+//定时器每秒调用一次fnDate()
+setInterval(function(){
+	fnDate();
+	},
+	1000);
+	}
+
+//js 获取当前时间
+function fnDate(){
+	var oDiv=document.getElementById("time");
+	var date=new Date();
+	var year=date.getFullYear();//当前年份
+	var month=date.getMonth();//当前月份
+	var data=date.getDate();//天
+	var hours=date.getHours();//小时
+	var minute=date.getMinutes();//分
+	var second=date.getSeconds();//秒
+	var time=year+"-"+fnW((month+1))+"-"+fnW(data)+" "+fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+	oDiv.innerHTML=time;
+	}
+//补位 当某个字段不是两位数时补0
+function fnW(str){
+	var num;
+	str>10?num=str:num="0"+str;
+	return num;
+	} 
+</script>
+</body>
 </html>

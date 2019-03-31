@@ -36,18 +36,17 @@
           <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','http://localhost:8080/Travle/houtais/mySelf')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a onclick="showTid('个人信息')">个人信息</a>
+              		<input type="hidden" th:value="${session.loginAdmin.tid}" id="tid">
+              </dd>
+              <!-- <dd><a onclick="x_admin_show('修改密码','http://localhost:8080/Travle/houtais/forgetPwd')">修改密码</a></dd> -->
+              <dd><a href=http://localhost:8080/Travle/houtais/login>退出</a></dd>
             </dl>
           </li>
           <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
         </ul>
         
     </div>
-    <!-- 顶部结束 -->
-    <!-- 中部开始 -->
-     <!-- 左侧菜单开始 -->
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
@@ -108,29 +107,20 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>目的地管理</cite>
+                    <cite>地区管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.html">
+                        <a _href="queryScenicspots">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表</cite>
+                            <cite>所有景点</cite>
                         </a>
                     </li >
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>景点管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="cate.html">
+                     <li>
+                        <a _href="queryCity">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite>
+                            <cite>所有城市</cite>
                         </a>
                     </li >
                 </ul>
@@ -267,29 +257,25 @@
             <li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li>
           </ul>
           <div class="layui-tab-content">
-            <div class="layui-tab-item layui-show">
+            <div style="width:100%;height:100%" class="layui-tab-item layui-show">
                 <iframe th:src="@{/houtais/welcome}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
           </div>
         </div>
     </div>
     <div class="page-content-bg"></div>
-    <!-- 右侧主体结束 -->
-    <!-- 中部结束 -->
-    <!-- 底部开始 -->
     <div class="footer">
         <div class="copyright">2018.30.25 16:27</div>  
     </div>
-    <!-- 底部结束 -->
     <script>
-    //百度统计可去掉
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
+    
+    //把登陆者的编号传过去
+    function showTid(text){
+    	var tid = $("#tid").val();
+    	alert(tid);
+    	var url = "http://localhost:8080/Travle/houtais/mySelf?tid=" + tid;
+    	x_admin_show(text,url);
+    }
     </script>
 </body>
 </html>
