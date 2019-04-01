@@ -2,10 +2,13 @@ package com.aaa.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class strategy {
 	private Integer stid;
 	private String stname;
 	private String stcontent;
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private Date createtime;
 	private Integer uid;
 	private Integer cid;

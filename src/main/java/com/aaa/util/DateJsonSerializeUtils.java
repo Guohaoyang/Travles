@@ -7,7 +7,7 @@ import java.util.Date;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-
+/*查询时间转String Json*/
 public class DateJsonSerializeUtils extends JsonSerializer<Date>{
 
 	@Override

@@ -1,12 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
-
-
-<!-- <base href="//webapi.amap.com/ui/1.0/ui/misc/MarkerList/examples/" /> -->
-    
+<head>
+   
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- 
-<link rel="stylesheet" type="text/css" href="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/index.css">
-<link rel="stylesheet" type="text/css" href="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/pagination.css">
+<link rel="stylesheet" href="../static/layui/css/layui.css"  media="all"> 
+<!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/> -->
 <style type="text/css">
 .gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div {
 	font-weight: 400
@@ -36,6 +33,23 @@
 .gm-control-active:hover>img:nth-child(2),.gm-control-active:active>img:nth-child(3)
 	{
 	display: block
+}
+.amapssss
+{
+	width:70px;
+	text-align:center;
+	font-color:black;
+	font-size: 1.5em;
+	border: 1px solid;
+	border-color:black;
+	background-color: white;
+	float: left;
+	font-weight:bold;
+}
+#inputs_s {
+	background-color: white;
+	
+	font-size: 1.5em;
 }
 </style>
 <link type="text/css" rel="stylesheet" href="../static/addXc_files/1.css">
@@ -87,6 +101,10 @@
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%)
+}
+#datepicker {
+	position: absolute;
+	left: 180px;
 }
 </style>
 
@@ -179,26 +197,10 @@ ease-out
  
 }
 }
- #keywords {
-        position: absolute;
-        right: 310px;
-        top: 7px;
-        line-height: 200%;
-        padding: 0 5px;
-        font-size: 13;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-        width: 150px;
-        z-index: 11;
-    }
+
 </style>
 <script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="//webapi.amap.com/ui/1.0/plug/ext/jquery-1.12.4.min.js?v=1.0.11"></script>
-    <script type="text/javascript" src="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/jquery.twbsPagination.min.js?v=1.0.11"></script>
-   <script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
-    <!-- UI组件库 1.0 -->
-    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
-  
+ 
 </head>
 
 <body style="">
@@ -206,20 +208,12 @@ ease-out
 	<!--创建流程 -->
 	<div id="localCityName" style="display:none;" data-cityid="0"
 		data-city=""></div>
-	<div class="plan_creat">
-		<!--创建地图 -->
+    	<div class="plan_creat">
+		<!-- 创建地图 -->
 		<div class="plan_map_layer" id="container" tabindex="0" >
 		</div>
-		 <input type="text" id="keywords" value="AAA软件教育" />
-		 <div id="panel" class="scrollbar1">
-            <ul id="pagination-demo" class="pagination-sm"></ul>
-            <ul id="myList">
-            </ul>
-        </div>
-		<!-- <div class="plan_map_loading" id="createplan_map_loading"
-			style="display: none;">
-			<span>加载中...</span>
-		</div> -->
+		 
+	 
 		<!--创建布局 -->
 		<div class="plan_creat_warp" id="yd" style="left: 0px;">
 			<!--国家城市内容 -->
@@ -228,17 +222,232 @@ ease-out
 				style="z-index:100;">
 				<!--标题 -->
 				<div class="titles">
-					<strong>选择目的地</strong> <a href=""
+					<strong>选择目的地</strong> <!-- <a href=""
 						class="clickmebtn lshow" id="js_mask_showhide" title="收起"
-						data-bn-ipg="Plan-plan_create-place_list-flod"></a>
+						data-bn-ipg="Plan-plan_create-place_list-flod"></a> -->
 					<!--收起class lshow   展开class lhide -->
 				</div>
 				<div class="searchs">
 					<!--搜索框 -->
-					<input type="text" id="js_search_desti" class="searchInput"
-						value="" maxlength="20"
-						data-bn-ipg="Plan-plan_create-place_list-search">
+					<input type="text"  class="searchInput"  id="search_texts"
+						 maxlength="20" 
+						data-bn-ipg="Plan-plan_create-place_list-search" >
+					<div id="inputs_s"></div>
+					<input type="hidden" id="uidss" th:value='${session.uid}'>
 				</div>
+				
+				
+<!-- 搜索智能提示下拉框 -->
+<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+<script src="../static/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //测试用的数据，这里可以用AJAX获取服务器数据
+        var test_list;
+         $.ajax({
+        	url:"../backf/queryByCity",
+  			type:'post',
+  			datatype:'json',
+  			success:function(data){
+  				
+  				test_list=data;
+  			}
+        }); 
+        var old_value = "";
+        var highlightindex = -1;   //高亮
+        //自动完成
+        function AutoComplete(auto, search, mylist) {
+            if ($("#" + search).val() != old_value || old_value == "") {
+                var autoNode = $("#" + auto);   //缓存对象（弹出框）
+                var carlist = new Array();
+                var n = 0;
+                old_value = $("#" + search).val();
+                for (i in mylist) {
+                    if (mylist[i].indexOf(old_value) >= 0) {
+                        carlist[n++] = mylist[i];
+                    }
+                }
+                if (carlist.length == 0) {
+                    autoNode.hide();
+                    return;
+                }
+                autoNode.empty();  //清空上次的记录
+                for (i in carlist) {
+                    var wordNode = carlist[i];   //弹出框里的每一条内容
+                    var newDivNode = $("<div>").attr("id", i);    //设置每个节点的id值
+                    newDivNode.attr("style", "font:14px/25px arial;height:25px;padding:0 8px;cursor: pointer;");
+                    newDivNode.html(wordNode).appendTo(autoNode);  //追加到弹出框
+                    //鼠标移入高亮，移开不高亮
+                    newDivNode.mouseover(function () {
+                        if (highlightindex != -1) {        //原来高亮的节点要取消高亮（是-1就不需要了）
+                            autoNode.children("div").eq(highlightindex).css("background-color", "white");
+                        }
+                        //记录新的高亮节点索引
+                        highlightindex = $(this).attr("id");
+                        $(this).css("background-color", "#ebebeb");
+                    });
+                    newDivNode.mouseout(function () {
+                        $(this).css("background-color", "white");
+                    });
+                    //鼠标点击文字上屏
+                    newDivNode.click(function () {
+                        //取出高亮节点的文本内容
+                        var comText = autoNode.hide().children("div").eq(highlightindex).text();
+                        highlightindex = -1;
+                        //文本框中的内容变成高亮节点的内容
+                        $("#" + search).val(comText);
+                        
+                    })
+                    if (carlist.length > 0) {    //如果返回值有内容就显示出来
+                        autoNode.show();
+                    } else {               //服务器端无内容返回 那么隐藏弹出框
+                        autoNode.hide();
+                        //弹出框隐藏的同时，高亮节点索引值也变成-1
+                        highlightindex = -1;
+                    }
+                }
+            }
+            //点击页面隐藏自动补全提示框
+            document.onclick = function (e) {
+                var e = e ? e : window.event;
+                var tar = e.srcElement || e.target;
+                if (tar.id != search) {
+                    if ($("#" + auto).is(":visible")) {
+                        $("#" + auto).css("display", "none");
+                    }
+                }
+            }
+        }
+        $(window).on('load',function(){
+            old_value = $("#search_text").val();
+            /* $("#search_text").focus(function () {
+                if ($("#search_text").val() == "") {
+                    AutoComplete("auto_div", "search_text", test_list);
+                }
+            }); */
+            $("#search_text").keyup(function () {
+            	var a= $("#search_text").val().length;
+            	if(a>0){
+                AutoComplete("inputs", "search_text", test_list);
+            	}
+            	else{
+                	var c=document.getElementById("inputs");
+                	c.style.display='none';
+                }
+
+            });
+        });
+        
+ 
+
+    </script>				
+	
+	
+	<!-- 搜索框模糊搜索 -->
+	<script type="text/javascript">
+        //测试用的数据，这里可以用AJAX获取服务器数据
+        var test_list;
+         $.ajax({
+        	url:"../backf/queryByCity",
+  			type:'post',
+  			datatype:'json',
+  			success:function(data){
+  				
+  				test_list=data;
+  			}
+        }); 
+        var old_value = "";
+        var highlightindex = -1;   //高亮
+        //自动完成
+        function AutoComplete(auto, search, mylist) {
+            if ($("#" + search).val() != old_value || old_value == "") {
+                var autoNode = $("#" + auto);   //缓存对象（弹出框）
+                var carlist = new Array();
+                var n = 0;
+                old_value = $("#" + search).val();
+                for (i in mylist) {
+                    if (mylist[i].indexOf(old_value) >= 0) {
+                        carlist[n++] = mylist[i];
+                    }
+                }
+                if (carlist.length == 0) {
+                    autoNode.hide();
+                    return;
+                }
+                autoNode.empty();  //清空上次的记录
+                for (i in carlist) {
+                    var wordNode = carlist[i];   //弹出框里的每一条内容
+                    var newDivNode = $("<div>").attr("id", i);    //设置每个节点的id值
+                    newDivNode.attr("style", "font:25px/36px arial;height:40px;padding:0 8px;cursor: pointer;");
+                    newDivNode.html(wordNode).appendTo(autoNode);  //追加到弹出框
+                    //鼠标移入高亮，移开不高亮
+                    newDivNode.mouseover(function () {
+                        if (highlightindex != -1) {        //原来高亮的节点要取消高亮（是-1就不需要了）
+                            autoNode.children("div").eq(highlightindex).css("background-color", "white");
+                        }
+                        //记录新的高亮节点索引
+                        highlightindex = $(this).attr("id");
+                        $(this).css("background-color", "#ebebeb");
+                    });
+                    newDivNode.mouseout(function () {
+                        $(this).css("background-color", "white");
+                    });
+                    //鼠标点击文字上屏
+                    newDivNode.click(function () {
+                        //取出高亮节点的文本内容
+                        var comText = autoNode.hide().children("div").eq(highlightindex).text();
+                        highlightindex = -1;
+                        //文本框中的内容变成高亮节点的内容
+                        $("#" + search).val(comText);
+                        var v= $("#search_text").val();
+                		$("#input").attr('style','display:none')
+                		$("#c").text(v+"(出发)")
+                		$("#te").attr('style','display:block') 
+                        
+                    })
+                    if (carlist.length > 0) {    //如果返回值有内容就显示出来
+                        autoNode.show();
+                    } else {               //服务器端无内容返回 那么隐藏弹出框
+                        autoNode.hide();
+                        //弹出框隐藏的同时，高亮节点索引值也变成-1
+                        highlightindex = -1;
+                    }
+                }
+            }
+            //点击页面隐藏自动补全提示框
+            document.onclick = function (e) {
+                var e = e ? e : window.event;
+                var tar = e.srcElement || e.target;
+                if (tar.id != search) {
+                    if ($("#" + auto).is(":visible")) {
+                        $("#" + auto).css("display", "none");
+                    }
+                }
+            }
+        }
+        $(window).on('load',function(){
+            old_value = $("#search_texts").val();
+            /* $("#search_text").focus(function () {
+                if ($("#search_text").val() == "") {
+                    AutoComplete("auto_div", "search_text", test_list);
+                }
+            }); */
+            $("#search_texts").keyup(function () {
+            	var a= $("#search_texts").val().length;
+            	if(a>0){
+                AutoComplete("inputs_s", "search_texts", test_list);
+            	}
+            	else{
+                	var c=document.getElementById("inputs_s");
+                	c.style.display='none';
+                }
+
+            });
+        });
+        
+ 
+
+    </script>							
+				
 				<div class="creatLoading" id="js_creatLoading"
 					style="display: none;">
 					<div></div>
@@ -249,7 +458,7 @@ ease-out
 						<div class="order" id="country_typelist">
 							<a href="javascript:;" data-typeid="0"
 								data-bn-ipg="Plan-plan_create-place_list-continent-1"
-								class="current">到达</a> </div>
+								class="current"></a> </div>
 					</div>
 					<!--国家列表 -->
 					<div class="founds" id="cityP">
@@ -261,7 +470,7 @@ ease-out
 					<div class="clearfix page"
 						style="width:100%; position:absolute; bottom:0; left:0; text-align:center; line-height:64px; border-top:1px solid #ededed; z-index:30; background:#fff; border-bottom-left-radius:5px; border-bottom-right-radius:5px;">
 						<div class="ui_page" id="fenye">
-							66666666666
+							login...
 						</div>
 					</div>
 				</div>
@@ -276,7 +485,15 @@ ease-out
 			<div class="plan_myplan_content" style="display:none;"id="js_myplanbox">
 				<div class="titles">
           			<strong>我的行程</strong>
-         		 		<div class="date" title="选择日期" id="datepicker" data-bn-ipg="plan-plan_create-place_list-date">出发日期</div>
+         		 	<!-- 	<div id="datepicker">
+						出发：<input type="date" id="ttt" value="2018-03-27" />
+					</div> -->
+					 <div class="layui-inline">
+      						<label class="layui-form-label" >出发时间:</label>
+     						 <div class="layui-input-inline">
+       						 <input type="text" class="layui-input" id="test29" style="width:110px; height:42px; " placeholder="yyyy-MM-dd">
+      						</div>
+    				</div>
        			 </div>
        			<!--  主 -->
 				<div class="lists" id="js_height_resize">
@@ -287,31 +504,32 @@ ease-out
 								data-bn-ipg="plan-plan_create-place_list-alter_depart"></a>
 						</div>
 						<div class="input" id="input" style="display:none;">
-							<input type="text" class="js_start_city" value=""
-								placeholder="输入出发城市" maxlength="20"> <span class="enter">enter</span>
+							<input type="text" class="js_start_city" value="" id="search_text"
+								placeholder="输入出发城市" maxlength="20"> <span class="enter" onclick="entervs()"></span>
 						</div>
+						<div id="inputs"></div>
 					</div>
 					<div id="js_plancitys" class="ui-sortable">
 						<div class="traffics js_traffic" data-cid="0_c1" data-fromxcid="0"
 							data-toxcid="c1">
 							<p class="cnt js_traffic_info">
-								<span class="traffic noinfo">地理信息缺失</span>
+								<span class="traffic noinfo"></span>
 							</p>
 						</div>
 				  <div class="items js_cityitem" id="mm" data-xcid="c1" style="cursor:move;">
 							<a href="javascript:fun()"  class="close" title="delete"
 								data-bn-ipg="plan-plan_create-place_list-delcity"></a> <strong id="sh">上海</strong>
 							<div class="number">
-								<span class="licon js_reduceday" title="减"
+								<span class="licon js_reduceday" title="减" onclick="jian()"
 									data-bn-ipg="plan-plan_create-place_list-reduceday"></span> <span
-									class="nmr js_day">3天</span> <span class="ricon js_addday"
-									title="加" data-bn-ipg="plan-plan_create-place_list-addday"></span>
+									class="nmr js_day" id="tian">2天</span> <span class="ricon js_addday"
+									title="加" onclick="jia()" data-bn-ipg="plan-plan_create-place_list-addday"></span>
 							</div>
 						</div> 
 						<div class="traffics js_traffic" data-cid="c1_1"
 							data-fromxcid="c1" data-toxcid="1">
 							<p class="cnt js_traffic_info">
-								<span class="traffic noinfo">地理信息缺失</span>
+								<span class="traffic noinfo"></span>
 							</p>
 						</div> 
 					</div>
@@ -329,7 +547,7 @@ ease-out
 				</div>
 				<!--  下一步 -->
        			 <div class="next">
-         			 <a href="javascript:;" title="下一步" id="js_createplan_save" data-bn-ipg="plan-plan_create-place_list-nextstep"></a>
+         			 <a href="javascript:;"  onclick="xyb()" title="下一步" id="js_createplan_save" data-bn-ipg="plan-plan_create-place_list-nextstep" data-method="confirmTrans" ></a>
        			 </div>
 		   </div>
 				
@@ -355,252 +573,35 @@ ease-out
 							class="qui-popup-okBtn ui_button" type="button" value="确定">
 						<input class="qui-popup-loadingBtn  ui_button_load" type="button"
 							value="">
+							
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" src="//webapi.amap.com/ui/1.0/plug/ext/jquery-1.12.4.min.js?v=1.0.11"></script>
-    <script type="text/javascript" src="//a.amap.com/amap-ui/static/1.0/ui/misc/MarkerList/examples/jquery.twbsPagination.min.js?v=1.0.11"></script>
-   <script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
 
-    <!-- UI组件库 1.0 -->
-    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>	
+<script src="https://webapi.amap.com/maps?v=1.4.13&key=266190ba6929ccee06c2600f93da6538&plugin=AMap.Driving"></script>
+<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+
 <script type="text/javascript">
-//创建地图
-var map = new AMap.Map('container', {
-    zoom: 9
+var centsr_s= [113,34]
+// 创建地图实例
+var map = new AMap.Map("container", {
+    zoom:6,
+    center:centsr_s,
+    resizeEnable: true
 });
 
-AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWindow'],
-    function(MarkerList, SimpleMarker, SimpleInfoWindow) {
 
-        //即jQuery/Zepto
-        var $ = MarkerList.utils.$;
-
-        var defaultIconStyle = function(index) {
-                return 'red-' + (index + 1);
-            }, //默认的图标样式
-            hoverIconStyle = function(index) {
-                return 'blue-' + (index + 1);
-            }, //鼠标hover时的样式
-            selectedIconStyle = function(index) {
-                return 'blue-' + (index + 1);
-            } //选中时的图标样式
-        ;
-
-
-
-        var markerList = new MarkerList({
-            map: map,
-            //ListElement对应的父节点或者ID
-            listContainer: "myList", //document.getElementById("myList"),
-            //选中后显示
-
-            //从数据中读取位置, 返回lngLat
-            getPosition: function(item) {
-                return item.location;
-            },
-            //数据ID，如果不提供，默认使用数组索引，即index
-            getDataId: function(item, index) {
-
-                return item.id;
-            },
-            getInfoWindow: function(data, context, recycledInfoWindow) {
-
-                if (recycledInfoWindow) {
-
-                    recycledInfoWindow.setInfoTitle(data.name);
-                    recycledInfoWindow.setInfoBody(data.address);
-
-                    return recycledInfoWindow;
-                }
-
-                return new SimpleInfoWindow({
-                    infoTitle: data.name,
-                    infoBody: data.address,
-                    offset: new AMap.Pixel(0, -32)
-                });
-            },
-            //构造marker用的options对象, content和title支持模板，也可以是函数，返回marker实例，或者返回options对象
-            getMarker: function(data, context, recycledMarker) {
-
-                if (recycledMarker) {
-                    recycledMarker.setIconStyle(defaultIconStyle(context.index));
-                    return;
-                }
-
-                return new SimpleMarker({
-                    iconTheme: 'numv1',
-                    containerClassNames: 'my-marker',
-                    iconStyle: defaultIconStyle(context.index),
-                });
-            },
-            //构造列表元素，与getMarker类似，可以是函数，返回一个dom元素，或者模板 html string
-            getListElement: function(data, context, recycledListElement) {
-
-                var label = '' + (context.index + 1);
-
-                //使用模板创建
-                var innerHTML = MarkerList.utils.template(
-                    '<% if(data.photos && data.photos[0]) { %>' +
-                    '<div class="poi-imgbox">' +
-                    '    <span class="poi-img" style="background-image:url(<%- data.photos[0].url %>)"></span>' +
-                    '</div>' +
-                    '<% } %>' +
-                    '<div class="poi-info-left">' +
-                    '    <h3 class="poi-title">' +
-                    '        <%- label %>. <%- data.name %>' +
-                    '    </h3>' +
-                    '    <div class="poi-info">' +
-                    '        <p class="poi-addr">地址：<%- data.address %></p>' +
-                    '<% if(data.tel ){ %>' +
-                    '        <p class="poi-addr">电话：<%- data.tel %></p>' +
-                    '<% } %>' +
-                    '    </div>' +
-                    '</div>' +
-                    '<div class="clear"></div>', {
-                        data: data,
-                        label: label
-                    });
-
-                if (recycledListElement) {
-                    recycledListElement.innerHTML = innerHTML;
-                    return recycledListElement;
-                }
-
-                return '<li class="poibox">' +
-                    innerHTML +
-                    '</li>';
-            },
-            //列表节点上监听的事件
-            listElementEvents: ['click', 'mouseenter', 'mouseleave'],
-            //marker上监听的事件
-            markerEvents: ['click', 'mouseover', 'mouseout'],
-            //makeSelectedEvents:false,
-            selectedClassNames: 'selected',
-            autoSetFitView: true
-        });
-
-        window.markerList = markerList;
-
-        AMap.plugin(["AMap.PlaceSearch"], function() {
-
-            var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
-                pageSize: 5,
-                pageIndex: 1,
-                extensions: 'all',
-                city: "010" //城市
-            });
-
-            var $pagination = $('#pagination-demo');
-
-            function initPagination(page, totalPages) {
-
-                //初始化分页器
-                $pagination.twbsPagination({
-                    totalPages: totalPages,
-                    startPage: page,
-                    prev: null,
-                    first: '首页',
-                    next: '下一页',
-                    last: null,
-                    initiateStartPageClick: false,
-                    onPageClick: function(event, page) {
-                        goPage(page);
-                    }
-                });
-            }
-
-            var inited = false;
-
-            var $keywords = $('#keywords');
-
-            function goPage(page) {
-
-                //设置当前页
-                placeSearch.setPageIndex(page);
-                //关键字查询
-                placeSearch.search($keywords.val(), function(status, result) {
-
-                    if (status !== 'complete') {
-                        alert('返回数据出错!');
-                    }
-
-                    //render当前页的数据
-                    markerList.render(result.poiList.pois);
-
-                    if (!inited) {
-                        inited = true;
-                        //首次初始化
-                        initPagination(page, Math.ceil(result.poiList.count / result.poiList.pageSize));
-                    }
-
-                });
-            }
-
-            goPage(1);
-
-            $keywords.on('keypress', function(e) {
-                if (e.which === 13) {
-                    inited = false;
-                    $pagination.twbsPagination('destroy');
-                    goPage(1);
-                }
-            });
-        });
-
-        markerList.on('selectedChanged', function(event, info) {
-
-            if (info.selected) {
-
-                if (info.selected.marker) {
-                    //更新为选中样式
-                    info.selected.marker.setIconStyle(selectedIconStyle(info.selected.index));
-                }
-            }
-
-            if (info.unSelected && info.unSelected.marker) {
-                //更新为默认样式
-                info.unSelected.marker.setIconStyle(defaultIconStyle(info.unSelected.index));
-            }
-        });
-
-
-        markerList.on('listElementMouseenter markerMouseover', function(event, record) {
-
-            if (record && record.marker) {
-                //非选中的id
-                if (!this.isSelectedDataId(record.id)) {
-                    //设置为hover样式
-                    record.marker.setIconStyle(hoverIconStyle(record.index));
-                    //this.closeInfoWindow();
-                }
-            }
-        });
-
-        markerList.on('listElementMouseleave markerMouseout', function(event, record) {
-
-            if (record && record.marker) {
-
-                if (!this.isSelectedDataId(record.id)) {
-                    //恢复默认样式
-                    record.marker.setIconStyle(defaultIconStyle(record.index));
-                }
-            }
-        });
-
-
-    });
-
-
-  
 	var curPage;        //当前页数
 	var totalItem;      //总记录数
 	var totalPage;      //总页数
 	
 	function page(num)
 	{
+	    
+	        map.clearMap();
+	    
 		
 		$.ajax({
             type: "post",
@@ -608,7 +609,39 @@ AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWin
             data : {pageNum:num},
             dataType: "json",
             success: function(data){
-            	//var obj = JSON.stringify(data);
+            	var obj = JSON.stringify(data);
+            	//console.log(data);
+            	console.log(data.list[0].locationj);
+            	var citys_s=data.list;
+            	
+            	var b = new Array(citys_s.length);
+                for (var i = 0; i < citys_s.length; i++) {
+                	
+                    b[i] = [citys_s[i].locationj, citys_s[i].locationw,citys_s[i].cname];
+                }
+                console.log(b);
+                var markers = [];
+                for (var i = 0; i < b.length; i++) {
+                    var lnglat = b[i];
+                    console.log(lnglat+'1111111');
+                    // 创建点实例
+                    var markerContent = '' +
+                        '<div class="custom-content-marker">' +
+                        ' <div class="amapssss" style="color:balck;" id="a_s'+i+'" onclick="d_s('+i+')">'+lnglat[2]+'</div>' +
+                        '<img src="//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png" style="width:35px;height:45px">' +
+                        
+                        '</div>';
+                    var marker = new AMap.Marker({
+                        position: new AMap.LngLat(lnglat[0], lnglat[1]),
+                        content: markerContent,
+                    });
+                    markers.push(marker);
+                }
+                // 将点添加到地图
+                map.add(markers);
+              
+            	
+            	
             	//后台是Map集合 需要取集合值然后遍历
             	var citys=data.list;    //list数据
             	curPage=data.curPage;     //当前页数
@@ -621,8 +654,8 @@ AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWin
         			 var city  = citys[i]; 
         			 str +="<li class='items js_country js_items' data-type='country' data-bn-ipg='Plan-plan_create-place_list-country-11'>"
         			 		+"<a href='javascript:;'><img src='../static/pic/"+city.citypic+"' width='80' height='80' class='listImg' id='p'></a>"
-        			 		+"<div class='title'>"
-        			 		+"<a href='javascript:;'> <span class='cn' name='cns' id='cns"+i+"'>"+city.cname+"</span></a> <span class='en'>"+city.english+"</span>"
+        			 		+"<div class='title'>"                                                                                          
+        			 		+"<a href='javascript:;'> <span class='cn' name='cns' id='cns"+i+"'>"+city.cname+"</span><span class='en'>"+city.englist+"</span></a>  "
         			 		+"</div> <div class='text'> </div>"
         			 		+"<a href='javascript:void(0);' id='o' onclick='add("+i+")' class='addcity _js_addcity' data-cityid='11595' title='添加到行程' data-bn-ipg='plan-plan_create-place_list-city-addcity'></a></li>";
         		 }
@@ -716,6 +749,7 @@ AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWin
             var value = $(this).text(); 
             //alert(value);
     	 });
+	
 		
 		//点击当前的值
 		var v=$("#cns"+a).text();
@@ -723,6 +757,7 @@ AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWin
 		//淡出效果
 		$("#js_myplanbox").fadeIn(1000);
 		$("#sh").text(v);
+		
 	}
 	function fun()
 	{
@@ -735,6 +770,166 @@ AMapUI.loadUI(['misc/MarkerList', 'overlay/SimpleMarker', 'overlay/SimpleInfoWin
     	$("#te").attr('style','display:none');
     }
 	
+    function d_s(n)
+    {
+    	var m=n;
+    	var city_c=$("#a_s"+m).html();
+    	$("#js_myplanbox").fadeIn(1000);
+    	$("#sh").text(city_c);
+    	/* alert(city_c); */
+    }
+</script>
+</script>
+	<!-- 输入城市样式 -->
+	<script>
+	function entervss()
+	{
+		 var v= $("#search_text").val();
+		$("#input").attr('style','display:none')
+		$("#c").text(v+"(出发)")
+		$("#te").attr('style','display:block') 
+		
+	}
+	
+	
+</script>
+<script>
+//点击下一步添加行程数据
+function xyb()
+{
+	
+	
+	 var star=$("#search_text").val();
+	var end=$("#sh").text();
+	var time=$("#test29").val();
+	var tex=$("#tian").text();
+	
+	var days=tex.substring(0,1);
+	
+	var uid=25;
+	var tname=456;
+	var picd= Math.floor(Math.random()*21);
+	var picf= Math.floor(Math.random()*21+100);
+	//var uid = sission()   用户的uid
+	if(time=='')
+	{
+		layer.msg('添加个出发时间吧！', {
+	        time: 20000, //20s后自动关闭
+	        btn: ['明白了', '好的', ]
+	      });
+	      
+		/* alert(11) */
+		return;
+	}
+	if(star=='')
+	{
+		layer.msg('添加个出发城市吧！', {
+	        time: 20000, //20s后自动关闭
+	        btn: ['明白了', '好的', ]
+	      });
+	      
+		/* alert(11) */
+		return;
+	}
+	if(uid=='')
+	{
+		layer.msg('创建失败了！', {
+	        time: 20000, //20s后自动关闭
+	        btn: ['明白了', '好的', ]
+	      });
+	      
+		/* alert(11) */
+		return;
+	}
+	
+	 $.ajax({
+        type: "post",
+        url: "addxct",
+        data: {start:star,end:end,days:days,startTime:time,uid:uid,tname:tname,picd:picd,picf:picf},
+        dataType: "json",
+        success: function(data){
+        	
+        	if(data==1){
+        		 //添加第几天信息
+        		  $.ajax({
+		   	          type: "post",
+		   	          url: "tidm",
+		   	          data: {uid:uid},
+		   	          dataType: "json",
+		   	          success: function(data){
+		   	              var po=data;
+			   	           $.ajax({
+					   	          type: "post",
+					   	          url: "ts",
+					   	          data: {num:days,uid:uid,tid:po},
+					   	          dataType: "json",
+					   	          success: function(data){
+					   	        	
+					   	          }
+					   	      });  
+		   	          }
+		   	      });  
+        		         		
+        		layer.msg('创建成功！')
+        	window.location.href="addgls?uid="+uid;
+        	} 
+        	else
+        		{
+        		alert("添加失败");
+        		}
+        	
+        }
+    });   	 	 
+}
+</script>
+<!-- 点击天数加减 -->
+<script type="text/javascript">
+	function jian()
+	{
+		var tex=$("#tian").text();
+		var t=tex.substring(0,1);
+		if(t!=1)
+		{
+			t--;
+			$("#tian").text(t+"天");
+			
+		}
+		 
+	}
+	function jia()
+	{
+		var texs=$("#tian").text();
+		var ts=texs.substring(0,1);
+		if(ts!=7)
+		{
+			ts++;
+			$("#tian").text(ts+"天");
+			
+		}
+	}
+	
+</script>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<!-- 时间框 -->
+<script>
+/* 这是个数组layui  分页需要定义成全局的 */
+layui.use(['laydate','layer'], function(){
+	  var laydate = layui.laydate,
+	  
+	  layer = layui.layer;
+	//墨绿主题
+	  laydate.render({
+	    elem: '#test29'
+	    ,theme: 'molv'
+	  });
+});
+
+</script>
+
+  
+<script type="text/javascript">
+
+    
 </script>
 </body>
 </html>

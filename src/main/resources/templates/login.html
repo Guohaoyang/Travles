@@ -39,7 +39,7 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
 </head>
     <body>
       <!--vue-ssr-qyerbodystart-->
-    <div id="app"><div class="q-main view"><div id="js_global_web_fragment"></div><div class="q-container"><templeate></templeate><div class="login-container"><div class="login-wrapper"><div class="login-logo"><img src="../static/login_files/login_logo2.41bd0a52.png" alt="穷游游"><span class="title">登录</span></div><div class="login-section"><div class="q-login-layout"><div class="q-login-form-tip"><span class="tip-error" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span></span></span></div><div class="q-login-tabs"><div class="q-login-tab-item current" style="display:none;">境外手机登录</div>
+    <div id="app"><div class="q-main view"><div id="js_global_web_fragment"></div><div class="q-container"><templeate></templeate><div class="login-container"><div class="login-wrapper"><div class="login-logo"><img src="../static/Trip_files/5772.png" alt="穷游游"><span class="title">登录</span></div><div class="login-section"><div class="q-login-layout"><div class="q-login-form-tip"><span class="tip-error" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span></span></span></div><div class="q-login-tabs"><div class="q-login-tab-item current" style="display:none;">境外手机登录</div>
     <div class="q-login-tab-item current" style="display:;">帐号登录
     
     </div><div class="q-login-tab-item" style="display:;">
@@ -64,13 +64,13 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
      		<div id="captcha"></div>
     		<input id="sessionId" name="sessionId" type="hidden" value="">
    			 <input id="successToken" name="successToken" type="hidden">
-     		<div class="input-tip"><span id="mima" class="tip-error" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span>输入密码啊啊啊</span></span><a href="https://passport.qyer.com/account/forget" data-bn-ipg="web-login-page-getpassword" target="_top" class="remember-link fr">忘记密码</a></div></div>
+     		<div class="input-tip"><span id="mima" class="tip-error" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span>输入密码</span></span><a href="https://passport.qyer.com/account/forget" data-bn-ipg="web-login-page-getpassword" target="_top" class="remember-link fr">忘记密码</a></div></div>
      
      <div class="q-login-form-control" style="display: none;">
      <div class="input-tip"><span class="tip-error" style=""><i class="frame-iconfont frame-icon-tip"></i></span></div></div>
      <div class="q-login-form-control" style="display: none;">
-     <div class="input-tip"><span class="tip-error" style=""><i class="frame-iconfont frame-icon-tip"></i></span><span class="tip-error fr" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span></span></span><span class="fr" style="display:none;">已发送</span></div></div><div class="q-login-form-control"><button class="btn">
-     <span onclick="login()" style="display;" id="submitBtn">登录啊啊啊</span></button></div></div><div class="q-login-auth" style="display:;"><a href="" target="_self" class="auth-qq"><i class="frame-iconfont frame-icon-qq2"></i></a><a href="" target="_self" class="auth-weibo"><i class="frame-iconfont frame-icon-weibo2"></i></a><a href="" target="_self" class="auth-taobao"><i class="frame-iconfont frame-icon-taobao2"></i></a><a href="" target="_self" class="auth-weixin"><i class="frame-iconfont frame-icon-wechat2"></i></a></div>
+     <div class="input-tip"><span class="tip-error" style=""><i class="frame-iconfont frame-icon-tip"></i></span><span class="tip-error fr" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span></span></span><span class="fr" style="display:none;">已发送</span></div></div><div class="q-login-form-control"><button class="btn" onclick="login()">
+     <span  style="display;" id="submitBtn">登录</span></button></div></div><div class="q-login-auth" style="display:;"><a href="" target="_self" class="auth-qq"><i class="frame-iconfont frame-icon-qq2"></i></a><a href="" target="_self" class="auth-weibo"><i class="frame-iconfont frame-icon-weibo2"></i></a><a href="" target="_self" class="auth-taobao"><i class="frame-iconfont frame-icon-taobao2"></i></a><a href="" target="_self" class="auth-weixin"><i class="frame-iconfont frame-icon-wechat2"></i></a></div>
      <div class="q-login-bottom">
      	<span class="fl" style="display:;"><span>没有帐号？</span><a href="aa">立即注册</a></span>
      </div>
@@ -157,7 +157,7 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
                     if (data && falg ) {
                     	//alert(data);
                         $("#successToken").val(data.validate);
-                        window.location.href="loginh";
+                        window.location.href="../strategy/a";
                     }else if(falg == false && data){
                         $("#upwd").val("");
                         alert("密码错误");
