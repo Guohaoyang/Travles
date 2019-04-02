@@ -25,6 +25,7 @@ public interface ChinaDao {
 			+ " left join city c on s.cid = c.cid where c.cname = '大理'")
 	public List<Map<String,Object>> queryDali();
 	
+	
 	@Select("select s.ssid,s.ssname,s.localurl,s.phone,"
 			+ "s.details,s.themeid,s.monthsid,s.scstatus,"
 			+ "s.scenicspotspic,c.cname from scenicspots s"

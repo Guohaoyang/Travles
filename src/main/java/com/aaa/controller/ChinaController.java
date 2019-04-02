@@ -41,6 +41,7 @@ public class ChinaController {
 		//月份
 		List<scenicspots> queryOne = cservice.queryOne();
 		model.addAttribute("queryOne", queryOne);
+		
 		List<scenicspots> queryTwo = cservice.queryTwo();
 		model.addAttribute("queryTwo", queryTwo);
 		List<scenicspots> queryThree = cservice.queryThree();

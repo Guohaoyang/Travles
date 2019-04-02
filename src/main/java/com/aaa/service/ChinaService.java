@@ -23,6 +23,7 @@ public class ChinaService {
 	public List<Map<String, Object>> queryDali(){
 		return cdao.queryDali();
 	}
+	
 	//推荐西安
 	public List<Map<String,Object>> queryXiAn(){
 		return cdao.queryXiAn();
