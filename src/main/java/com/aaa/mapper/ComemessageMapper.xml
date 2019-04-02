@@ -35,7 +35,7 @@
   	</select>
   	<!-- public List<comemessage> queryqll() -->
   	<select id="queryqll" resultType="com.aaa.entity.comemessage">
-  		select *from comemessage ORDER BY csid desc
+  		select * from comemessage ORDER BY csid desc limit #{param1} ,8
   	</select>
   	<!-- public List<comemessage> queryById(int id) -->
   	<select id="queryById" resultType="com.aaa.entity.comemessage">
@@ -45,13 +45,108 @@
   	<select id="tuserByid" resultType="com.aaa.entity.tusers">
   		select *from tusers where uid=#{param1}
   	</select>
-  	<!-- public int addapply(String acontent,int uid,int uuid) -->
+  	<!-- public int addapply(String acontent,int uid,int uuid,int csid) -->
   	<insert id="addapply">
-  		insert into apply(acontent,uid,uuid)
+  		insert into apply(acontent,uid,uuid,csid)
   		<trim prefix="value(" suffixOverrides="," suffix=")">
   			<if test="param1!='' and param2!=null and param3!=null ">
-  				#{param1},#{param2},#{param3}
+  				#{param1},#{param2},#{param3},#{param4}
   			</if>
   		</trim>
   	</insert>
+  	<!-- public city cityPicById(int id) -->
+  	<select id="cityPicById" resultType="com.aaa.entity.city">
+  		select *from city where cid=#{param1}
+  	</select>
+  	<!-- public List<city> QueryCity() -->
+  	<select id="QueryCity" resultType="com.aaa.entity.city">
+  		select *from city
+  	</select>
+  	<!-- public List<Map<Object,Object>> queryApplyNews(int id) -->
+  	<select id="queryApplyNews" resultType="Map">
+  		select a.aid ,a.acontent,a.uid,a.uuid,a.csid,s.uname,s.upic from apply a inner  
+  		join  tusers s on a.uid=s.uid where a.uuid=#{param1}
+  	</select>
+  		<!-- public void del(int id); -->
+	 <delete id="del">
+		delete from apply where aid=#{param1}
+	</delete>
+	<!-- public int addgx(int uid,int uuid) -->
+	<insert id="addgx">
+		insert into comeattention(uid,uuid,csid) value(#{param1},#{param2},${param3})
+	</insert>
+	<!-- public List<Map<Object,Object>> queryComById(Integer id); -->
+	<select id="queryComById" resultType="Map">
+		select c.cid ,c.csid,c.uid,c.createtime,c.cocontent,u.uname,u.upic  from comecomment c inner join tusers u on c.uid=u.uid where csid=#{param1} limit #{param2} ,2
+	</select>
+	<select id="queryHf" resultType="Map" parameterType="Integer">
+		select c.replayid,c.cid,c.uid,c.tcontent,c.createtime,c.tstatus,c.uuid,u.uname,u.upic 
+		from comereply c
+		inner join tusers u
+		on c.uid=u.uid
+		where cid in(select cid from comecomment where csid=#{param1});
+	</select>
+	<!-- public int addpl(String content,Integer csid,Integer uid) -->
+	<insert id="addpl">
+		insert into comecomment(csid,uid,tstatus,cocontent) value(#{param2},#{param3},0,#{param1})
+	</insert>
+	<!-- public List<tusers> queryAllTuser() -->
+	<select id="queryAllTuser" resultType="com.aaa.entity.tusers">
+		select *from tusers
+	</select>
+	<!-- public Integer queryPLCount(Integer id) -->
+	<select id="queryPLCount" resultType="java.lang.Integer">
+		select count(*)num from comecomment where csid=#{param1};
+	</select>
+	<!-- public Integer addhfpl(int csid,int uid,int uuid,String tcontent) -->
+	<insert id="addhfpl">
+		insert into comereply(cid,uid,tcontent,tstatus,uuid) value(#{param1},#{param2},#{param4},0,#{param3})
+	</insert>
+	<!-- public Integer queryComemessageCount() -->
+	<select id="queryComemessageCount" resultType="java.lang.Integer">
+		select count(*)num from comemessage;
+	</select>
+	<!-- public Integer Codejb(int uid,int uuid,int csid) -->
+	<select id="Codejb" resultType="java.lang.Integer">
+		select count(*)num from comeattention where uid=#{param1} and uuid=#{param2} and csid=#{param3}
+	</select>
+	<!-- public int UpaddNum(int id) -->
+	<update id="UpaddNum">
+		update comemessage set num=num+1 where csid=#{param1}
+	</update>
+	<!-- public int UpComemessageTstate(int id) -->
+	<update id="UpComemessageTstate">
+		update comemessage set tstatus=2 where csid=#{param1}
+	</update>
+	<!-- public List<Map<Object,Object>> queryJbxqByid(int id) -->
+	<select id="queryJbxqByid" resultType="Map">
+		select c.csid,c.csname ,t.uname from comemessage c inner join comeattention gx inner join tusers t
+		on c.csid=gx.csid and c.uid=t.uid
+		where c.tstatus=2 and gx.uid=#{param1};
+	</select>
+	<!-- public int queryYesNoComemessageByid(int csid,int mapid,int fbid) -->
+	<select id="queryYesNoComemessageByid" resultType="int">
+		select count(*) from comeattention where uid=#{param2} and uuid=#{param3} and csid=#{param1}
+	</select>
+	<!-- public int addAppRaise(int uuid,int csid,String content) -->
+	<insert id="addAppRaise">
+		insert into appraise(uuid,csid,content) value(#{param1},#{param2},#{param3})
+	</insert>
+	<!-- public List<Map<Object,Object>> queryAppRaiseByid(int id) -->
+	<select id="queryAppRaiseByid" resultType="Map">
+		select a.rid,a.content,a.csid,t.uid,t.uname,t.upic ,a.createtime from appraise a inner join tusers t
+		on a.uuid=t.uid
+		where a.csid=#{param1}
+	</select>
+	<!-- public List<Map<Object,Object>> queryRating(int id) -->
+	<select id="queryRating" resultType="Map">
+		select a.rsid,a.uid,a.cid,a.uuid,a.content,a.createtime,a.tstatus,t.uname,t.upic from rating a inner join tusers t 
+		on a.uid=t.uid 
+		where cid in(select cid from appraise where csid=#{param1})
+	</select>
+	<!-- public int addhfpj(int cid,int uid,int uuid,String content) -->
+	<insert id="addhfpj">
+		insert into rating(cid,uid,uuid,content,tstatus) value(#{param1},#{param2},#{param3},#{param4},1)
+	</insert>
+	
 </mapper>

@@ -3,6 +3,7 @@ package com.aaa.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -128,5 +129,16 @@ public class ContinectService {
 	//查几天天
 	public List<addxc> querydays(Integer tid){
 		return cont.querydays(tid);
+	}
+	//查ID
+	public Integer dxid(Integer days,String xname)
+	{
+		return cont.dxid(days, xname);
+	}
+	//删除一天的一个行程
+		
+	public Integer del_x(Integer xid)
+	{
+		return cont.del_x(xid);
 	}
 }

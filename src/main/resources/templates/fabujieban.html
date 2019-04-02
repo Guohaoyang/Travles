@@ -39,9 +39,9 @@
 	 <input type="hidden" name="uname" id="uname"  th:value="${list.uname}"/>
 	 <input type="hidden" name="uid" id="uid"   th:value="${list.uid}"/>
 	 <div class="navbar navbar-default navbar-fixed-top g-header">
-		<div class="navbar-inner">
+		<div style="background-color: black;" class="navbar-inner">
 			<div class="container">
-                <a href="/" class="logo" title="青驿旅游"><img src="../static/fabujb_files/logo.png" width="60" height="40" alt="青驿旅游"></a>
+                <a href="../myself/querycity" class="logo" title="青驿旅游"><img src="../static/fabujb_files/logo.png" width="60" height="40" alt="青驿旅游"></a>
 				<div class="nav-logined clearfix">
 					<ul class="nav navbar-nav header-nav" > 
 						<li id="navOfIndex"><a href="/" title="青驿">首页</a></li>
@@ -61,18 +61,24 @@
 						<li id="qaIndex"><a href="/qa_square" title="问答">问答</a></li>
 						<li id="companyIndex"><a href="cs" title="结伴">结伴</a></li>
 						<li><a href="/scenics" title="旅行地">旅行地</a></li>
+						<li style="margin-left: 40px;"><a href="../strategy/a" title="攻略">攻略</a></li>
 					</ul>
 					<ul class="nav navbar-nav pull-right  header-nav" id="userInfo"> 
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:utext="${list.uname}"></span><span class="caret"></span>	</a>
-							<ul class="dropdown-menu g-dropdown-menu" role="menu">
-								<li><span class="arrow-top"></span></li>
-								<li class="clearfix"><a class="clearfix" th:title="${list.uname}" target="_blank" href=""><img class="photo-sm" th:src="${list.upic}"></a></li>
-					            <li><a href="http://www.iqingyi.com/setting?type=account" title="个人设置">个人设置</a></li>
-					            <li><a href="http://www.iqingyi.com/logout" title="退出" id="loginOut">退出</a></li>
+						<li class="dropdown" th:if="${list!=null}">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${list.uname}"></span><span class="caret"></span></a>
+							<ul style="color: black;" class="dropdown-menu g-dropdown-menu" role="menu">
+								<li><span class="arrow-top"></span>
+								<li class="clearfix"><a  class="clearfix" th:title="${list.uname}" target="_blank" href=""><img class="photo-sm" th:src="${list.upic}"></a>
+					            <li><a  href="javascrpit:;" title="个人设置">个人设置</a>
+					            <li><a  href="javascrpit:;" title="退出" id="loginOut">退出</a>
 					        </ul>
-						</li>
-					</ul>
+					        </li>
+							<div th:if="${list==null}">
+								<li class="dropdown">
+									<a href="../user/a" class="header-login" rel="nofollow">登录/注册</a>
+								</li>
+							</div>
+					</ul> 
 				</div>
 			</div>
 		</div>
@@ -256,19 +262,33 @@
                 }
             }
         }
-        $(function () {
+        $(window).on('load',function(){
             old_value = $("#search_text").val();
             /* $("#search_text").focus(function () {
                 if ($("#search_text").val() == "") {
                     AutoComplete("auto_div", "search_text", test_list);
                 }
             }); */
-            $("#search_text").keyup(function () {
-                AutoComplete("auto_div", "search_text", test_list);
-            });
-            $("#search_text2").keyup(function () {
-                AutoComplete("auto_div2", "search_text2", test_list);
-            });
+           
+            	$("#search_text").keyup(function () {
+            		var a= $("#search_text").val().length;
+                    if(a>0){
+                    	AutoComplete("auto_div", "search_text", test_list);
+                    }else{
+                    	var c=document.getElementById("auto_div");
+                    	c.style.display='none';
+                    }
+            	});
+                $("#search_text2").keyup(function () {
+                	var a= $("#search_text2").val().length;
+                    if(a>0){
+                    	AutoComplete("auto_div2", "search_text2", test_list);
+                    }else{
+                    	var c=document.getElementById("auto_div2");
+                    	c.style.display='none';
+                    }
+                });
+            
         });
     </script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
@@ -283,9 +303,13 @@
 		  //日期
 		  laydate.render({
 		    elem: '#date'
+		    	,min: 0
+			    ,max: 31
 		  });
 		  laydate.render({
 		    elem: '#date1'
+		    	,min: 0
+			    ,max: 31
 		  });
 		});
 	</script>
@@ -438,18 +462,22 @@
 		var a6=document.getElementById("cscontent").value;
 		var a7=document.getElementById("num").value;
 		var url1="a";
-		$.ajax({
-			url:"addjieban",
-  			type:'post',
-  			datatype:'json',
-  			data:{'uid':a,'title':a1,'ccid':a2,'cid':a3,'createtime':a5,'endtime':a4,'text':a6,'num':a7,'url':url1},
-  			success:function(data){
-  				if(data>0){
-  					alert("成功");
-  					window.location.href="cs";
-  				}
-  			}
-		});
+		if(a!=''&& a1!=''&& a2!=''&& a3!=''&& a4!=''&& a5!='' && a6!=''&& a7!=''){
+			$.ajax({
+				url:"addjieban",
+	  			type:'post',
+	  			datatype:'json',
+	  			data:{'uid':a,'title':a1,'ccid':a2,'cid':a3,'createtime':a4,'endtime':a5,'text':a6,'num':a7,'url':url1},
+	  			success:function(data){
+	  				if(data>0){
+	  					layer.msg('成功');
+	  					window.location.href="cs";
+	  				}
+	  			}
+			});
+		}else{
+			layer.msg('是不是有没输入的字段？');
+		}
 	}
 </script>
 </html>

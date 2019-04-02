@@ -34,7 +34,6 @@ public class TuserController {
 		//System.out.println("a");
 		return "register";
 	}
-	
 	//登录
 	@RequestMapping("login")	
 	@ResponseBody

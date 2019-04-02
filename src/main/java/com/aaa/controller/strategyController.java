@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -105,7 +106,6 @@ public class strategyController {
 	
 	//添加页面
 	@RequestMapping("addXc")
-	
 	public String addXc()
 	{
 		return "addXc";
@@ -242,5 +242,21 @@ public class strategyController {
 	{
 		List<city> list=conct.location();
 		return list;
+	}
+	//查ID
+	@RequestMapping("sdid")
+	@ResponseBody
+	public Integer dxid(Integer days,String xname)
+	{
+		int id=conct.dxid(days, xname);
+		return id;
+	}
+	//删除一天的一个行程
+	@RequestMapping("del_xid")
+	@ResponseBody
+	public Integer del_x(Integer xid)
+	{
+		int a=conct.del_x(xid);
+		return a;
 	}
 }

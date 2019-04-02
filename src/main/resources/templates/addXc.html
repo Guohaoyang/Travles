@@ -377,7 +377,7 @@ ease-out
                 for (i in carlist) {
                     var wordNode = carlist[i];   //弹出框里的每一条内容
                     var newDivNode = $("<div>").attr("id", i);    //设置每个节点的id值
-                    newDivNode.attr("style", "font:25px/36px arial;height:40px;padding:0 8px;cursor: pointer;");
+                    newDivNode.attr("style", "font:25px/36px arial;height:40px;padding:5 8px;cursor: pointer;");
                     newDivNode.html(wordNode).appendTo(autoNode);  //追加到弹出框
                     //鼠标移入高亮，移开不高亮
                     newDivNode.mouseover(function () {

@@ -8,47 +8,33 @@
     <meta name="description" content="this is my page">
     <meta name="content-type" content="text/html; charset=UTF-8">
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-  
-	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+ 	<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+	<link rel="stylesheet" href= "../static/layui/css/layui.css" media="all">
   </head>
   
   <body>
-  <input type="button" onclick="a()">
-  <textarea id="text" style="width: 400px; height: 100px;"></textarea>
-30 
+  <div id="demo1" style="border: 1px solid red;height: 100px;" ></div>
   </body>
-  <script type="text/javascript">
-	  /* var settings = {
-			  "async": true,
-			  "crossDomain": true,
-			  "url": "Access-Control-Allow-Origin:http://apis.haoservice.com/lifeservice/travel/HotelList?cityid=37&page=1&key=6bddf90ddbef40188600c2bcce9b32f9",
-			  "method": "GET" ,
-			  "headers": {withCredentials:true}
-			};
-			$.getJSON(settings).done(function(response){
-			  console.log(response);
-			}); */
-			function showData (data) {
-				console.info("调用showData");
-				var result = JSON.stringify(data);
-				$("#text").val(result);
-			}
-			function a(){	
-				$.ajax({
-					 "url": "http://apis.haoservice.com/lifeservice/travel/HotelList",
-					 "async": true,
-					 "crossDomain": true,
-					 type: "GET",
-					 //dataType:"jsonp",
-					 jsonpCallback: "showData",
-					 data:{"cityid":37,"page":1,"key":"6bddf90ddbef40188600c2bcce9b32f9"},
-					 success:function(data){
-						 var result = JSON.stringify(data);
-						 alert(result);
-						 console.log(data);
-					 },
-					 timeout:3000
-				});
-			}
-  </script>
+  <script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="../static/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+	//打开回复框
+	layui.use(['laypage', 'layer'], function(){
+			var laypage = layui.laypage
+			,layer = layui.layer;			  
+ 		console.log("dsafdsfasdf")
+		//总页数大于页码总数
+		  laypage.render({
+		    elem: 'demo1'
+		    ,count: 70 //数据总数
+		    ,page:true
+		    ,jump: function(obj){
+		      console.log(obj)
+		    }
+		  });
+		  
+		  
+		});
+	</script>
+  
 </html>

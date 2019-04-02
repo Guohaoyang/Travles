@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="http://www.iqingyi.com/static/common/favicon.ico" type="image/x-icon">
 	<title>结伴旅行-捡人,约伴,跟团,组团-青驿旅游智能结伴</title>
     <link rel="stylesheet" id="layuicss-laydate" href="../static/fabujb_files/pc.css" charset="UTF-8">
+    <link rel="stylesheet" href= "../static/layui/css/layui.css" media="all">
     <script src="../static/fabujb_files/hm.js.下载"></script><script>
     var _hmt = _hmt || [];
     (function() {
@@ -32,63 +33,70 @@
 	<div class="navbar navbar-default navbar-fixed-top g-header">
 		<div style="background-color: black;" class="navbar-inner">
 			<div class="container">
-                <a href="http://www.iqingyi.com/" class="logo" title="游世纪旅游"><img src="../static/myselfimg/top.jpg" width="60" height="60" style="margin-top: -10px; margin-left: 40px;" alt="游世纪"></a>
+                <a href="../myself/querycity" class="logo" title="游世纪旅游"><img src="../static/myselfimg/top.jpg" width="60" height="60" style="margin-top: -10px; margin-left: 40px;" alt="游世纪"></a>
 				<div class="nav-logined clearfix">
 					<ul class="nav navbar-nav header-nav" > 
 						<li style="margin-left: 40px;" id="headerNav"><a href="../myself/querycity" title="首页">首页</a></li> 
 						<li style="margin-left: 60px;" id="navOfIndex"><a href="../citys/queryCity" title="目的地">目的地</a></li>
-						<li style="margin-left: 40px;" id="qaIndex"><a href="http://www.iqingyi.com/qa_square" title="游记">游记</a></li>
-						<li style="margin-left: 40px;" id="companyIndex"><a href="../backf/cs" title="结伴">结伴</a></li>
-						<li style="margin-left: 40px;"><a href="../" title="攻略">攻略</a></li>
+						<li style="margin-left: 40px;" id="qaIndex"><a href="" title="游记">游记</a></li>
+						<li style="margin-left: 40px;" id="companyIndex"><a href="../backf/cs?pageNum=1" title="结伴">结伴</a></li>
+						<li style="margin-left: 40px;"><a href="../strategy/a" title="攻略">攻略</a></li>
 					</ul>
 					<ul class="nav navbar-nav pull-right  header-nav" id="userInfo"> 
-						<li class="dropdown" th:if="${list!=null}">
-							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:text="${list.uname}"></span><span class="caret"></span></a>
+						<li class="dropdown" th:unless="${list==null}">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="user-name" th:utext="${list.uname}"></span><span class="caret"></span></a>
 							<ul style="color: black;" class="dropdown-menu g-dropdown-menu" role="menu">
 								<li><span class="arrow-top"></span>
-								<li class="clearfix"><a  class="clearfix" th:title="${list.uname}" target="_blank" href=""><img class="photo-sm" th:src="${list.upic}"></a>
-					            <li><a  href="javascrpit:;" title="个人设置">个人设置</a>
-					            <li><a  href="javascrpit:;" title="退出" id="loginOut">退出</a>
+								<li class="clearfix"><a  class="clearfix" th:title="${list.uname}" target="_blank" href="../myself/my"><img class="photo-sm" th:src="${list.upic}"></a>
+					            <li><a  href="../myself/showupd" title="个人设置">个人设置</a>
+					            <li><a  href="../myself/querycity" title="退出" id="loginOut">退出</a>
 					        </ul>
+					        </li>
 							<div th:if="${list==null}">
 								<li class="dropdown">
 									<a href="../user/a" class="header-login" rel="nofollow">登录/注册</a>
 								</li>
-							</div>
-					</ul>  
+						</div>
+					</ul>
+					<div class="site-demo-button" id="layerDemo" th:if=${xx!=null}>
+						<button  data-method="offset" data-type="auto" class="layui-btn layui-btn-danger layui-btn-radius">有申请结伴消息</button>
+					</div>
+					<div class="site-demo-button" id="layerDemo2" th:if=${pj!=null}>
+						<button  data-method="offset" data-type="auto" class="layui-btn layui-btn-danger layui-btn-radius">评价结伴人消息</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container mt20 clearfix" id="center">
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+
+	<div style="margin-top: 50px;" class="container mt20 clearfix" id="center">
 	<!-- main start -->
 	<div class="comment-module">
 		<div class="clearfix">
 			<h2 class="title pull-left f18 f333">结伴广场</h2>
-			<a href="query" target="_blank" class="btn btn-primary go-add-company pull-right" rel="nofollow">我要结伴</a>
+			<div th:if="${list!=null}">
+				<a href="query" target="_blank" class="btn btn-primary go-add-company pull-right" rel="nofollow">我要结伴</a>
+			</div>
+			<div th:if="${list==null}">
+				<a href="../user/a" target="_blank" class="btn btn-primary go-add-company pull-right" rel="nofollow">登录后可我要结伴</a>
+			</div>
 		</div>
 		<ul class="m-status-list company-list clearfix mt20" id="companyList">
 				<li class="pull-left" th:each="jb:${jblist}">
-					<a target="_blank" th:href="@{'jbxq'(id=${jb.csid})}" th:title="${jb.csname}" class="img-box" >
+					<a target="_blank" th:href="@{'jbxq'(id=${jb.csid},pageNum=1)}" th:title="${jb.csname}" class="img-box" >
 						<img th:alt="${jb.csname}" th:src="${jb.url}"/>
-						<p th:utext="${jb.csname}"></p>
+						<label>标题：</label><span th:utext="${jb.csname}"></span>
 						<!-- <p>
 						  <span th:text="${#calendars.format(jb.createtime,'yyyy-MM-dd')}"></span>
 						</p> -->
 					</a>
+					<p>	
+						<label>旅行：</label><span th:each="c:${city}"><a th:href="@{/citys/queryByCids(cid=${c.cid})}" th:text="${jb.ccid==c.cid}?${c.cname}:''"></a></span>
+					</p>
 				</li>
 		</ul>
-		<div class="pull-right clearfix">
-				<div id="topicPage" class="pagination">
-	            <span class="current prev"></span>
-	                        <span class="current">1</span>
-	                        <a href="">2</a>
-	                        <a href="">3</a>
-	            <span>...</span>
-	        <a href="">424</a>
-	  		<a href="http://www.iqingyi.com/company/p/2" class="next" rel="nofollow"></a>
-	    	</div>		
-    	</div>
+    	<div id="demo1" style="margin-left: 330px;"></div>
 </div>
 	<!-- main end -->
 	<!-- right sidebar start -->
@@ -96,15 +104,14 @@
 	<!-- right sidebar end -->
 <!-- footer start -->
 	<div class="container footer">
-		<div class="copyright">
-            <a href="/sitemap" target="_blank">网站地图</a>
-            <a href="/app" target="_blank">青驿App</a>
-            <a href="/about/faq" target="_blank" rel="nofollow">常见问题</a>
-            <a href="/about/founders_words" target="_blank">关于青驿</a>
-            <a href="/about/contact_us" target="_blank" rel="nofollow">联系我们</a>
+		<div class="copyright" >
+            <a href="" target="_blank">网站地图</a>
+            <a href="" target="_blank">游世纪App</a>
+            <a href="" target="_blank" rel="nofollow">常见问题</a>
+            <a href="" target="_blank">关于游世纪</a>
+            <a href="" target="_blank" rel="nofollow">联系我们</a>
 			© 2015 iQingyi.com
-			<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备15028558号</a>
-			<a href="ccc">查询</a>
+			<a href="" target="_blank" rel="nofollow">粤ICP备15028558号</a>
 		</div>
 	</div>
 	<!-- footer end -->
@@ -167,5 +174,186 @@
 </script><script src="../static/fabujb_files/11.0.1.js.下载" id="sozz"></script><script charset="utf-8" src="../static/fabujb_files/ab77b6ea7f3fbf79.js.下载"></script>
 </div>
 </body>
-	 
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+	layui.use(['laypage', 'layer'], function(){
+		var laypage = layui.laypage
+		,layer = layui.layer;			  
+		//console.log([[${num}]]);
+	//总页数大于页码总数
+	  laypage.render({
+	    elem: 'demo1'
+	    ,count: [[${num}]] //数据总数
+	    ,limit: 8
+	    ,curr:[[${pageNum}]]//当前页
+	    ,jump: function(obj, first){
+		      //console.log(obj);
+	     	if(!first){
+		    	window.location="cs?pageNum="+obj.curr;
+	      } 
+	    }
+	    
+	  });
+	});
+</script>
+<!-- 申请结伴消息 -->
+<script th:inline="javascript" th:if=${xx!=null}>
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+  //触发事件
+  var active = {
+    setTop: function(){
+      var that = this; 
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '当你选择该窗体时，即会在最顶端'
+        ,area: ['390px', '260px']	
+        ,shade: 0
+        ,maxmin: true
+        ,offset: [ //为了演示，随机坐标
+          Math.random()*($(window).height()-300)
+          ,Math.random()*($(window).width()-390)
+        ] 
+        ,content: '//layer.layui.com/test/settop.html'
+        ,btn: ['继续弹出', '全部关闭'] //只是为了演示
+        ,yes: function(){
+          $(that).click(); 
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    }
+    ,offset: function(othis){
+      var type = othis.data('type')
+      ,text = othis.text();
+      
+      var a=[[${xx}]].length;
+      alert('共有'+a+"条申请");
+      layer.open({
+        type: 1
+        ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        ,id: 'layerDemo'+type //防止重复弹出
+        ,content: '<div  style="padding: 20px 100px;">'
+       	+'<a  href="javascript:;" >[[${xx[0].uname}]]'
+       	+'</a>'
+       	+'<br>'
+       	+'<label >申请内容：</label>'
+        +'<span>[[${xx[0].acontent}]]</span><br><hr>'
+      	+'<a href="javascript:;" onclick="No()">不行</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+      	+'<a href="javascript:;" onclick="OrYes()">好的</a>'
+        +'</div>'
+        ,btn: '关闭全部'
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+          layer.closeAll();
+        }
+      });
+    }
+  };
+  $('#layerDemo .layui-btn').on('click', function(){
+    var othis = $(this), method = othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  });
+});
+function No(){
+		$.ajax({
+  			url:"NoOr",
+  			type:'post',
+  			datatype:'json',
+  			data:{'id':[[${xx[0].aid}]]},
+  			success:function(data){
+  				if(data==1){
+  					alert("拒绝成功！");
+  					window.location="cs";
+  				}else{
+					alert("错误背锅！");
+				}
+  			}
+		});
+}
+function OrYes(){
+	 $.ajax({
+			url:"OrYes",
+			type:'post',
+			datatype:'json',
+			data:{'id':[[${xx[0].aid}]],'uid':[[${xx[0].uid}]],'uuid':[[${xx[0].uuid}]],'csid':[[${xx[0].csid}]]},
+			success:function(data){
+				alert(data);
+				if(data==1){
+					alert("祝福你们！越走越远！");
+					window.location="cs";
+				}else{
+					alert("错误背锅！");
+				}
+			}
+	});
+}
+</script>
+<script type="text/javascript" th:if=${pj!=null}>
+//评价结伴人消息
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+	  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+	  //触发事件
+	  var active = {
+	    setTop: function(){
+	      var that = this; 
+	      //多窗口模式，层叠置顶
+	      layer.open({
+	        type: 2 //此处以iframe举例
+	        ,title: '当你选择该窗体时，即会在最顶端'
+	        ,area: ['390px', '260px']	
+	        ,shade: 0
+	        ,maxmin: true
+	        ,offset: [ //为了演示，随机坐标
+	          Math.random()*($(window).height()-300)
+	          ,Math.random()*($(window).width()-390)
+	        ] 
+	        ,content: '//layer.layui.com/test/settop.html'
+	        ,btn: ['继续弹出', '全部关闭'] //只是为了演示
+	        ,yes: function(){
+	          $(that).click(); 
+	        }
+	        ,btn2: function(){
+	          layer.closeAll();
+	        }
+	        ,zIndex: layer.zIndex //重点1
+	        ,success: function(layero){
+	          layer.setTop(layero); //重点2
+	        }
+	      });
+	    }
+	    ,offset: function(othis){
+	      var type = othis.data('type')
+	      ,text = othis.text();
+	      layer.open({
+	        type: 1
+	        ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+	        ,id: 'layerDemo'+type //防止重复弹出
+	        ,content: '<div  style="padding: 20px 100px;">'
+	        +'<label >[[${pj[0].uname}]]</label>'
+	        +'<span>[[${pj[0].csname}]]</span><br><hr>'
+	        +'<a href="jbxq?id=[[${pj[0].csid}]]&pageNum=1">去评价</a>'
+	        +'</div>'
+	        ,btn: '关闭全部'
+	        ,btnAlign: 'c' //按钮居中
+	        ,shade: 0 //不显示遮罩
+	        ,yes: function(){
+	          layer.closeAll();
+	        }
+	      });
+	    }
+	  };
+	  $('#layerDemo2 .layui-btn').on('click', function(){
+	    var othis = $(this), method = othis.data('method');
+	    active[method] ? active[method].call(this, othis) : '';
+	  });
+	});
+</script>
 </html>

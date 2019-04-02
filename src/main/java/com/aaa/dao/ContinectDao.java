@@ -4,6 +4,7 @@ package com.aaa.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -107,4 +108,10 @@ public interface ContinectDao {
 	//查几天
 	@Select("select * from addxc where tid=#{param1}")
 	public List<addxc> querydays(Integer tid);
+	//查要删除的ID
+	@Select("select Max(xid)  from acon where days=#{param1} and xname=#{param2}")
+	public Integer dxid(Integer days,String xname);
+	//删除一天的一个行程
+	@Delete("delete from acon where xid=#{param1}")
+	public Integer del_x(Integer xid);
 }

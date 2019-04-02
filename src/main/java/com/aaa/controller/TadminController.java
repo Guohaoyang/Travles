@@ -30,7 +30,7 @@ public class TadminController {
 	//进登录成功后台页面
 	@RequestMapping("rs")
 	public String aa(){
-		return "zz/tadmin.html";
+		return "back/index.html";
 	}
 	@RequestMapping("login")
 	@ResponseBody
@@ -58,4 +58,5 @@ public class TadminController {
 		map.put("data", list);
 		return map;
 	}
+	
 }
