@@ -24,7 +24,7 @@ public class ChinaController {
 	public String queryRecommend(Model model){	
 		List<Map<String, Object>> Beijing = cservice.queryBeijing();
 		model.addAttribute("Beijing", Beijing);
-		List<Map<String, Object>> Xianggang = cservice.queryXianggang();
+		List<Map<String, Object>> Xianggang = cservice.queryDali();
 		model.addAttribute("Xianggang", Xianggang);
 		List<Map<String, Object>> XiAn = cservice.queryXiAn();
 		model.addAttribute("XiAn", XiAn);
@@ -98,8 +98,6 @@ public class ChinaController {
 		model.addAttribute("queryScenicspotspic", queryScenicspotspic);
 		List<Map<String, Object>> company = cservice.queryCompany(cid);//结伴
 		model.addAttribute("company", company);
-		System.out.println("ByCitys:"+ByCitys);
-		System.out.println("queryScenicspotspic:"+queryScenicspotspic);
 		return "city";
 	}
 	
@@ -113,10 +111,14 @@ public class ChinaController {
 		List<Map<String, Object>> CityList = cservice.queryCitysMH(cname);
 		model.addAttribute("CityList", CityList);
 		model.addAttribute("cname", cname);
-		
 		return "city";
 	}
 	
+	/**
+	 * 查询所有的城市名字
+	 * @param cname
+	 * @return
+	 */
 	@RequestMapping("queryCname")
 	@ResponseBody
 	public List<Map<String, Object>> queryCname(String cname){

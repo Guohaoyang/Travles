@@ -22,8 +22,8 @@ public interface ChinaDao {
 	@Select("select s.ssid,s.ssname,s.localurl,s.phone,"
 			+ "s.details,s.themeid,s.monthsid,s.scstatus,"
 			+ "s.scenicspotspic,c.cname from scenicspots s"
-			+ " left join city c on s.cid = c.cid where c.cname = '香港'")
-	public List<Map<String,Object>> queryXianggang();
+			+ " left join city c on s.cid = c.cid where c.cname = '大理'")
+	public List<Map<String,Object>> queryDali();
 	
 	@Select("select s.ssid,s.ssname,s.localurl,s.phone,"
 			+ "s.details,s.themeid,s.monthsid,s.scstatus,"
@@ -101,9 +101,7 @@ public interface ChinaDao {
 			+ "s.ssid,s.ssname,s.scenicspotspic from  travelnotes t "
 			+ "left join scenicspots s on t.ttid = s.ssid where s.ssname =#{ssname}")
 	public List<Map<String,Object>> queryTravelnotes(String ssname);
-	
-	@Select("select * from scenicspots where cid= #{param1} and ssname != #{param2}")
-	public List<scenicspots> queryOther(Integer ssid,String ssname);
+
 	
 	@Select("select d.tid,d.start,d.end,d.starttime,d.tname,"
 			+ "c.xid,c.xname,c.days,c.xpic,c.xcon  from acon c inner join "

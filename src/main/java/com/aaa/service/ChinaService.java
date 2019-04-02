@@ -20,8 +20,8 @@ public class ChinaService {
 		return cdao.queryBeijing();
 	}
 	//推荐香港
-	public List<Map<String, Object>> queryXianggang(){
-		return cdao.queryXianggang();
+	public List<Map<String, Object>> queryDali(){
+		return cdao.queryDali();
 	}
 	//推荐西安
 	public List<Map<String,Object>> queryXiAn(){
@@ -118,10 +118,6 @@ public class ChinaService {
 	//游记信息
 	public List<Map<String,Object>> queryTravelnotes(String ssname){
 		return cdao.queryTravelnotes(ssname);
-	}
-	//相关景点信息
-	public List<scenicspots> queryOther(Integer ssid,String ssname){
-		return cdao.queryOther(ssid, ssname);
 	}
 	//行程
 	public List<Map<String,Object>> queryOned(Integer days,Integer tid ){
