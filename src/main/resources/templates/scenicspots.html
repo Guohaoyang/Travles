@@ -720,6 +720,7 @@ var __GLOBAL_DATA__ = {
 <div class="plcFirstModule">
 <div class="plcFirstModuleWrap" th:each="q:${queryByCid}">
 <div class="plcFocusPhoto" id="focusPhoto" >
+<<<<<<< HEAD
     <ul class="plcFocusPhotoList">
        <li style="position: absolute; left: 0px;">
            <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
@@ -730,6 +731,16 @@ var __GLOBAL_DATA__ = {
      <div class="poi-detail">
         <div>
               <p th:text="${q.details}"></p> 
+=======
+   <p th:text="${q.cname}" style="font-size: 24px; font-weight: bold; color: green;"></p>
+       <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
+           <img th:src="${q.citypic}" width="950" height="450" alt="">
+       </a>
+      
+     <div class="poi-detail">
+        <div>
+              <p th:text="${q.details}"  style="font-size: 20px;"></p> 
+>>>>>>> refs/remotes/origin/wl
         </div>
      </div>
   

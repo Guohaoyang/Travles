@@ -6,6 +6,14 @@ public class apply {
 	private String acontent;
 	private Integer uid;
 	private Integer uuid;
+	private Integer csid;
+	
+	public Integer getCsid() {
+		return csid;
+	}
+	public void setCsid(Integer csid) {
+		this.csid = csid;
+	}
 	public Integer getAid() {
 		return aid;
 	}
@@ -30,17 +38,21 @@ public class apply {
 	public void setUuid(Integer uuid) {
 		this.uuid = uuid;
 	}
-	@Override
-	public String toString() {
-		return "apply [aid=" + aid + ", acontent=" + acontent + ", uid=" + uid
-				+ ", uuid=" + uuid + "]";
-	}
-	public apply(Integer aid, String acontent, Integer uid, Integer uuid) {
+	
+	
+	public apply(Integer aid, String acontent, Integer uid, Integer uuid,
+			Integer csid) {
 		super();
 		this.aid = aid;
 		this.acontent = acontent;
 		this.uid = uid;
 		this.uuid = uuid;
+		this.csid = csid;
+	}
+	@Override
+	public String toString() {
+		return "apply [aid=" + aid + ", acontent=" + acontent + ", uid=" + uid
+				+ ", uuid=" + uuid + ", csid=" + csid + "]";
 	}
 	public apply() {
 		super();

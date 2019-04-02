@@ -9,6 +9,7 @@ public class comecomment {
 	private Integer uid;
 	private Date createtime;
 	private Integer tstatus;
+	private String cocontent;
 	public Integer getCid() {
 		return cid;
 	}
@@ -39,19 +40,28 @@ public class comecomment {
 	public void setTstatus(Integer tstatus) {
 		this.tstatus = tstatus;
 	}
-	@Override
-	public String toString() {
-		return "comecomment [cid=" + cid + ", csid=" + csid + ", uid=" + uid
-				+ ", createtime=" + createtime + ", tstatus=" + tstatus + "]";
-	}
+	
 	public comecomment(Integer cid, Integer csid, Integer uid, Date createtime,
-			Integer tstatus) {
+			Integer tstatus, String cocontent) {
 		super();
 		this.cid = cid;
 		this.csid = csid;
 		this.uid = uid;
 		this.createtime = createtime;
 		this.tstatus = tstatus;
+		this.cocontent = cocontent;
+	}
+	@Override
+	public String toString() {
+		return "comecomment [cid=" + cid + ", csid=" + csid + ", uid=" + uid
+				+ ", createtime=" + createtime + ", tstatus=" + tstatus
+				+ ", cocontent=" + cocontent + "]";
+	}
+	public String getCocontent() {
+		return cocontent;
+	}
+	public void setCocontent(String cocontent) {
+		this.cocontent = cocontent;
 	}
 	public comecomment() {
 		super();

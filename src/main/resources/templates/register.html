@@ -71,6 +71,7 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
         
         <div class="q-login-form-control">
         <!--   密码 -->
+<<<<<<< HEAD
         <label class="hide">用户名</label><input id="upwd" name="upwd" type="text" title="用户名" maxlength="15" placeholder="起一个不容易忘记的密码" class="input">
         
         <div class="input-tip"><span class="tip-error" id="mm" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span id="bb">两次密码输入不一致</span></span></div></div><div class="q-login-form-control">
@@ -227,6 +228,165 @@ body{color:#323232;background:#fff;text-align:left;-webkit-font-smoothing:antial
              // window.location.href = 'zhu';
              	if(data!=0){
              		alert(666);
+=======
+        <label class="hide">用户名</label><input id="upwd" name="upwd" type="password" title="用户名" maxlength="15" placeholder="起一个不容易忘记的密码" class="input">
+        
+        <div class="input-tip"><span class="tip-error" id="mm" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span id="bb">两次密码输入不一致</span></span></div></div><div class="q-login-form-control">
+        <!--   密码 -->
+        <label class="hide">密码</label> <input type="password" onblur="upw()" id="upwds" name="upwds" title="密码" maxlength="16" placeholder="重复输入密码" class="input">
+        <div class="input-tip"><span class="tip-error" style="display:none;"><i class="frame-iconfont frame-icon-tip"></i><span></span></span><div class="pwd-strong" style="display:none;"><div class="bar"><span class="level level-1" style="display:none;"></span><span class="level level-2" style="display:none;"></span><span class="level level-3" style="display:none;"></span></div><span class="text"></span></div></div></div><div class="q-login-form-control"><button onclick="zc()" class="btn"><span style="display:;">注册</span></button></div></div><div class="q-login-bottom"><span class="fl">
+      已有穷游帐号？<a href="a">登录</a></span><span class="fr">
+    <a href="https://www.qyer.com/htmlpages/exemption.html" target="_blank" data-bn-ipg="web-register-layer-statement"></a></span></div><div class="q-login-tips" style="display:none;"><div class="tip"><span class="icon"></span><span class="text">注册成功</span></div></div></div></div></div><div class="qui-loginFeedback"><div title="登录意见反馈" class="icon js-btn"></div><div class="cnt"><form method="post"><textarea placeholder="有任何意见或建议请告诉我们" class="js-feedback-cnt"></textarea><p class="help">使用遇到问题？请先进入<a href="https://bbs.qyer.com/forum-10-1.html" target="_blank">帮助中心</a></p><p class="label">联系方式</p><input type="text" placeholder="请将您的邮箱或手机号码告诉我们" value="" class="txt js-feedback-contact"><button type="button" class="btn js-submitBtn">提交</button></form></div><!----></div></div></div><div class="q-footer"><templeate><div id="pc_login_bottom"><div id="pc_bottom_con"><div class="top_wrap"><div class="top_left"><div class="row">
+     
+<script type="text/javascript">
+
+	var yzm;
+	var exi;
+	function sj()
+	{
+		var tel=$("#phone").val()
+		
+		if(!(/^1[34578]\d{9}$/.test(tel)))
+		{
+			$("#sjs").css('display','block') 
+			
+		}
+		
+		else if((/^1[34578]\d{9}$/.test(tel)))
+		{
+			
+			$.ajax({
+	            type: "post",
+	            url: "existPhone",
+	            data: {phone:tel},
+	            dataType: "json",
+	            success: function(data){
+	            	
+	           		if(data !='')
+	           			{
+	           				
+	           				
+	           				$("#sjs").css('display','block')
+	           				$("#haha").html("账号已经存在")
+	           				exi=0;
+	           				/* $("#phone").html('')
+	           				$("#haha").html("账号已经存在") */
+	           				/* return; */
+	           			}
+	           		else if(data == '')
+	           		{
+	           			$("#sjs").css('display','none')
+	           			exi=1;
+	           		}
+	           		
+	            }
+	        });
+			
+		}
+		
+		
+		
+	}
+	
+	
+	/* 点击发送验证码 */
+	function fyzm()
+	{
+		if(exi==0)
+			{
+			return;
+			}
+		var phone = $("#phone").val();
+		alert(phone);
+		$.ajax({
+            type: "post",
+            url: "yzm",
+            data: {phone:phone},
+            dataType: "json",
+            success: function(data){
+            	
+           			 yzm=data;
+           			
+            }
+        });
+	}
+	/* 验证验证码 */
+	function yanyzm()
+	{
+		if($("#yzm").val() != yzm )
+		{
+			$("#yz").css('display','block') 
+		}
+		if($("#yzm").val() == yzm )
+		{
+			$("#yz").css('display','none') 
+		}
+	}
+	/*验证密码*/
+	function upw()
+	{
+		var pwd=$("#upwd").val()
+		var pwds=$("#upwds").val()
+		
+		if(pwd!=pwds || pwd=='' || pwds=='')
+		{
+			$("#mm").css('display','block') 
+		}
+		if(pwd==pwds)
+		{
+			$("#mm").css('display','none') 
+		}
+		
+	}
+	
+	/* 点击注册 */
+	function zc()
+	{
+		if($("#phone").val()=='')
+		{
+			$("#sjs").css('display','block')
+			
+			return;
+		}
+		if($("#upwd").val()=='')
+		{
+			$("#mm").css('display','block') 
+			$("#mm").html("请输入密码")
+			return;
+		}
+		if($("#upwd").val()!=$("#upwds").val())
+		{
+			$("#mm").css('display','block') 
+			return;
+		}
+		
+		if($("#yzm").val()=='')
+		{
+			$("#yz").css('display','block')
+			$("#yz").html("请输入验证码")
+			return;
+		}
+		if($("#yzm").val() != yzm )
+		{
+			$("#yz").css('display','block') 
+			return;
+		}
+		else{
+		var phone = $("#phone").val();
+		var upwd = $("#upwd").val();
+		
+		$.ajax({
+            type: "post",
+            url: "Register",
+            data: {phone:phone, upwd:upwd},
+            dataType: "json",
+            success: function(data){
+            	//alert(data);
+             // 
+             	if(data!=0){
+             		alert("注册成功");
+             		window.location.href = '../user/a';
+>>>>>>> refs/remotes/origin/wl
              	}
             }
         });

@@ -8,6 +8,7 @@ public class tusers {
 	private String qq;
 	private String tchat;
 	private String idcard;
+	private String details;
 	private String phone;
 	private String upic;
 	private Integer tstatus;
@@ -64,6 +65,13 @@ public class tusers {
 	}
 	public void setTstatus(Integer tstatus) {
 		this.tstatus = tstatus;
+	}
+	
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
 	}
 	@Override
 	public String toString() {

@@ -721,6 +721,7 @@ var __GLOBAL_DATA__ = {
 <div class="plcFirstModuleWrap">
 <div></div>
 <div class="plcFocusPhoto" id="focusPhoto"  th:each="c:${CnameList}">
+<<<<<<< HEAD
     <ul class="plcFocusPhotoList">
   
        <li style="position: absolute; left: 0px;">
@@ -850,6 +851,134 @@ function fullTrackClose(){
 			          <div class="bottom">
 			              <h3 class="title fontYaHei">
 			                 <a th:href="@{/citys/queryByCids(cid=${c.cid})}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
+=======
+<p th:text="${c.cname}" style="font-size: 24px; font-weight: bold; color: green;"></p>
+    
+      <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
+          <img th:src="${c.countrypic}" width="950" height="450" alt="">
+      </a>
+      
+     <div class="poi-detail">
+        <div>
+              <p th:text="${c.details}" style="font-size: 20px;"></p> 
+        </div>
+     </div>
+  
+</div>
+<div class="plcFocusOperate">
+<script type="text/javascript">
+function beachdoings(){
+    qyerUI.popup.ajax({url:'/api.php?action=beachdoings&id=11',width:720});
+}
+
+function yelpcomment(id,typename,isaddimpress){
+    if(typeof id == 'undefined'){
+        id = '';
+    }
+    if(typeof typename == 'undefined'){
+        typename = 'country';
+    }
+    if(typeof isaddimpress == 'undefined'){
+        isaddimpress = '';
+    } 
+    isaddimpress = parseInt(isaddimpress);    
+    id = parseInt(id);
+    if(id == 0){
+        return;
+    }
+    if(!QYER.uid || QYER.uid=="" || QYER.uid==0){
+        ajaxlogin();
+        return;
+    }else{
+        if(typename=="country"){
+            url = '/public.php?action=impress&countryid='+id+'&showbatchdoings=1';
+        }else if (typename=="city"){
+            url = '/public.php?action=impress&cityid='+id+'&showbatchdoings=1';
+        }
+        
+        if (isaddimpress>0){
+            url = url + '&oper=editform';
+        }else{
+            url = url + '&oper=showform';
+        }
+        popup.ajax(url,'440');
+    }
+}
+
+function batchcomment(id,type){
+    if (!qyerUtil.isLogin()) {
+        qyerUtil.doLogin();
+        return;
+    };
+    if(typeof id == 'undefined'){
+        id = '';
+    }
+    if(typeof type == 'undefined'){
+        type = "city";
+    }
+    $(window).scrollTop(0);
+    var height = $(window).height() - 61;
+    var node = document.getElementById("fullpup_footprint");
+    if(!node){
+        var para = document.createElement("div");
+        para.id = "fullpup_footprint";
+        document.body.appendChild(para);
+        //console.log(para);
+    }
+    
+    var url = "/api.php?action=batchcomment&id="+id+"&type="+type;
+    $.get(url,function(data){
+        $("#fullpup_footprint").text("");
+        $("#fullpup_footprint").append(data).hide().fadeIn(300);
+        $(".fullpup_trackwrap").css("height",height);
+        qyerUI.popup.pupclose();
+    });
+    $("html,body").css("overflow","hidden");
+}
+
+
+function fullTrackClose(){
+    var href = window.location;
+    href = String(href);
+    if(href.indexOf("//place.qyer.com")>=0)
+    {
+       var ref = document.referrer;
+        var baiduurl = "//qt.qyer.com/beacon.gif?type=click&category=comlayer-close1-city-"+ '' +"&campaign=inpage&referer="+ encodeURIComponent(window.location.href) +"&referer_link="+ ref +"&guid="+ jQuery.cookie("_guid") +"&user_id=&session="+ jQuery.cookie("_session");
+        jQuery.get(baiduurl, function(data){});
+        $("#fullpup_footprint").fadeOut(300);
+        $("html,body").css("overflow",""); 
+    }else{
+        location.reload();
+    }
+}
+</script>           
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<!-- 广告 -->
+<div class="Q-place-adbox Q-place-placecountry">
+    <div class="Q-place-adboxinner">
+        <div data-zone_name="具体目的地首页通栏1" data-areas="" data-countries="567" id="zoneid-42" style="width: 980px; height: 100px; margin: 0px; padding: 0px; display: none;" class="mkt_zone loaded nocontent"></div>
+    </div>      
+</div>
+<div class="plcContainer">
+<div class="qyWrap">
+	<h2 class="bigTitle fontYaHei">热门景点信息</h2>
+		<div class="plcHotCityContent" >
+			<div class="plcHotCityLists" >
+                <ul class="plcHotCityList clearfix" style="position: absolute; left: 0px;" >
+			         <li th:each="c:${queryCity}">
+			          <p class="top">
+			              <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
+			                  <img th:src="${c.citypic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
+			              </a>
+			          </p>
+			          <div class="bottom">
+			              <h3 class="title fontYaHei">
+			                 <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
+>>>>>>> refs/remotes/origin/wl
 			              </h3>
 			            <div class="info" th:text="${c.details}"></div>
 			        </div>
