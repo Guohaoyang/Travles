@@ -593,9 +593,9 @@ window.__qRequire__ = {
     <div class="header-inner">
         <a class="q-header-logo" data-bn-ipg="head-logo" href="https://www.qyer.com/"><img class="logo" src="../static/country_files/logo_116x36.png" width="58" height="18"></a>
         <div class="q-header-nav">
-                        <ul class="nav-ul">
+              <ul class="nav-ul">
               <li class="nav-list nav-list-selected">
-                <a class="nav-span" href="javascript:void(0)" data-bn-ipg="head-nav-place" title="目的地">
+                <a class="nav-span" href="../china/queryRecommend" data-bn-ipg="head-nav-place" title="目的地">
                   <span>目的地</span>
                 </a>
               </li>
@@ -720,11 +720,11 @@ var __GLOBAL_DATA__ = {
 <div class="plcFirstModule">
 <div class="plcFirstModuleWrap">
 <div></div>
-<div class="plcFocusPhoto" id="focusPhoto"  th:each="c:${CnameList}">
+<div class="plcFocusPhoto" id="focusPhoto"  th:each="c:${ByCitys}">
 <p th:text="${c.cname}" style="font-size: 24px; font-weight: bold; color: green;"></p>
     
       <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-pic-1">
-          <img th:src="${c.countrypic}" width="950" height="450" alt="">
+          <img th:src="${c.citypic}" width="950" height="450" alt="">
       </a>
       
      <div class="poi-detail">
@@ -838,17 +838,39 @@ function fullTrackClose(){
 		<div class="plcHotCityContent" >
 			<div class="plcHotCityLists" >
                 <ul class="plcHotCityList clearfix" style="position: absolute; left: 0px;" >
-			         <li th:each="c:${queryCity}">
+			         <li th:each="c:${queryScenicspotspic}">
 			          <p class="top">
-			              <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
-			                  <img th:src="${c.citypic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
+			              <a th:href="@{/china/queryBySsname(ssname=${c.ssname})}" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
+			                  <img th:src="${c.scenicspotspic}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
 			              </a>
 			          </p>
 			          <div class="bottom">
 			              <h3 class="title fontYaHei">
-			                 <a th:href="@{'queryByCids?cid='+${c.cid}}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.cityname}"></a>
+			                 <a th:href="@{/china/queryBySsname(ssname=${c.ssname})}" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.ssname}"></a>
 			              </h3>
 			            <div class="info" th:text="${c.details}"></div>
+			        </div>
+			      </li>   
+                </ul>
+			</div>
+		</div>
+	</div>
+	<div class="qyWrap">
+	<h2 class="bigTitle fontYaHei">热门结伴信息</h2>
+		<div class="plcHotCityContent" >
+			<div class="plcHotCityLists" >
+                <ul class="plcHotCityList clearfix" style="position: absolute; left: 0px;" >
+			         <li th:each="c:${company}">
+			          <p class="top"><!-- @{/china/queryBySsname(ssname=${c.ssname})} -->
+			              <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-hotcity-pic-4">
+			                  <img th:src="${c.url}" data-original="https://static.qyer.com/images/place/no/poi_200_133.png" alt="萨达" class="photo lazy" style="display: block;">
+			              </a>
+			          </p>
+			          <div class="bottom">
+			              <h3 class="title fontYaHei">
+			                 <a href="javascript:void(0)" target="_blank" data-bn-ipg="place-country-hotcity-name-4" th:text="${c.csname}"></a>
+			              </h3>
+			            <div class="info" th:text="${c.cscontent}"></div>
 			        </div>
 			      </li>   
                 </ul>

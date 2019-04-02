@@ -26,33 +26,55 @@
 	<script>
 	function searchCountry(){
     	var cname = $("#countryName").val();//获取文本框的值
-    	var flag = false;//定义变量
-    	//文本框为空的时间不执行，直接返回
-    	if(cname == "" || cname.length < 1){
-    		return;
-    	}
-    	//异步查询文本框输入的值是否和数据库里的值匹配
+    	//alert(cname);
     	$.ajax({
     		url:'queryCname',
     		type:'post',
+    		data:{cname:cname},
     		success:function(data){
-    			//循环数据库的国家值
-    			for (var i = 0; i < data.length; i++) {
-					if(cname == data[i]){
-						flag = true;
-						break;
-					}
-				}//成功 
-    			if(flag){
-    	    		//跳转到其他页面
-    	    		top.location.href = "http://localhost:8080/Travle/citys/queryMuHu?cname="+cname;
-    	    	}else{//失败清空并且弹框不纯在!
-    	    		$("#countryName").val("");
-    	        	alert("对不起，您搜索的国家数据不存在!");
-    	    	}
+    			//alert(JSON.stringify(data[1].cname));
+    			$("#showCity").show();
+    			//$("#showCity").atrr("class","searchList js-search-list");
+    			var html="<ul>";
+    			for(var i in data){
+    				if(cname == data[i].cname){
+    					//window.location.href="http://localhost:8080/Travle/citys/queryMuHu?cname="+cname;
+    				}else{
+    					//alert("--"+data[i].cname)
+	                   html+=" <li><a href='queryBySsname?ssname="+data[i].ssname+"' target='_blank' data-name='中国' data-bn-ipg='place-hp-searchList-中-1'><em><span class='cGreen'>"+data[i].cname+"</span></em><span class='property'>"+data[i].ssname+"</span></a></li>";
+    				}
+    			}
+    			html+="</ul>";
+    			$("#showCity").html(html);
+    		
     		}
     	});
     }
+	
+	function SerachCname(){
+		var cnames = $("#countryName").val();
+		//alert(cnames);
+		$.ajax({
+    		url:'queryCname',
+    		type:'post',
+    		data:{cname:cnames},
+    		success:function(data){
+    			for(var i=0;i<data.length;i++){
+    				if(cnames == data[i].cname){
+    					window.location.href="http://localhost:8080/Travle/china/queryMu?cname="+cnames;
+    				}else if(cnames != data[i].cname){
+        				return;		
+        			}else{
+        				alert("数据不存在!");
+        				$("#showCity").hidden();
+        			}
+    			}
+    				
+    		}
+		}); 
+		
+		
+	}
 	</script>
 </head>
 
@@ -67,25 +89,16 @@
         'ugc_type':'place_index',
         'ugc_content':'',
         'abt':''
-    };
-   
-    function searchs(cname){
-    	$.post('citys/queryMuHu',{"cname":cname},function(data){
-    		
-    	}
-    }
-
-    
+    };    
 </script>
 
 
-	<link rel="stylesheet"
-		href="../static/mdd_files/headerfoot_black.min-432199a511540a5637600436ca6f91ae.css">
+	<link rel="stylesheet" href="../static/mdd_files/headerfoot_black.min-432199a511540a5637600436ca6f91ae.css"></link>
 		<script src="../static/mdd_files/headerfoot_black.min-7a04836a5d760bad5cbbf37bafe01b05.js"></script>
 		<div class="q-layer-header">
 			<div class="header-inner">
 				<a class="q-header-logo" data-bn-ipg="head-logo"
-					href="javascript:void(0)"><img class="logo"
+					href="../myself/querycity"><img class="logo"
 					src="../static/mdd_files/logo_116x36.png" width="58" height="18"></a>
 				<div class="q-header-nav">
 					<ul class="nav-ul">
@@ -94,8 +107,11 @@
 							title="目的地"> <span>目的地</span>
 						</a></li>
 						<li class="nav-list "><a class="nav-span"
-							href="javascript:void(0)" data-bn-ipg="head-nav-guide"
-							title="锦囊"> <span>锦囊</span>
+							href="../strategy/a" data-bn-ipg="head-nav-guide"
+							title="锦囊"> <span>攻略</span>
+						</a></li><li class="nav-list "><a class="nav-span"
+							href="../backf/cs" data-bn-ipg="head-nav-guide"
+							title="结伴"> <span>结伴</span>
 						</a></li>
 						<li class="nav-list nav-list-layer "><a class="nav-span"
 							href="javascript:void(0)" data-bn-ipg="head-nav-hotel"
@@ -254,18 +270,28 @@
 						<div class="search-container place-search" data-selector="sss">
 							<div class="left">
 								<input type="text" id="countryName" class="search js-search-input" value=""
-									placeholder="搜索国家名..."/>
+									placeholder="搜索城市名..." oninput="searchCountry()"/>
 							</div>
 							<div class="right">
-							<!-- @{/citys/queryMuHu(cname='+${cname}+')} -->
-								<a href="javascript:searchCountry()" class="btn js-search-btn"> 
-								<span class="iconfont search-icon" ></span>搜索
+								<a href="javascript:SerachCname()" class="btn js-search-btn"> 
+								<span class="iconfont search-icon"></span>搜索
 								</a>
 							</div>
-							<div class="searchList js-search-list" style="display: none"></div>
+							<div id="showCity" class="searchList js-search-lis" style="display: none;">
+							
+							<ul>
+								<li><a href="https://place.qyer.com/china/" target="_blank" data-name="中国" data-bn-ipg="place-hp-searchList-中-1"><em><span class="cGreen">中</span>国  China</em><span class="property">亚洲国家</span></a></li>
+								 <li><a href="https://place.qyer.com/central-african-republic/" target="_blank" data-name="中非共和国" data-bn-ipg="place-hp-searchList-中-2"><em><span class="cGreen">中</span>非共和国  Central African Republic</em><span class="property">非洲国家</span></a></li>
+				                    <li><a href="https://place.qyer.com/midway-islands/" target="_blank" data-bn-ipg="place-hp-searchList-中-3"><em><span class="cGreen">中</span>途岛  Midway Islands</em><span class="property">美国区域</span></a></li>
+				                    <li><a href="https://place.qyer.com/middle-caicos/" target="_blank" data-bn-ipg="place-hp-searchList-中-4"><em><span class="cGreen">中</span>凯科斯岛  Middle Caicos</em><span class="property">特克斯和凯科斯群岛区域</span></a></li>
+				                    <li><a href="https://place.qyer.com/middle-island/" target="_blank" data-bn-ipg="place-hp-searchList-中-5"><em><span class="cGreen">中</span>岛  Middle Island</em><span class="property">澳大利亚区域</span></a></li>
+				                    <li><a href="https://place.qyer.com/region-midtjylland/" target="_blank" data-bn-ipg="place-hp-searchList-中-6"><em><span class="cGreen">中</span>日德兰大区  Region Midtjylland</em><span class="property">丹麦区域</span></a></li>
+				                    <li><a href="https://place.qyer.com/centre-val-de-loire/" target="_blank" data-bn-ipg="place-hp-searchList-中-7"><em><span class="cGreen">中</span>央大区  Centre-Val de Loire</em><span class="property">法国区域</span></a></li>
+				                    <li><a href="https://place.qyer.com/middle-aston/" target="_blank" data-name="中阿斯顿" data-bn-ipg="place-hp-searchList-中-8"><em><span class="cGreen">中</span>阿斯顿  Middle Aston</em><span class="property">英国城市</span></a></li>
+							</ul>
+						</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<div class="Q-place-adbox Q-place-home-box">
@@ -281,50 +307,52 @@
 				</h3>
 				<div class="place-home-tab">
 					<ul class="tab" id="js-tab-1">
-						<li class="on" data-bn-ipg="place-index-hotcitytab-1"><span>
-								热门推荐 </span></li>
-						<li data-bn-ipg="place-index-hotcitytab-2" class=""><span>
-								中国城市 </span></li>
-						<li data-bn-ipg="place-index-hotcitytab-3" class=""><span>
-								东南亚及亚洲其他 </span></li>
-						<li data-bn-ipg="place-index-hotcitytab-4"><span> 欧洲 </span>
+						<!-- <li data-bn-ipg="place-index-hotcitytab-2" class=""><span>
+								城市推荐 </span></li> -->
+						<!-- <li data-bn-ipg="place-index-hotcitytab-2" class=""><span>
+								上海推荐 </span></li> -->
+						<!-- <li data-bn-ipg="place-index-hotcitytab-3" class=""><span>
+								成都推荐 </span></li> -->
+						<li data-bn-ipg="place-index-hotcitytab-4" class=""><span> 
+								城市推荐 </span>
 						</li>
 					</ul>
 					<span class="js-line line" style="left: 105.5px;">热门推荐</span>
 				</div>
 				<div class="place-home-card1" id="js-container-1">
-					<ul class="center">
+					<!-- <ul class="center">
 						<li class="item">
 							<dl>  
-							<dt>推荐城市</dt>
+							<dt>北京</dt>
 								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${cl.cid})}" th:each="cl:${cityList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${cl.cname}"></a> 
+									<a href="javascript:void(0)" th:each="bj:${Beijing}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${bj.ssname}"></a> 
 								</dd>
 							</dl>
 						</li>
-					</ul>
-					<ul class="">
+						<li class="item">
+							<dl>
+								<dt>香港</dt>
+								<dd >
+									<a href="javascript:void(0)" th:each="xg:${Xianggang}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${xg.ssname}"></a>  
+								</dd>
+							</dl>
+						</li>
+					</ul> -->
+					<!-- <ul class="">
 						<li class="item">
 						
 							<dl>
-								<dt>中国城市</dt>
+								<dt>推荐城市</dt>
 								<dd >
-									<a th:href="@{/citys/queryByCids(cid=${china.cid})}" th:each="china:${chinaList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${china.cname}"></a>  
-								</dd>
-							</dl>
-							
-							<dl>
-								<dt>中国城市</dt>
-								<dd >
-									<a th:href="@{/citys/queryByCids(cid=${desc.cid})}" th:each="desc:${descList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${desc.cname}"></a>  
+									<a href="javascript:void(0)" th:each="xg:${Xianggang}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${xg.ssname}"></a>  
 								</dd>
 							</dl>
 						</li>
-					</ul>
-					<ul class="">
+					</ul> -->
+					<!-- <ul class="">
 						<li class="item">
 							<dl>
 								<dt>印度</dt>
@@ -333,101 +361,44 @@
 										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${india.cname}"></a> 
 								</dd>
 							</dl>
-							<dl>
-								<dt>越南</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${vietnam.cid})}" th:each="vietnam:${vietnamList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${vietnam.cname}"></a>
-								</dd>
-							</dl>
-							<dl>
-								<dt>尼泊尔</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${nepal.cid})}" th:each="nepal:${nepalList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${nepal.cname}"></a>
-								</dd>
-							</dl>
-
 						</li>
-						<li class="item">
-							<dl>
-								<dt>日本</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${japan.cid})}" th:each="japan:${japanList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${japan.cname}"></a>
-								</dd>
-							</dl>
-							<dl>
-								<dt>印度尼西亚</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${indonesia.cid})}" th:each="indonesia:${IndonesiaList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${indonesia.cname}"></a>  
-								</dd>
-							</dl>
-							<dl>
-								<dt>马来西亚</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${malaysia.cid})}" th:each="malaysia:${malaysiaList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${malaysia.cname}"></a>  
-								</dd>
-							</dl>
-
-						</li>
-					</ul>
+					</ul> -->
 					<ul>
 						<li class="item">
+							<!-- <dl>
+								<dt>香港</dt>
+								<dd >
+									<a href="javascript:void(0)" th:each="xg:${Xianggang}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${xg.ssname}"></a>  
+								</dd>
+							</dl> -->
 							<dl>
-								<dt>意大利</dt>
+								<dt>香港</dt>
+								<dd >
+									<a th:href="@{/china/queryBySsname(ssname=${xg.ssname})}" th:each="xg:${Xianggang}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${xg.ssname}"></a>  
+								</dd>
+							</dl>
+							<dl>  
+							<dt>北京</dt>
 								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${italiana.cid})}" th:each="italiana:${italianaList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${italiana.cname}"></a>
+									<a th:href="@{/china/queryBySsname(ssname=${bj.ssname})}" th:each="bj:${Beijing}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${bj.ssname}"></a> 
 								</dd>
 							</dl>
 							<dl>
-								<dt>英国</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${uk.cid})}" th:each="uk:${ukList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${uk.cname}"></a>
+								<dt>西安</dt>
+								<dd >
+									<a th:href="@{/china/queryBySsname(ssname=${xa.ssname})}" th:each="xa:${XiAn}" target="_blank"
+										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${xa.ssname}"></a>  
 								</dd>
 							</dl>
-							<dl>
-								<dt>德国</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${deutschland.cid})}" th:each="deutschland:${deutschlandList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${deutschland.cname}"></a>
-								</dd>
-							</dl>
-
 						</li>
-						<li class="item">
-							<dl>
-								<dt>法国</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${france.cid})}" th:each="france:${franceList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${france.cname}"></a>
-								</dd>
-							</dl>
-							<dl>
-								<dt>西班牙</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${reino.cid})}" th:each="reino:${ReinoList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${reino.cname}"></a>
-								</dd>
-							</dl>
-							<dl>
-								<dt>瑞士</dt>
-								<dd>
-									<a th:href="@{/citys/queryByCids(cid=${land.cid})}" th:each="land:${SwitzerlandList}" target="_blank"
-										data-bn-ipg="place-index-hotcity-0-0-0"  th:text="${land.cname}"></a>
-								</dd>
-							</dl>
-
-						</li>
-						</ul>
+					</ul>
 				</div>
 				<div class="place-btn-container">
 					<a href="javascript:void(0)" data-bn-ipg="place-index-hotcity-all"
-						class="place-home-btn" id="js-see-all"> 查看全部国家 </a>
+						class="place-home-btn" id="js-see-all"> 查看全部城市 </a>
 				</div>
 			</div>
 
@@ -452,9 +423,9 @@
 				</div>
 				<div class="place-home-card2" id="js-container-2">
 					<ul data-lazyload="true" class="" style="margin-left:90px;">
-						<li th:each="t:${queryByRain}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+						<li th:each="t:${Rain}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
 							th:style="'background-image:url('+${t.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${t.ssid})}"
+							<a th:href="@{/china/queryBySsname(ssname=${t.ssname})}"
 							target="_blank" class="inner"
 							data-bn-ipg="place-index-explore-0-1">
 								<h4 th:text="${t.ssname}"></h4>
@@ -463,9 +434,9 @@
 					</li>
 				</ul>
 				<ul data-lazyload="true" class="center" style="margin-left:90px;">
-					<li th:each="q:${queryByRomantic}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+					<li th:each="q:${Romantic}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
 							th:style="'background-image:url('+${q.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							<a th:href="@{/china/queryBySsname(ssname=${q.ssname})}"
 							target="_blank" class="inner"
 							data-bn-ipg="place-index-explore-0-1">
 								<h4 th:text="${q.ssname}"></h4>
@@ -474,9 +445,9 @@
 					</li>
 				</ul>
 				<ul data-lazyload="true" class="center" style="margin-left:90px;">
-					<li th:each="q:${queryByExplore}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+					<li th:each="q:${Explore}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
 							th:style="'background-image:url('+${q.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							<a th:href="@{/china/queryBySsname(ssname=${q.ssname})}"
 							target="_blank" class="inner"
 							data-bn-ipg="place-index-explore-0-1">
 								<h4 th:text="${q.ssname}"></h4>
@@ -486,9 +457,9 @@
 				</ul>
 				
 					<ul data-lazyload="true" style="margin-left:90px;">
-						<li th:each="q:${queryByTravel}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
+						<li th:each="q:${Travel}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/25/15063264412357?imageMogr2/interlace/1|imageslim"
 							th:style="'background-image:url('+${q.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${q.ssid})}"
+							<a th:href="@{/china/queryBySsname(ssname=${q.ssname})}"
 							target="_blank" class="inner"
 							data-bn-ipg="place-index-explore-0-1">
 								<h4 th:text="${q.ssname}"></h4>
@@ -536,7 +507,7 @@
 					<ul data-lazyload="true" class="center">
 						<li th:each="one:${queryOne}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}"
 							target="_blank" class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -546,7 +517,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryTwo}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" 
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" 
 							target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
@@ -558,7 +529,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryThree}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -568,7 +539,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryFour}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -578,7 +549,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryFive}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -588,7 +559,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${querySix}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -598,7 +569,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${querySeven}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -608,7 +579,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryEight}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -618,7 +589,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryNine}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -628,7 +599,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryTen}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -638,7 +609,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryEleven}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -648,7 +619,7 @@
 					<ul data-lazyload="true">
 						<li th:each="one:${queryTwelve}" data-origin="https://pic.qyer.com/public/place/themeinfo/2017/09/22/15060669127219?imageMogr2/interlace/1|imageslim"
 						th:style="'background-image:url('+${one.scenicspotspic}+')'">
-							<a th:href="@{/citys/queryBySsid(ssid=${one.ssid})}" target="_blank"
+							<a th:href="@{/china/queryBySsname(ssname=${one.ssname})}" target="_blank"
 							class="inner" data-bn-ipg="place-index-monthly-0-0">
 								<h4 th:text="${one.ssname}"></h4>
 								<div class="content" th:text="${one.details}"></div>
@@ -661,15 +632,12 @@
 			<!-- 目的地列表 -->
 			<div class="place-home-box" id="js-country-box">
 				<h3 class="place-home-title">
-					<span class="title"> 国家列表 </span>
+					<span class="title"> 城市列表 </span>
 				</h3>
 				<div class="place-home-tab">
 					<ul class="tab" id="js-tab-4">
-						<li class="on" data-bn-ipg="place-index-continent-1"><span>
-								亚洲 </span></li>
-						<li data-bn-ipg="place-index-continent-2"><span> 欧洲 </span></li>
-						<li data-bn-ipg="place-index-continent-4"><span> 北美 </span></li>
-						<li data-bn-ipg="place-index-continent-6"><span> 大洋洲 </span>
+						<li class="on" data-bn-ipg="place-index-continent-1">
+							<span>中国城市列表信息</span>
 						</li>
 					</ul>
 					<span class="js-line line" style="left: 196px;">亚洲</span>
@@ -677,34 +645,10 @@
 				<div class="place-home-destination">
 					<div class="place-home-card4" id="js-container-4">
 						<ul class="center">
-							<li th:each="asiaist:${asiaistList}"><span class="item "> 
-							<a th:href="@{'../citys/queryCountry?cid='+${asiaist.cid}}" target="_blank"
+							<li th:each="asiaist:${cities}"><span class="item "> 
+							<a th:href="@{'../china/queryByCitys?cid='+${asiaist.cid}}" target="_blank"
 									data-bn-ipg="place-index-countrylist-0-0">
 									 <span th:text="${asiaist.cname}"></span> 
-								</a>
-							</span></li>
-						</ul>
-						<ul>
-							<li th:each="europe:${europeList}"><span class="item "> 
-							<a th:href="@{'../citys/queryCountry?cid='+${europe.cid}}" target="_blank"
-									data-bn-ipg="place-index-countrylist-0-0">
-									 <span th:text="${europe.cname}"></span> 
-								</a>
-							</span></li>
-						</ul>
-						<ul>
-							<li th:each="america:${americaList}"><span class="item "> 
-							<a th:href="@{'../citys/queryCountry?cid='+${america.cid}}" target="_blank"
-									data-bn-ipg="place-index-countrylist-0-0">
-									 <span th:text="${america.cname}"></span> 
-								</a>
-							</span></li>
-						</ul>
-						<ul>
-						<li th:each="oceania:${oceaniaList}"><span class="item "> 
-							<a th:href="@{'../citys/queryCountry?cid='+${oceania.cid}}" target="_blank"
-									data-bn-ipg="place-index-countrylist-0-0">
-									 <span th:text="${oceania.cname}"></span> 
 								</a>
 							</span></li>
 						</ul>
