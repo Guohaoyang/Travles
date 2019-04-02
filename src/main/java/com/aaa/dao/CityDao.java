@@ -4,13 +4,37 @@ import java.util.List;
 
 
 
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.aaa.entity.city;
 
 @Mapper
 public interface CityDao {
 
+	@Select("select * from city where cname = #{cname}")
+	public List<city> queryByCname(String cname);
+	
+	@Select("select * from city where cname = '北京'")
+	public List<city> queryBeijing();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public List<city> queryCity();
 	

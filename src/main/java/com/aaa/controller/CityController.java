@@ -17,7 +17,7 @@ import com.aaa.service.CountryService;
 import com.aaa.service.ScenicspotsService;
 
 @Controller
-@RequestMapping("citys")
+@RequestMapping("cityss")
 public class CityController {
 
 	@Autowired
@@ -29,6 +29,13 @@ public class CityController {
 	@Autowired
 	ScenicspotsService ss;
 	
+	
+	public String queryByCname(Model model){
+		List<city> Beijing = cservice.queryBeijing();
+		model.addAttribute("Beijing", Beijing);
+		
+		return "mdd";
+	}
 	/**
 	 * 根据分类查询国家  
 	 * 根据主题查询景点
@@ -39,65 +46,39 @@ public class CityController {
 	 */
 	@RequestMapping("queryCity")
 	public String queryCity(Model model){
-		//推荐城市
 		List<city> cityList = cservice.queryCity();
 		model.addAttribute("cityList", cityList);
-		System.out.println("推荐所有城市："+cityList);
-		
-		//中国城市
 		List<city> chinaList = cservice.queryChina();
 		model.addAttribute("chinaList", chinaList);
 		System.out.println("推荐中国城市："+chinaList);
-		
-		//倒叙查询后五个城市
 		List<city> descList = cservice.queryChinaDesc();
 		model.addAttribute("descList", descList);
 		System.out.println("倒叙查询中国后五个城市:"+descList);
-		
-		//查询印度尼西亚
 		List<city> IndonesiaList = cservice.queryIndonesia();
 		model.addAttribute("IndonesiaList", IndonesiaList);
 		System.out.println("印度尼西亚："+IndonesiaList);
-		
-		//查询印度
 		List<city> IndiaList = cservice.queryIndia();
 		model.addAttribute("IndiaList", IndiaList);
 		System.out.println("印度："+IndiaList);
-		
-		//查询越南
 		List<city> vietnamList = cservice.queryVietnam();
 		model.addAttribute("vietnamList", vietnamList);
 		System.out.println("越南："+vietnamList);
-
-		//查询尼泊尔
 		List<city> nepalList = cservice.queryNepal();
 		model.addAttribute("nepalList", nepalList);
 		System.out.println("尼泊尔："+nepalList);
-		
-		//查询日本
 		List<city> japanList = cservice.queryJapan();
 		model.addAttribute("japanList", japanList);
 		System.out.println("日本："+japanList);
-		
-		//查询马来西亚
 		List<city> malaysiaList = cservice.queryMalaysia();
 		model.addAttribute("malaysiaList", malaysiaList);
 		System.out.println("马来西亚："+malaysiaList);
-		
-		//意大利
 		List<city> italianaList = cservice.queryItaliana();
 		model.addAttribute("italianaList", italianaList);
 		System.out.println("意大利:"+"italianaList");
-		
-		//英国
 		List<city> ukList = cservice.queryUK();
 		model.addAttribute("ukList", ukList);
-		
-		//德国
 		List<city> deutschlandList = cservice.queryDeutschland();
 		model.addAttribute("deutschlandList", deutschlandList);
-		
-		//法国
 		List<city> franceList = cservice.queryFrance();
 		model.addAttribute("franceList", franceList);
 		
@@ -190,6 +171,7 @@ public class CityController {
 	public String queryBySsid(Integer ssid,Model model){
 		scenicspots BySsid = ss.queryBySsid(ssid);
 		model.addAttribute("BySsid", BySsid);
+		model.addAttribute("id", BySsid);
 		System.out.println("ssid:"+BySsid);
 		return "jingdianxiangqing";
 	}
@@ -217,7 +199,7 @@ public class CityController {
 	 */
 	@RequestMapping("queryMuHu")
 	public String queryMuHu(Model model,String cname) throws Exception{
-		country CnameList = countrys.queryMoHu(cname);
+		List<Map<String, Object>> CnameList = countrys.queryMoHu(cname);
 		model.addAttribute("CnameList",CnameList);
 		model.addAttribute("cname", cname);
 		System.out.println("cname:"+cname);
@@ -232,8 +214,10 @@ public class CityController {
 	
 	@RequestMapping("queryCname")
 	@ResponseBody
-	public List<String> queryCname(){
-		return countrys.queryCname();
+	public List<Map<String, Object>> queryCname(String cname){
+		List<Map<String, Object>> list=countrys.queryMoHu(cname);
+		System.out.println(list);
+		return list;
 	}
 	
 	/**
@@ -251,5 +235,19 @@ public class CityController {
 		List<Map<String, Object>> queryCitys = countrys.queryCitys(cid);
 		model.addAttribute("queryCitys", queryCitys);
 		return "country";
+	}
+	
+	/**
+	 * 根据景点名查询所有景点信息
+	 * @param ssname
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("queryBySsname")
+	public String queryBySsname(String ssname,Model model){
+		scenicspots queryBySsname = countrys.queryBySsname(ssname);
+		model.addAttribute("queryBySsname", queryBySsname);
+		model.addAttribute("ssname", ssname);
+		return "jingdianxiangqing";
 	}
 }

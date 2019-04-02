@@ -82,10 +82,10 @@
 		select * from scenicspots where monthsid = 12 limit 5
 	</select>
 	
-	<select id="queryMoHu" resultType="country" parameterType="String">
+	<!-- <select id="queryMoHu" resultType="country" parameterType="String">
 		select * from country 
 		<if test="_parameter != null and _parameter != '' ">
 			where cname like concat('%',#{param1},'%')
 		</if>
-	</select>
+	</select> -->
 </mapper>

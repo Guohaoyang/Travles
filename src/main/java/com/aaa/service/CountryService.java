@@ -115,7 +115,7 @@ public class CountryService {
 	 * @param cname
 	 * @return
 	 */
-	public country queryMoHu(String cname){
+	public List<Map<String, Object>> queryMoHu(String cname){
 		return countrys.queryMoHu(cname);
 	}
 	
@@ -135,5 +135,10 @@ public class CountryService {
 	//根据国家编号查询国家信息
 	public country queryCountry(Integer cid){
 		return countrys.queryCountry(cid);
+	}
+	
+	//根据国家名查询国家所有信息
+	public scenicspots queryBySsname(String ssname){
+		return countrys.queryBySsname(ssname);
 	}
 }

@@ -14,6 +14,15 @@ public class CityService {
 	@Autowired
 	CityDao cdao;
 	
+	public List<city> queryByCname(String cname){
+		return cdao.queryByCname(cname);
+	}
+	
+	public List<city> queryBeijing(){
+		return cdao.queryBeijing();
+	}
+	
+	
 	public List<city> queryCity(){
 		return cdao.queryCity();
 	}

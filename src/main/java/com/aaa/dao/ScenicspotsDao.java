@@ -24,6 +24,8 @@ public interface ScenicspotsDao {
 	//	@Select("select ssid,ssname,scenicspotspic from scenicspots where ssid = #{ssid}")
 	public scenicspots queryBySsid(Integer ssid);
 	
+	
+	
 	/***
 	 * 根据景点名子去查询景点的信息
 	 * @param s

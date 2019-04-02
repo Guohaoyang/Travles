@@ -68,7 +68,11 @@ public interface CountryDao {
 	 * @param cname
 	 * @return
 	 */
-	public country queryMoHu(String cname);
+	@Select("select ct.cid,ct.cname,ct.details,ct.cstatus,"
+			+ "ct.countrypic,c.contid ,c.contname from country ct"
+			+ " inner join continect c on ct.contid = c.contid "
+			+ "where ct.cname like concat ('%',#{cname},'%')")
+	public List<Map<String,Object>> queryMoHu(String cname);
 	
 	@Select("select cname from country")
 	public List<String> queryCname();
@@ -77,6 +81,7 @@ public interface CountryDao {
 			+ "ct.cid,ct.cname,ct.details,ct.countrypic from city c inner join"
 			+ " country ct on c.contryid = ct.cid where ct.cname = #{param1}")
 	public List<Map<String,Object>> queryCity(String cname);
+	
 	
 	@Select("select c.cid,c.cname cityname,c.contryid,c.citypic,c.details,"
 			+ "ct.cid,ct.cname,ct.details,ct.countrypic from city c inner join "
@@ -90,5 +95,8 @@ public interface CountryDao {
 	 */
 	@Select("select * from country where cid = #{cid}")
 	public country queryCountry(Integer cid);
+	
+	@Select("select * from scenicspots where ssname = #{ssname}")
+	public scenicspots queryBySsname(String ssname);
 	
 }

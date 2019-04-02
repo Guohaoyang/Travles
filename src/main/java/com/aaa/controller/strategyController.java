@@ -97,4 +97,15 @@ public class strategyController {
 		return map;
 	}
 	
+	/**
+	 * 查询所有城市
+	 * @return
+	 */
+	@RequestMapping("queryAllCitys")
+	@ResponseBody
+	public List<city> queryAllCitys(){
+		List<city> list =  conct.Allcs();
+		return list;
+	}
+	
 }
